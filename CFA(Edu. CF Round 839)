@@ -1,0 +1,71 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void fifa(){
+
+       
+        //unordered_map<ll, ll>m;
+    
+      /*  sort(arr,arr+n);
+        for(auto itr:arr){
+            m[itr]++;
+        }
+       if(n == m[arr[0]]){
+           cout<<n*(n-1)<<endl;
+           return;
+       }
+    ll e1 = m[arr[0]];
+    ll e2 =m[arr[n-1]];
+    cout<<2*e1 * e2<<endl;
+    
+    ll ans = 0;
+  vector<int>v(n+1,1);
+        for(int i=0;i<m;i++){
+            int a,b;
+            cin>>a>>b;
+            if(a==b){
+                continue;
+            }
+            if(b > a){
+              
+                 v[b]=max(a + 1,v[b]);
+            }
+            else{
+                  v[a]=max(b + 1,v[a]);
+            }
+        }
+        
+        for(int i=1;i<=n;i++){
+            v[i]=max(v[i], v[i-1]);
+            
+            ans = ans + (long long)(i - v[i] + 1);
+        }
+        cout<<ans<<endl;
+        */
+   
+    string s; 
+    cin>>s;
+    ll n = s.length();
+    int cnt = 0;
+    string ss =""; 
+    ss = ss + s[0]; 
+    ll str =stoi(ss); 
+    
+    for (int i=0;i<n-1; i++) 
+    { 
+        cnt+=9;
+    } 
+    cnt+=str;
+    cout<<cnt<<endl;
+    
+    
+    }
+    int main(){
+        int tc;
+        cin>>tc;
+        for(int i=0;i<tc;i++){
+            fifa();
+            }
+            return 0;
+            }
+            
