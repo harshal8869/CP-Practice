@@ -1,0 +1,130 @@
+/*#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int tc;
+    cin>>tc;
+    for(int k=0;k<tc;k++)
+    {
+        
+        
+        string s;
+        cin>>s;
+        int n = s.size();
+        int i;
+        string ss ="";
+        string str ="";
+        for(  i=0;i<n;i++)
+        {
+          
+              ss = s[i];
+              for(int j=i+1;j<=n;j++)
+            {
+                 str = s[j];
+                 if(ss == str)
+            {
+                cout<<"YES"<<endl;
+                 break;
+            }
+            }
+            if(ss == str)
+            {
+                break;
+            }
+              }
+if(i==n)
+        {
+
+        cout<<"NO"<<endl;
+        }
+    }
+return 0;
+}
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+ int n;
+ cin>>n;
+ string s;
+ cin>>s;
+ int x = 0;
+ int y = 0;
+ int ans =0;
+ for(int i=0;i<n-1;i++){
+     if(s[i]=='R')
+         x = x + 1;
+     
+     else
+     y = y + 1;
+     if(x==y && s[i+1]==s[i])
+     ans+=1;
+ }
+ cout<<ans<<endl;
+ return 0;
+  }
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+string s;
+cin>>s;
+	int k;
+	cin>>k;
+	set<int>st;
+	int n = s.size();
+	for(int i=0;i<n;i++)
+	st.insert(s[i]);
+	if(k > n || k >= 27)
+	cout<<"impossible"<<endl;
+	else
+	cout<<max(k-(int)st.size(),0);	
+}
+*/
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void fifa()
+{
+   /* int n;
+	string s;
+	cin>>n>>s;
+	s="0"+s+"0";
+	if(s.find("000")!= -1 || s.find("11")!= -1){
+	    cout<<"No"<<endl;
+	}
+	else{
+	    cout<<"Yes"<<endl;
+	}
+	return 0;
+}
+*/
+int n = 6;
+int arr[n];
+for(int i=0;i<n;i++)
+    cin>>arr[i];
+
+    if(arr[1]!=arr[3] && arr[3]!=arr[5] && arr[5]!=arr[1]){
+        cout<<"YES"<<endl;
+    }
+    else if(arr[0]!=arr[2] && arr[2]!=arr[4] && arr[4]!=arr[0]){
+        cout<<"YES"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
+
+
+
+
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        fifa();
+    }
+    return 0;
+}
