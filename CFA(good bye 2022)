@@ -1,0 +1,90 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+//const int mxn = 400005;
+
+void thrill(){
+    
+   // ll i=1,j=2;
+  /*  ll cnt = 1; 
+    ll arr[n];
+    for (int i=0;i<n;i++) 
+    { 
+        cin>>arr[i];
+        cnt = cnt * arr[i];
+    } 
+    cnt = n + cnt -1;
+    cout<<2022 * cnt<<endl;
+     
+     ll n;
+     cin>>n; 
+     ll mod = 1000000007;
+
+   ll ans = n; 
+    ans = (ans*((4*n-1)))%mod;
+    ans = (ans* ((n+1)%mod))%mod;
+    ans = (ans*166666668)%mod;
+    cout<<(2022*ans)%mod<<endl;
+    
+    
+ ll n;
+ cin>>n;
+ ll res = 0;
+ ll arr[mxn];
+ ll brr[mxn];
+ 
+ for(int i=1;i<=n;i++){
+     arr[i] = arr[i-1] ^ n;
+     
+ }
+ for(int i=0;i<(2<<log2(n));i++){
+     brr[i]=0;
+     brr[0]=1;
+ }
+for(int i=1;i<=n;i++){
+    for(int j=0;j*j<(2<<log2(n));j++){
+        res = res + brr[arr[i]^(j*j)];
+        brr[arr[i]]++;
+    }
+}
+ll ans = 1 * n * (n-1)/2-res;
+cout<<ans<<endl;
+*/
+ ll n,m;
+ cin>>n>>m;
+ vector<int>arr(n);
+ priority_queue<int,vector<int>,greater<int>>p;
+ for(int i=0;i<n;i++){
+     cin>>arr[i];
+     p.push(arr[i]);
+ }
+vector<int>brr(m);
+for(int i=0;i<m;i++){
+    cin>>brr[i];
+    
+}
+sort(arr.begin(),arr.end());
+int j = 0;
+ll tot = accumulate(arr.begin(),arr.end(),0ll);
+while(m>0){
+    tot=tot - p.top();
+    p.pop();
+    tot+=brr[j];
+    p.push(brr[j]);
+    j++;
+    m--;
+}
+   
+cout<<tot<<endl;
+}
+
+int main(){
+	int tc;
+	cin>>tc;
+	  
+	for(int i=0;i<tc;i++){
+thrill();
+    
+	}
+	  return 0;
+}
