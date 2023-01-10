@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    int n;
+	    cin>>n;
+       string s;
+		cin>>s;
+		string k;
+		map<string,int>mp;
+		int cnt=0;
+		mp.clear();
+		for(int i=0;i<n-1;i++){
+			k=s.substr(i,2);
+			if(mp[k]!=0){
+				if(i-1 >= mp[k]){
+				    cnt = 1;
+				}
+			}
+			else{
+			    mp[k] = i + 1;
+			}
+		}
+		if(cnt==0){
+		    cout<<"NO"<<endl;
+		}
+		else{
+		    cout<<"YES"<<endl;
+		}
+		
+	}
+	return 0;
+}
