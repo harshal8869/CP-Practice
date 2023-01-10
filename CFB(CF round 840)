@@ -1,0 +1,114 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+      /* string s;
+       cin>>s;
+       cout<<(s[0] + s[2] - 2 * ('0'))<<endl;
+    }
+    
+   int arr[2][2];
+   for(int i=0;i<2;i++){
+       for(int j=0;j<2;j++){
+           cin>>arr[i][j];
+       }
+   }
+   
+   int cnt = 1;
+   for(int i=0;i<4;i++){
+       if(arr[1][0] > arr[0][0] && arr[0][1] > arr[0][0] && arr[1][1] > arr[1][0] && arr[1][1] > arr[0][1]){
+           cnt =0;
+           break;
+       }
+       int a = arr[0][0];
+       arr[0][0]= arr[1][0];
+       arr[1][0]=arr[1][1];
+       arr[1][1] = arr[0][1];
+       arr[0][1] = a;
+   }
+   if(cnt!=1){
+       cout<<"YES"<<endl;
+   }
+   else{
+       cout<<"NO"<<endl;
+   }
+   
+   
+    
+        
+   int n,k;
+        cin>>n>>k;
+        int cnt = 1;
+        cout<<cnt<<" ";
+        for(int i=1;i<n;i++){
+                if(k - cnt -i + 1 >= n-i){
+                        cnt = cnt + i;
+        }
+        else{
+         cnt++;
+        }
+        cout<<cnt<<" ";
+        }
+        cout<<endl;
+
+
+int n;
+cin >> n;
+int arr[n];
+
+for(int i=0;i<n;i++){
+    cin>>arr[i];
+    
+}
+int maxi = arr[0];
+int mini = arr[0];
+for(int i=0;i<n;i++){
+    
+    maxi=maxi&arr[i];
+    mini=mini|arr[i];
+}
+cout<<mini - maxi<<endl;
+*/
+
+   int n,k;
+       cin>>n>>k;
+       //ll ans = 0;
+        priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> p1;
+       ll h[n];
+       ll p[n];
+       
+       for(int i=0;i<n;i++){
+       cin>>h[i]; 
+       }
+       for(int i=0;i<n;i++){
+       cin>>p[i]; 
+       }
+       // priority_queue<pair<int,int>,vector<pair<int,int>>,greater<pair<int,int>>> p1;
+       for(int i=0;i<n;i++){
+       p1.push({p[i],h[i]});
+       }
+       int k1 = k;
+      
+       while(p1.empty()==0 && k >0)
+       {
+          while(p1.empty()==0 && k1 >= p1.top().second)
+          p1.pop();
+          k = k - p1.top().first;
+          k1+=k;
+       }
+       if(p1.empty()==0){
+           cout<<"NO"<<endl;
+       }
+       else if(p1.empty()!=0){
+           cout<<"YES"<<endl;
+       }
+    
+    
+   
+    }
+    
+    return 0;
+}
