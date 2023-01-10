@@ -1,0 +1,12 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+       string s;
+       cin>>s;
+       cout<<(s[0] + s[2] - 2 * ('0'))<<endl;
+    }
+    return 0;
+}
