@@ -1,0 +1,67 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+    int m;
+	cin>>m;
+	string s;
+	vector<vector<int>>v(2, vector<int>(m));
+	for (int i=0;i<2;i++)
+	{
+		
+		cin>>s;
+		int n = s.size();
+		for (int j=0;j<n;j++)
+		{
+			if (s[j]!='B')
+			{
+				v[i][j] = 0;
+			}
+			else
+			{
+				v[i][j] = 1;
+			}
+		}
+	}
+	vector<vector<bool>>vec(2, vector<bool>(m, false));
+	if(v[1][m - 1] == 1)
+	{
+		vec[1][m - 1] = true;
+	}
+	if(v[0][m - 1] == 1)
+	{
+		vec[0][m - 1] = true;
+	}
+
+	for (int j=m-2;j>=0;j--)
+	{
+		for (int i=0;i<2;i++)
+		{
+			if (v[i][j] == 1)
+			{
+				if (v[i ^ 1][j] == 1)
+				{
+					vec[i][j] = vec[i ^ 1][j + 1];
+				}
+				else
+				{
+					vec[i][j] = vec[i][j + 1];
+				}
+			}
+		}
+	}
+	if (vec[0][0] == true || vec[1][0] == true)
+	{
+		cout<<"YES"<<endl;
+	}
+	else
+	{
+		cout<<"NO"<<endl;
+	}
+    }
+ return 0;
+ 
+ 
+}
