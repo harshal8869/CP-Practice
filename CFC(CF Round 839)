@@ -1,0 +1,64 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+      /* string s;
+       cin>>s;
+       cout<<(s[0] + s[2] - 2 * ('0'))<<endl;
+    }
+    
+   int arr[2][2];
+   for(int i=0;i<2;i++){
+       for(int j=0;j<2;j++){
+           cin>>arr[i][j];
+       }
+   }
+   
+   int cnt = 1;
+   for(int i=0;i<4;i++){
+       if(arr[1][0] > arr[0][0] && arr[0][1] > arr[0][0] && arr[1][1] > arr[1][0] && arr[1][1] > arr[0][1]){
+           cnt =0;
+           break;
+       }
+       int a = arr[0][0];
+       arr[0][0]= arr[1][0];
+       arr[1][0]=arr[1][1];
+       arr[1][1] = arr[0][1];
+       arr[0][1] = a;
+   }
+   if(cnt!=1){
+       cout<<"YES"<<endl;
+   }
+   else{
+       cout<<"NO"<<endl;
+   }
+   */
+   
+    
+        
+   int n,k;
+        cin>>n>>k;
+        int cnt = 1;
+        cout<<cnt<<" ";
+        for(int i=1;i<n;i++){
+                if(k - cnt -i + 1 >= n-i){
+                        cnt = cnt + i;
+        }
+        else{
+         cnt++;
+        }
+        cout<<cnt<<" ";
+        }
+        cout<<endl;
+
+
+
+  
+
+   
+    }
+    
+    return 0;
+}
