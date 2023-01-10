@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void fifa(){
+        ll n;
+        cin>>n;
+        unordered_map<ll, ll>m;
+        ll arr[n];
+        for(int i=0;i<n;i++){
+            cin>>arr[i];
+        }
+        sort(arr,arr+n);
+        for(auto itr:arr){
+            m[itr]++;
+        }
+       if(n == m[arr[0]]){
+           cout<<n*(n-1)<<endl;
+           return;
+       }
+    ll e1 = m[arr[0]];
+    ll e2 =m[arr[n-1]];
+    cout<<2*e1 * e2<<endl;
+    
+    }
+    int main(){
+        int tc;
+        cin>>tc;
+        for(int i=0;i<tc;i++){
+            fifa();
+            }
+            return 0;
+            }
+            
