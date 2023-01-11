@@ -1,0 +1,112 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+/*int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){z
+        ll n;
+        cin>>n;
+        ll sum=0;
+        ll arr[n];
+        for(int i=0;i<n;i++){
+            cin>>arr[i];
+            sum+=arr[i];
+        }
+        cout<<abs(sum)<<endl;
+    }
+    */
+    void india(){
+    /*    ll n;
+        cin>>n;
+        cout<<(n+1)/2<<endl;
+        for(int i=0;i < (n+1)/2;i++){
+            cout<< 3* i + 1<<" "<<3* n - 3 * i -1<<" "<<endl;
+        }
+        
+        ll n;
+        cin>>n;
+        ll cnt=0;
+        ll mini = INT_MAX;
+        ll arr[n];
+        for(int i=0;i<n;i++){
+            cin>>arr[i];
+        }
+        for(int i=0;i<n;i++){
+   
+            if(arr[i] < mini)
+             mini = arr[i];
+             cnt=i;
+        }
+    if(cnt==0)
+    cout<<"Alice"<<endl;
+    else
+    cout<<"Bob"<<endl;
+    }
+    
+    
+    
+     
+    ll n;
+    cin>>n;
+    ll arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    if(arr[0]==1){
+        cout<<"Yes"<<endl;
+    }
+    else{
+        cout<<"No"<<endl;
+    }
+    }
+    
+    ll n;
+    cin>>n;
+    string s;
+    cin>>s;
+     ll ans = 0 , res = 0;
+    ll cnt=0,cnt1=0,cnt2=0;
+    ll x =0;
+        for(int i=0;i<n;i++){
+            if(s[i] == '0') {
+                cnt2++;
+                x++;
+                cnt = 0;
+            }
+            else if(s[i] =='1'){
+                cnt1++;
+                cnt++;
+                x=0;
+            }
+            ans = max(ans , cnt);
+            res = max(res , x);
+        }
+        ll nans = ans * ans ;
+        ll nres = res * res;
+        ll str = cnt1 * cnt2;
+      //  cout << max({x*x , y*y , counter_fr_x*counter_fr_y}) << endl;
+    ll m1 = max(nans , nres);
+    ll m2 = max(m1, str);
+    cout<<m2<<endl;
+    }
+    */
+    ll n;
+    cin>>n;
+    if(n%2==0){
+        cout<<n/2<<endl;
+    }
+    else{
+        cout<<(n/2) + 1<<endl;
+    }
+    }
+ 
+    int main(){
+        int tc;
+        cin>>tc;
+        for(int i=0;i<tc;i++){
+            india();
+        
+    }
+    return 0;
+}
