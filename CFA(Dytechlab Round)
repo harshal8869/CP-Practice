@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+      int n,k;
+      cin>>n>>k;
+      string s;
+      cin>>s;
+     
+       int arr[26];
+    for(int i=0;i<=25;i++) {
+        arr[i] = 0; 
+      }
+      string str = "";
+    map<char,int> mp;
+    for(auto i: s){
+        mp[i]++;
+    }
+    for(auto it: mp){
+      arr[it.first - 'a'] = it.second;
+    }
+    int x;
+    
+    x=k;
+    
+    for(int i=0;i<x;i++){
+        int cnt = 1;
+      int j = 0;
+  
+      int maxi;
+      if(n/k >= 26){
+          maxi=26;
+      }
+      else{
+          maxi=n/k;
+      }
+      for(int i=0;i<maxi; i++, j++){
+          if(arr[i]== 0){
+            cnt = 0;
+            break;
+          }
+          arr[i]--;
+        }
+        (cnt) ? str.push_back('a' + n / k) : str.push_back('a' + j);
+    }
+    cout<<str<<endl;
+
+    }
+    return 0;
+}
