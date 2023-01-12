@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void scuza() {
+    ll n,m;
+    cin>>n>>m;
+    ll arr[200001];
+    ll sum[200001];
+    ll brr[200001];
+   for(int i=1;i<=n;i++) {
+      cin>>arr[i];
+      sum[i] = arr[i] + sum[i-1];
+      brr[i] = max(arr[i],brr[i-1]);
+   } 
+      ll cnt;
+   while(m--) {
+      cin>>cnt;
+      cout<<sum[upper_bound(brr + 1, n + brr + 1, cnt) - brr-1]<<" ";
+      }
+   cout<<endl;
+}
+int main() {
+   int tc;
+   cin>>tc;
+   for(int i=0;i<tc;i++){
+      scuza(); 
+   }
+   return 0;
+}
