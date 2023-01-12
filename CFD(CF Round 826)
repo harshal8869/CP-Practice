@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long int
+
+
+pair<int,int> fun(int l, int r, vector<int>& ar,int &ans){
+
+    if(l==r){
+        return {ar[l],ar[r]};
+    }
+
+    int mid = (r+l)/2;
+
+    pair<int,int> a = fun(l,mid,ar,ans);
+    pair<int,int> b = fun(mid+1,r,ar,ans);
+
+    if(a.second>b.first){
+        ans++;
+        swap(a,b);
+    }
+
+    if(a.second==b.first-1 && b.second-a.first==(r-l)){
+        
+        return {a.first,b.second};
+    }else{
+        ans = INT_MIN;
+        return {a.first,b.second};
+    }
+
+}
+
+
+void beauty(){
+    int n;
+    cin>>n;
+    vector<int> a(n);
+
+
+    for (int i = 0; i < n; ++i)
+    {
+        cin>>a[i];
+    }
+    int ans =0;
+
+    fun(0,n-1,a,ans);
+
+    if(ans<0){
+        cout<<-1<<endl;
+    }else{
+        cout<<ans<<endl;
+    }
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        beauty();
+    }
+    return 0;
+}
