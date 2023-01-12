@@ -1,0 +1,77 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+//#define vi vector<ll>
+vector<ll> divisors(ll n){
+    vector<ll> v;
+    for(int i=1;i*i<=n;i++){
+        if(n%i==0) { 
+            v.push_back(i); 
+            if(n/i!=i) 
+            v.push_back(n/i); 
+            
+        }
+        
+    } 
+    return v;
+    
+}
+
+void thickness(){
+      ll n;
+    cin>>n; 
+    ll sum=0;
+    ll arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+        sum = sum + arr[i];
+    }
+    vector<ll>v = divisors(sum);
+
+    ll len = v.size();
+      //  ll m = 0,cnt=0,maxi=0;
+     ll thick = n;
+
+    if(len <= 2){
+        cout<<n<<endl;
+        return;
+    }
+    for(auto it : v){
+
+      
+        bool check = false;
+        ll  k = sum / it;
+         ll m = 0,cnt=0,maxi=0;
+        for(int i=0;i<n;i++)
+        {   
+            m = m + arr[i];
+            cnt++;
+
+           
+             if(m > k){
+                check = true;
+                break;
+            }
+            else if(m==k){
+                maxi = max(cnt,maxi);
+                cnt = 0;
+                m=0;
+            }
+        }
+
+        if(check==0){
+            thick = min(thick,maxi);
+        }
+
+    }
+    cout<<thick<<endl;
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thickness();
+    }
+return 0;
+}
