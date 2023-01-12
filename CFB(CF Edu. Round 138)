@@ -1,0 +1,37 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void game(){
+    ll n;
+    cin>>n;
+    ll arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    ll brr[n];
+    for(int i=0;i<n;i++){
+        cin>>brr[i];
+    }
+    ll sum=0;
+    ll total=0;
+    for(int i=0;i<n;i++){
+        sum+=arr[i];
+    }
+    ll a1=sum;
+    for(int i=0;i<n;i++){
+        total+=brr[i];
+    }
+    ll a2=total;
+    sort(brr,brr+n);
+    ll diff = brr[n-1];
+    cout<<a1 + a2 - diff<<endl;
+
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        game();
+    }
+    return 0;
+}
