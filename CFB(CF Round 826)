@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        ll n;
+        cin>>n;
+        if(n==3 || n==1){
+        cout<<-1<<endl;
+        continue;
+    }
+    
+    if(n%2!=0){
+        ll m=n/2;
+        n=n-n/2;
+    ll o =m;
+    for(int j=0;j<m;j++){
+            cout<<n + o<<" ";
+            o--;
+        }
+        o=1;
+        while(o<=n){
+            cout<<o<<" ";
+            o = o + 1;
+        }
+    }
+    else{
+        for(int i=n;i>=1;i--){
+            cout<<i<<" ";
+        }
+    }
+cout<<endl;
+
+
+    }
+    return 0;
+}
