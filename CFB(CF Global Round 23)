@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void rebel(){
+  //  void solve(){
+    ll n;
+    cin>>n;
+    ll i=0;
+   // ll j=n-1;
+    ll sum=0;
+    ll j=n-1;
+    ll arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+  //  ll i=0,j=n-1,cnt=0;
+    while(i<j){
+        if(arr[j]==1){
+            j--;
+            
+        }
+       
+        else if(arr[i]==1 && arr[j]==1) {
+           sum++;
+            i++;
+            j--;
+        }
+       
+        else if(arr[i]==1 && arr[j]==0) {
+            sum++;
+            i++;
+            j--;
+        }
+          else if(arr[i]==0 && arr[j]==1) {
+            i++;
+        }
+        else{
+            i++;
+        }
+    }
+    cout<<sum<<endl;
+}
+
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        rebel();
+    }
+    return 0;
+}
