@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+#define ll long long 
+using namespace std; 
+ll func(ll n){ 
+    ll m=0;
+    ll y = sqrt(n);
+    if(n==0) 
+    return 0; 
+  
+   m = 3 * y -3;
+    m += (n - y * y) / y; 
+    ll ans =  ++m; 
+    return ans;
+} 
+void luxury() { 
+    ll x,y;
+    cin>>x>>y; 
+    x--;
+    ll res = func(y) - func(x);
+    cout<<res<<endl; 
+} 
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        luxury();
+    }
+    return 0;
+}
+
+
