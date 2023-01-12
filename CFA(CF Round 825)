@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+         int n;
+         cin>>n;
+         int odd=0;
+         int even=0;
+         
+         int arr[n];
+         int brr[n];
+         for(int i=0;i<n;i++){
+             cin>>arr[i];
+             odd+=arr[i];
+             
+         }
+         int ans =0;
+         for(int i=0;i<n;i++){
+             cin>>brr[i];
+             even+=brr[i];
+             ans += (arr[i]!=brr[i]);
+         }
+         int diff = even - odd;
+         int cnt = min(ans,abs(diff)+1);
+         cout<<cnt<<endl;
+       
+         
+    }
+    return 0;
+}
