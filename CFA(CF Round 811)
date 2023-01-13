@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+void confusion(){
+        int n,m,x;
+        cin>>n>>m>>x;
+        int maxi = 1e9;
+        int res=m * 60 + x;
+        for(int i = 0; i < n;i++){
+            int a,b;
+            cin>>a>>b;
+            int ans = a * 60 + b ;
+        int cnt;
+            if(ans >= res){
+               cnt=ans-res;
+            }
+            else if (res>ans){
+              
+              cnt = (24 * 60) - (res-ans);
+            }
+            maxi = min(maxi,cnt);
+        }
+        cout<<maxi/60<<" "<< maxi%60<<endl;
+    }
+    int main(){
+        int t;
+        cin>>t;
+        while(t--){
+            confusion();
+        
+    }
+    return 0;
+}
