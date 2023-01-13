@@ -1,0 +1,32 @@
+#include<bits/stdc++.h> 
+using namespace std; 
+#define ll long long int
+void competition() { 
+  ll n,m,a,b;
+  cin>>n>>m>>a>>b;
+  char ch[1001][1001];
+  for(ll i=1;i<=n;++i) {
+    for(ll j=1;j<=n;++j) {
+      ch[i][j]='.'; 
+    }
+  }
+  for(ll k=2*n;k>=2;--k) 
+    if(abs(k-a-b)%m==0) 
+      for(ll i=1;i<=n;++i) 
+        for(ll j=1;j<=n;++j) 
+          if((i+j)==k) 
+            ch[i][j]='X'; 
+  for(ll i=1;i<=n;++i) {
+    for(ll j=1;j<=n;++j) 
+      cout<<ch[i][j];
+    cout<<endl;
+  } 
+} 
+int main() { 
+  ll tc;
+  cin>>tc;
+  for(ll i=0;i<tc;++i){
+      competition();
+  }
+ return 0;
+}
