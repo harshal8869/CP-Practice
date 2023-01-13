@@ -1,0 +1,51 @@
+#include<bits/stdc++.h>
+using namespace std;
+void jumping() {
+   string s;
+   cin >> s;
+   int cnt=2;
+    map<char,vector<int>>mp;
+   
+   int n = s.size();
+   
+   
+   
+   for(int i=1;i<n-1;i++)
+   
+      mp[s[i]].push_back(i+1);
+      
+   if(s[n-1] > s[0]) {
+       
+      for(char i=s[0];i<=s[n-1];i++)
+         cnt = cnt + mp[i].size();
+      cout<<s[n-1]-s[0]<<" "<<cnt<<" "<<endl;
+      
+      cout<<1<<" ";
+      for(char i=s[0];i<=s[n-1];i++)
+      
+         for(int x:mp[i])
+            cout<<x<<" ";
+            
+      cout<<n<<""<<endl;
+      
+   }
+   else {
+      for(char i=s[0];i>=s[n-1];i--)
+         cnt = cnt + mp[i].size();
+      cout << s[0]-s[n-1] << " "<<cnt<< " "<<endl;
+      cout<<1<<" ";
+      for(char i=s[0];i>=s[n-1];i--)
+      
+         for(int x:mp[i])
+            cout<<x<<" ";
+      cout<<n<<" "<<endl;
+      
+   }
+}
+int main() {
+   int tc;
+   cin>>tc;
+   for(int i=0;i<tc;i++){
+       jumping();
+   }
+}
