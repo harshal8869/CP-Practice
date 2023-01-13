@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        int n,m;
+        cin>>n>>m;
+        int cnt=0;
+        string s,str;
+        cin>>s>>str;
+        int i=n-1,j=m-1;
+        while(n>=1  &&   m>=1  &&   s[i]==str[j] ){
+            i--;
+            j--;
+        }
+        if(j<0)
+            cout<<"YES"<<endl;
+        
+        else if(j>0){
+            
+        
+        cout<<"NO"<<endl;
+        }
+        else{
+    
+                while(i>=0  && j==0){
+                    if(s[i]==str[j]){
+
+                    cnt=1;
+                }
+                i--;
+                }
+                if(cnt!=0)
+                cout<<"YES"<<endl;
+                else if(cnt==0) 
+                cout<<"NO"<<endl;
+            }
+      
+    }
+    return 0;
+}
