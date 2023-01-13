@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main() {
+    ll tc;
+    cin>>tc;
+    for(ll i=0;i<tc;i++){
+        ll n,k;
+        cin>>n>>k;
+       ll arr[n];
+       ll ans=0;
+        vector<ll>v(k, 0);
+       for(int i=0;i<n;i++){
+           cin>>arr[i];
+       }
+       
+       for(int i=0;i<n;i++){
+           int j = i % k;
+           v[j]=max(v[j],arr[i]);
+           
+       }
+       for(int i=0;i<k;i++){
+           ans += v[i];
+       }
+       cout<<ans<<endl;
+    }
+    return 0;
+}
