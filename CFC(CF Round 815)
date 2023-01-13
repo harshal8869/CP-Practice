@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+using namespace std;
+void corner(){
+int arr[]={1,0,0,-1,1,-1,1,-1}; 
+int brr[]={0,-1,1,0,1,-1,-1,1};  
+
+    int n,m; 
+    cin>>n>>m; 
+    int cnt1=0,cnt2=0;
+    int ans=0;
+    vector<string>s(n);
+    for(int i=0;i<n;i++){ 
+        cin>>s[i]; 
+    } 
+
+
+    for(int i=0;i<n;i++)
+    { 
+        for(int j=0;j<m;j++)
+        { 
+            if(s[i][j]=='0')
+            { 
+                cnt1++; 
+                for(int k=0;k<=7;k++)
+                { 
+     int x=i+arr[k];
+     int y= j + brr[k];
+
+                    if(n>(i+arr[k]) && (i+arr[k])>=0 && (j+brr[k])>=0 && m>(j+brr[k]) && s[x][y]=='0') 
+                        cnt2++; 
+                    
+                }
+            } 
+            else 
+                ans++; 
+             
+        } 
+    }
+     
+
+    if(cnt2!=0) 
+        cout<<ans<<endl; 
+    else if(cnt1!=0)
+        cout<<ans-1<<endl; 
+     else
+        cout<<ans-2<<endl;
+    
+}
+int main(){
+          int tc;
+          cin>>tc;
+          for(int i=0;i<tc;i++){
+                    corner();
+          }
+          return 0;
+}
