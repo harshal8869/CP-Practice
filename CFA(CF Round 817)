@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    int n;
+	    cin>>n;
+	    string s;
+	    cin>>s;
+	    sort(s.begin(),s.end());
+	    string ss="Timur";
+	    sort(ss.begin(),ss.end());
+	    if(ss!=s){
+	        cout<<"no"<<endl;
+	    }
+	    else{
+	        cout<<"yes"<<endl;
+	    }
+	}
+	return 0;
+}
