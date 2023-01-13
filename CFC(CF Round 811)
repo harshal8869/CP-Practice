@@ -1,0 +1,33 @@
+#include <bits/stdc++.h>
+using namespace std;
+void minvary()
+{
+        int n;
+        cin >> n;
+        int no=9;
+        string str;
+        while (n!=0)
+        {
+            while (n < no)
+                no--;
+            str = str + char('0' + no) ;
+            n= n -  no;
+            no--;
+        
+}
+reverse(str.begin(),str.end());
+        cout<<str<<endl;
+    }
+    int main(){
+       int t;
+       cin>>t;
+       while(t--){
+           minvary();
+       }
+    
+
+    return 0;
+}
+
+
+
