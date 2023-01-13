@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        int a,b,c;
+        cin>>a>>b>>c;
+        int n=abs(1-a);
+        int m = abs(b-c) + abs(c-1);
+        if(n==m){
+            cout<<3<<endl;
+        }
+        else if(n<m){
+            cout<<1<<endl;
+        }
+        else{
+            cout<<2<<endl;
+        }
+        
+    }
+    
+
+return 0;
+}
