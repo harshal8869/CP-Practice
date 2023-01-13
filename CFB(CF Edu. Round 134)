@@ -1,0 +1,19 @@
+#include<bits/stdc++.h>
+using namespace std;
+void laser(){
+    int n,m,x,y,d;
+    cin>>n>>m>>x>>y>>d;
+      if((abs(x-n) <= d && x<= d + 1) || (abs(x-n) <= d && abs(y-m) <= d)||(abs(y-m) <= d && y <= d + 1)  || (x<=d + 1 && y<=d + 1)) 
+      cout<<-1<<endl; 
+    else 
+    cout<<n+m-2<<endl;
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        laser();
+    }
+
+    return 0;
+}
