@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+void similarity(){
+	int n;
+	cin>>n;
+	int arr[n];
+	int a[n];
+	for(int i=0;i<n;i++){
+		cin>>arr[i];
+	}
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+	}
+	for(int i=0;i<n;i++){
+		if(arr[i]>a[i])
+{
+	cout<<"no"<<endl;
+	return;
+	
+	}
+	if(a[i]>arr[i] && a[i]>(a[(i+1)%n] + 1)){
+		cout<<"no"<<endl;
+		return;
+	}
+	
+	
+	
+		}
+		cout<<"yes"<<endl;
+}
+int main(){
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+		similarity();
+	}
+	return 0;
+}
