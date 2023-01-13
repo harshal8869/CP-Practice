@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+void circus(){
+    int n,k;
+    cin>>n>>k;
+    bool check=true;
+    if(k&1) {
+            cout<<"YES"<<endl;
+            for (int i=1;i<=n;i+=2) {
+                cout<<i<<" "<<i+1<<" "<<endl;
+            }
+        } else {
+            for (int i=2;i<=n;i+=2) {
+                if (i%4!=0) {
+                    if ((i + k) % 4 != 0) {
+                       cout<<"NO"<<endl;
+                       check=false;
+                        break;
+                    }
+                }
+            }
+            if (check==0) {
+                return;
+            }
+            cout<<"YES"<<endl;
+            for (int i=1;i<=n;i+=2) {
+                if((i+1)%4!=0){
+                    cout<<i+1<<" "<<i<<" "<<endl;
+                } else {
+                    cout<<i<<" "<<i+1<<" "<<endl;
+                }
+            }
+        }
+    }
+
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        circus();
+    }
+    return 0;
+}
