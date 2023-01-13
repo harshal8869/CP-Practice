@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+void chain()
+{
+        int n;
+        cin>>n;
+        int cnt=0;
+        int arr[n];
+        for (int i = 0; i < n; i++)
+            arr[i] = i + 1;
+        cout<<n<<endl;
+        for(int i=0;i<n;i++)
+        {
+          for (auto itr : arr)
+          cout<<itr<<" ";
+            cout<<endl;
+            if(n!=0)
+                swap(arr[cnt], arr[cnt+1]);
+            cnt++;
+        }
+    }
+    int main(){
+        int tc;
+        cin>>tc;
+        for(int i=0;i<tc;i++){
+            chain();
+        
+    }
+    return 0;
+}
+
