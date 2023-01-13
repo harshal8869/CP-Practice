@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+void restaurant(){
+    int n;
+    cin>>n;
+    int cnt=0;
+    int arr[n];
+    int brr[n];
+    int crr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    for(int i=0;i<n;i++){
+        cin>>brr[i];
+    }
+    for(int i=0;i<n;i++){
+        crr[i]=brr[i]-arr[i];
+    }
+    sort(crr,crr+n);
+    int i=0;
+    int j=n-1;
+    while(i<j){
+        if(crr[i]+crr[j]<0){
+            i++;
+            continue;
+        }
+        cnt++;
+        i++;
+        j--;
+        
+    }
+    cout<<cnt<<endl;
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        restaurant();
+    }
+    return 0;
+}
+
