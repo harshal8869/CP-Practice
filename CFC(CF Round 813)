@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+void sort()
+{
+    int n;
+    cin>>n;
+    int arr[n];
+    set<int>st;
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+        for(int i=0;i<n-1;i++){
+            
+        
+            st.insert(arr[i]);
+        }
+        int len=st.size();
+        
+        cout<<len<<endl;
+    }
+    int main(){
+        int tc;
+        cin>>tc;
+        for(int i=0;i<tc;i++){
+            sort();
+        }
+    
+    return 0;
+}
+
+
+
