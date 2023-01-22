@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool solve(int mid,vector<int>&vec){ 
+    bool check = true;
+ int n = vec.size();
+  for(int i=0;i<n;i++){ 
+        if(vec[i]>=(-1*mid) && mid>= vec[i]){ 
+            check = false;    
+        } 
+    } 
+    return check;
+} 
+void babla(){
+        int n; 
+        cin>>n;
+        int cnt = -1;
+        vector<int>vec(n);
+        for(int i=0;i<n;i++){ 
+            cin>>vec[i];
+        } 
+ 
+ 
+ int high = 1e9;
+        int low = 0;
+    while(low<=high){ 
+            int mid = (low+high)/2; 
+ 
+         
+            if(solve(mid,vec)==0){ 
+                high = mid-1; 
+            }
+              else{ 
+                low = mid+1; 
+                cnt=mid;
+            } 
+        } 
+ 
+        cout<<cnt<<endl;
+     
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        babla();
+    }
+    return 0;
+}
