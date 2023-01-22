@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    int a,b;
+	    cin>>a>>b;
+	    int ans = __gcd(a,b);
+	    int res = a - ans;
+	    cout<<res<<endl;
+	}
+	return 0;
+}
