@@ -1,0 +1,75 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int 
+//#define mod 1000000007 
+ll mod = 1000000007;
+const int m = 2e5 + 1;
+ll fct[m];
+ll vfct[m];
+int f1(int x, int y){
+  
+    return((x%mod) * (y%mod)) % mod;
+} 
+int bp(int x,int y){
+    if(y==0){
+    return 1; 
+    }
+    ll avg =bp(x, y/2); 
+    avg = f1(avg, avg); 
+    if(y%2==1){
+    return f1(avg, x);
+    }
+    return avg;
+} 
+int func(int x,int p = mod){
+    return bp(x, p-2);
+} 
+
+void solve(){
+    fct[0] = 1;
+    vfct[0] = 1;
+    for(int i=1;i<=2e5;i++){
+         vfct[i] = f1(vfct[i-1], func(i));
+        fct[i] = f1(fct[i-1],i); 
+       
+    }
+} 
+void thrill(){
+    ll n;
+    cin>>n;
+    set<int>st;
+    unordered_map<int,int>mp;
+    vector<ll>v1;
+    vector<ll>v2;
+    ll ans = 0;
+    string s;
+    cin>>s;
+    string ss;
+    cin>>ss;
+  
+    for(int i=0;i<n;i++){
+        if(s[i]==ss[i])
+        ans++;
+    } 
+    ll h = n - ans;
+    if(h%2!=0){
+        
+cout<<0<<endl; 
+        return;
+    } 
+    
+       n = n - ans; 
+    ll res = bp(2,ans); 
+   ll answer  = f1(res ,f1(fct[n], f1(vfct[n/2],vfct[n/2]))); 
+    cout<<answer<<endl;
+}
+int main() {  
+    solve();
+
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+ return 0;
+}
