@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	      ll n;
+	      cin>>n;
+	      ll res = 0;
+	      ll first = 0;
+	      ll x = -1;
+	      ll num =0;
+     string s;
+     cin>>s;
+     for(int i=0;i<n;i++){
+         if(s[i]=='0'){
+      x = i;
+      break;
+         }
+         else if(s[i]=='1')
+         {
+            first++;
+         }
+     }
+     if(x==-1){
+         cout<<first<<endl;
+         continue;
+     }
+     for(int i=x+1;i<=n-1;i++){
+         if(s[i]=='0'){
+         
+           res = max(num,res);
+           num  = 0;
+         }
+         else if(s[i]=='1'){
+          num++;
+         }
+     }
+     res = max(num,res);
+     ll ans = res + first;
+     cout<<ans<<endl;
+}
+	
+	return 0;
+}
