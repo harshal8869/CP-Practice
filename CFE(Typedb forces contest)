@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+#define int long long
+using namespace std;
+
+const int N = 2e5 + 10;
+int t, n, k, x; bool vis[N];
+
+void solve() {
+	cin >> n >> k >> x; int tmp = 0;
+	for (int i = 1; i <= n; ++i) vis[i] = false;
+	for (int i = 1; i <= n; ++i) tmp ^= i;
+	if (!((tmp == x && (k & 1)) || (tmp == 0 && !(k & 1)))) return cout << "NO" << endl, void();
+	int cnt = 0; vector <vector <int> > res; res.resize(k + 10);
+	for (int i = 1; i <= n; ++i) {
+		if ((i ^ x) > n || (i ^ x) < 1) continue;
+		if (vis[i] || vis[i ^ x]) continue;
+		vis[i] = vis[i ^ x] = true, ++cnt;
+		res[cnt].push_back(i), res[cnt].push_back(i ^ x);
+		if (cnt >= k - 1) break;
+	}
+	if (cnt < k - 1) return cout << "NO" << endl, void();
+	cout << "YES" << endl, void(); 
+	for (int i = 1; i <= n; ++i)
+		if (!vis[i]) res[k].push_back(i);
+	for (int i = 1; i <= k; ++i) {
+		int len = res[i].size();
+		cout << len << ' ';
+		for (int j = 0; j < len; ++j) cout << res[i][j] << ' ';
+		cout << endl;
+	}
+	return ;
+}
+
+int main() {
+	ios_base::sync_with_stdio(false); cin.tie(0), cout.tie(0);
+	cin >> t; while (t--) solve();
+	return 0;
+}
