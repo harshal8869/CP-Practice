@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    int n,x,y;
+	    cin>>n>>x>>y;
+	    if(x*y<n){
+	        cout<<"no"<<endl;
+	    }
+	    else{
+	        cout<<"yes"<<endl;
+	    }
+	}
+	return 0;
+}
