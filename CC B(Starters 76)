@@ -1,0 +1,24 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    int a,b,c;
+	cin>>a>>b>>c;
+int m1 = min(a,b);
+int m2 = min(m1,c);
+	if(m2==a){
+	    cout<<"alice"<<endl;
+	}
+	else if(m2==b){
+	    cout<<"bob"<<endl;
+	}
+	else{
+	    cout<<"charlie"<<endl;
+	}
+	    }
+	return 0;
+}
