@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+#define ll long long
+using namespace std;
+int main(){
+	int n;
+	cin>>n;
+	vector<int>arr(n+5);
+	vector<int>dp(n+5);
+	vector<ll>sum(n+5);
+	vector<ll>lsh;
+	for(int i=1;i<=n;i++){
+		cin>>arr[i];
+		sum[i] = sum[i-1] + arr[i];
+		lsh.push_back(sum[i]);
+	}
+	sort(lsh.begin(),lsh.end());
+	lsh.erase(unique(lsh.begin(),lsh.end()),lsh.end());
+	vector<int>val(lsh.size()+5);
+	for(int i=0;i<=lsh.size();++i){
+		val[i]=INT_MIN;
+	}
+		auto ask=[&](ll v){
+		size_t x=lower_bound(lsh.begin(),lsh.end(),v)-lsh.begin()+1;
+		int ans = INT_MIN;
+		for(;x;x-=x&-x)
+			ans = max(ans,val[x]);
+		return ans;
+	};
+	auto chng=[&](ll v,int y){
+		size_t x=lower_bound(lsh.begin(),lsh.end(),v)-lsh.begin()+1;
+		for(;x<=lsh.size();x+=x&-x)
+			val[x]=max(val[x],y);
+	};
+
+	dp[0]=0;
+	for(int i=1;i<=n;++i){
+		chng(sum[i-1] , dp[i-1] + 1 - i);
+		dp[i]=max(dp[i-1] , ask(sum[i]) + i) ;
+	}
+	cout<<dp[n]<<endl;
+	return 0;
+}
