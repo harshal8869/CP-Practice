@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+void thrill(){
+	    int n,m;
+	    cin>>n>>m;
+  //  ll tot=(n+1);
+    if(n + 1 >= m && m >= 1 - n){
+         if(m > 0){
+         
+            int b = abs(m) - 1;
+            int a=n-b;
+            while(b--){
+            cout<<"+";
+            }
+            
+            while(a--) {
+            cout<<"*";
+            }
+            
+            cout<<endl;
+            return;
+        }
+          if(m == 0){
+            int c = n - 1;
+            while(c--)
+              cout<<"*";
+            cout<<"-"<<endl;
+            return;
+        }
+        if(m < 0){
+        
+            int x = n - 1 - abs(m);
+            int y = abs(m) + 1;
+            while(y--){
+            cout<<"-";
+            }
+            
+            while(x--){
+                cout<<"*";
+            }
+            
+            cout<<endl;
+            return;
+        }
+       
+      
+    }
+    cout<<-1<<endl;
+}
+	    
+	
+	int main(){
+	    int tc;
+	    cin>>tc;
+	    for(int i=0;i<tc;i++){
+	        thrill();
+	    }
+	return 0;
+}
