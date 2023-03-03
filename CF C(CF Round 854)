@@ -1,0 +1,181 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<ll>vi;
+typedef vector<vi>vv;
+#define all(x) x.begin(), x.end()
+const int N = 1e5 + 10;
+ void thrill(){
+ /*
+    
+int n,m;
+cin>>n>>m;
+ll cnt = 0;
+vector<int> arr(n);
+vector<int> brr(n+m+1,0);
+for(int i=0;i<n;i++){
+    cin>>arr[i];
+    brr[arr[i]] = m + 1;
+}
+    for(int i=0;i<m;i++){
+        int a,b;
+        cin>>a>>b;
+        a--;
+        brr[arr[a]] = brr[arr[a]] - m + i;
+        brr[b] = brr[b] + m - i;
+        arr[a] = b;
+    }
+ cnt= (ll)n * m * (m+1);
+for(int i=0;i<n+m+1;i++){
+    cnt = cnt - ((ll)brr[i] * (brr[i]-1))/2;
+}
+   cout<<cnt<<endl;
+   
+   ll n,m;
+   cin>>n>>m;
+    int x = 1;
+    int b = n;
+    ll arr[m];
+    map<int,int>mp;
+    for(int i=0;i<m;i++){
+        cin>>arr[i];
+    }
+   
+    for(int i=1;i<=n;i++){
+    mp[i]=-1;
+    }
+    
+    for(int i=0;i<m;i++){
+       if(b==0){
+         break;
+       }
+       if(mp.end()==mp.find(arr[i])){
+           mp[arr[i]]=1;
+           mp[b]=x;
+           b--;
+       }
+       x++;
+    }
+    for(auto itr: mp){
+        if(itr.first<=n){
+        cout<<itr.second<<" ";
+        }
+    }
+    
+    cout<<endl;
+    
+     int n;
+   cin>>n;
+   vector<int>v(n);
+     vector<int>v2=v;
+     vector<vector<int>>vec;
+ 
+   for(int i=0;i<n;i++){
+    cin>>v[i];
+   }
+int mini = INT_MAX;
+    int x = -1;
+   if(chk(v)!=0){
+    cout<<0<<endl;
+    return;
+   }
+    bool flag = false;
+ 
+   while(chk(v) == false){
+    for(int i=0;i<n;i++){
+        if(v[i]<mini){
+            
+            mini = v[i];
+            x=i;
+            
+        }
+    }
+   
+    for(int i=0;i<n;i++){
+        if (v[i] > mini){
+            int div = (v[i] / mini);
+            if(v[i]%mini!= 0){
+            div++;
+            }
+            vec.push_back({i , x});
+            v[i] = div;
+            flag = true;
+        }
+    }
+    if(v2 == v){
+        cout<<-1<<endl;
+        return;
+    }
+    v2 = v;
+
+   }
+   int ss = vec.size();
+   cout<<ss<<endl;
+   for(auto itr : vec){
+    cout<<itr[0]+1<< " " <<itr[1] + 1<< endl;
+    */
+    string s; 
+    cin>>s;
+    ll n = s.length();
+    map<ll,ll> mp;
+ 
+    ll idx = -1;
+    
+    string ans = "";
+    for(int i=0;i<n;i++){
+          mp[s[i]-'a']++;
+    }
+    for(int i=25;i>=0;i--){
+    if(mp[i]%2!=0){
+       idx = i;
+    }
+    }
+ 
+    if(idx != -1){
+        ll cnt = 0;
+        for(int i=idx+1;i<26;i++){
+            if(mp[i]) 
+            cnt++;
+        }
+ 
+        if(cnt == 1){
+            ans += 'a' + idx;
+            for(int i=idx+1;i<26;i++){
+                char c = 'a' + i;
+                if(mp[i]%2) ans = c + ans, mp[i]--;
+                while(mp[i]) ans = c + ans + c, mp[i] -= 2;
+            }
+        }
+        else{
+            for(int i=idx+1;i<26;i++){
+                char c = 'a' + i;
+                while(mp[i]) ans += c, mp[i]--;
+            }
+            ans += 'a' + idx;
+        }
+        
+        mp[idx]--;
+        for(int i=idx;i>=0;i--){
+            char c = 'a' + i;
+            while(mp[i]) ans = c + ans + c, mp[i] -= 2;
+        }
+    }
+    else{
+        for(int i=25;i>=0;i--){
+            char c = 'a' + i;
+            while(mp[i]) ans = c + ans + c, mp[i] -= 2;
+        }
+    }
+    cout<<ans<<endl;
+    
+    
+
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+    return 0;
+}
