@@ -1,0 +1,93 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+const int mod = 998244353;
+
+int solve(int n, int m)
+{
+    return log2(m/n) + 1;
+}
+
+signed main()
+{
+       /*
+int n,m;
+cin>>n>>m;
+ll cnt = 0;
+vector<int> arr(n);
+vector<int> brr(n+m+1,0);
+for(int i=0;i<n;i++){
+    cin>>arr[i];
+    brr[arr[i]] = m + 1;
+}
+    for(int i=0;i<m;i++){
+        int a,b;
+        cin>>a>>b;
+        a--;
+        brr[arr[a]] = brr[arr[a]] - m + i;
+        brr[b] = brr[b] + m - i;
+        arr[a] = b;
+    }
+ cnt= (ll)n * m * (m+1);
+for(int i=0;i<n+m+1;i++){
+    cnt = cnt - ((ll)brr[i] * (brr[i]-1))/2;
+}
+   cout<<cnt<<endl;
+   
+   ll n,m;
+   cin>>n>>m;
+    int x = 1;
+    int b = n;
+    ll arr[m];
+    map<int,int>mp;
+    for(int i=0;i<m;i++){
+        cin>>arr[i];
+    }
+   
+    for(int i=1;i<=n;i++){
+    mp[i]=-1;
+    }
+    
+    for(int i=0;i<m;i++){
+       if(b==0){
+         break;
+       }
+       if(mp.end()==mp.find(arr[i])){
+           mp[arr[i]]=1;
+           mp[b]=x;
+           b--;
+       }
+       x++;
+    }
+    for(auto itr: mp){
+        if(itr.first<=n){
+        cout<<itr.second<<" ";
+        }
+    }
+    
+    cout<<endl;
+    
+     int n;
+   cin>>n;
+   vector<int>v(n);
+     vector<int>v2=v;
+     vector<vector<int>>vec;
+ 
+   for(int i=0;i<n;i++){
+    cin>>v[i];
+   }
+   */
+   
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++)
+    {
+        int n,m;
+        cin>>n>>m;
+       
+        int ans = solve(n,m) == 1 ? m + 1 - n : max(0LL,m / (1LL << (solve(n,m) - 1)) - n+ 1) + (max(n - 1LL, m / ((1LL << (solve(n,m) - 2)) * 3)) + 1 - n) * 1LL * (solve(n,m) - 1);
+         int res = (ans%mod);
+        cout<<solve(n,m) << " "<<res<<" "<<endl;
+    }
+    return 0;
+}
