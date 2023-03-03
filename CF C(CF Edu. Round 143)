@@ -1,0 +1,70 @@
+
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long 
+//typedef vector<ll>vi;
+//typedef vector<vi>vv;
+#define all(x) x.begin(), x.end()
+const int N = 1e5 + 10;
+void thrill(){
+        int n;
+        cin >> n;
+        vector<int> a(n + 1), v(n + 1), c(n + 1);
+        for (int i = 1; i <= n; i++)
+        {
+            cin >> a[i];
+        }
+        for (int i = 1; i <= n; i++)
+        {
+            cin >> v[i];
+            c[i] = v[i];
+        }
+        for (int i = 1; i <= n; i++)
+        {
+            v[i] += v[i - 1];
+        }
+
+        vector<int> f(n + 1), ans(n + 1, 0);
+        for (int i = 1; i <= n; i++)
+        {
+
+            int tar = a[i] + v[i - 1];
+            if (v[n] <= tar)
+            {
+
+                f[n]++;
+                f[i - 1]--;
+            }
+            else
+            {
+
+                int ind = lower_bound(v.begin(), v.end(), tar) - v.begin();
+                if (ind >= i)
+                {
+                    f[ind - 1]++;
+                    f[i - 1]--;
+                    ans[ind] += tar - v[ind - 1];
+                }
+                else
+                    ans[i] += tar - v[i - 1];
+            }
+        }
+        for (int i = n - 1; i >= 0; i--)
+        {
+            f[i] += f[i + 1];
+        }
+        for (int i = 1; i <= n; i++)
+        {
+            ans[i] += c[i] * f[i];
+            cout << ans[i] << " ";
+        }
+        cout << endl;
+    }
+    signed main(){
+        int tc;
+        cin>>tc;
+        for(int i=0;i<tc;i++){
+            thrill();
+        }
+    
+}
