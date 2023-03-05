@@ -1,0 +1,160 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+const int mod = 998244353;
+
+void thrill()
+{
+       /*
+int n,m;
+cin>>n>>m;
+ll cnt = 0;
+vector<int> arr(n);
+vector<int> brr(n+m+1,0);
+for(int i=0;i<n;i++){
+    cin>>arr[i];
+    brr[arr[i]] = m + 1;
+}
+    for(int i=0;i<m;i++){
+        int a,b;
+        cin>>a>>b;
+        a--;
+        brr[arr[a]] = brr[arr[a]] - m + i;
+        brr[b] = brr[b] + m - i;
+        arr[a] = b;
+    }
+ cnt= (ll)n * m * (m+1);
+for(int i=0;i<n+m+1;i++){
+    cnt = cnt - ((ll)brr[i] * (brr[i]-1))/2;
+}
+   cout<<cnt<<endl;
+   
+   ll n,m;
+   cin>>n>>m;
+    int x = 1;
+    int b = n;
+    ll arr[m];
+    map<int,int>mp;
+    for(int i=0;i<m;i++){
+        cin>>arr[i];
+    }
+   
+    for(int i=1;i<=n;i++){
+    mp[i]=-1;
+    }
+    
+    for(int i=0;i<m;i++){
+       if(b==0){
+         break;
+       }
+       if(mp.end()==mp.find(arr[i])){
+           mp[arr[i]]=1;
+           mp[b]=x;
+           b--;
+       }
+       x++;
+    }
+    for(auto itr: mp){
+        if(itr.first<=n){
+        cout<<itr.second<<" ";
+        }
+    }
+    
+    cout<<endl;
+    
+     int n;
+   cin>>n;
+   vector<int>v(n);
+     vector<int>v2=v;
+     vector<vector<int>>vec;
+ 
+   for(int i=0;i<n;i++){
+    cin>>v[i];
+   }
+   
+   int n;
+   cin>>n;
+   vector<string>v;
+    vector<string>vec(2 * n - 2); 
+    for(int i=0;i<2 * n - 2;i++){ 
+        cin>>vec[i]; 
+
+        if(n == vec[i].size() + 1)
+        v.push_back(vec[i]); 
+    } 
+ 
+ 
+    if(v[0].substr(1)!=v[1].substr(0,n-2)){ 
+        swap(v[0],v[1]); 
+    } 
+ 
+    string s = v[0]+v[1][n-2]; 
+    string ss = s;
+    reverse(ss.begin(),ss.end()); 
+    if(s!=ss){ 
+        cout<<"no"<<endl; 
+    } 
+    else{
+    cout<<"yes"<<endl; 
+    }
+    
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    for(int i=0;i<n;i++){
+    if(arr[i]==1){
+        arr[i]++;
+    }
+      }
+      for(int i=0;i<n-1;i++){
+          if(arr[i+1] % arr[i]==0){
+              arr[i+1]++;
+          }
+          else{
+              continue;
+          }
+      }
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+
+   cout<<endl;
+   */
+     int n;
+    cin>>n;
+    int arr[n];
+      int brr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+  vector<int>vec;
+    queue<int>q;
+    for(int i=0;i<n;i++){
+        q.push(arr[i]);
+        int m = q.size();
+        while(q.front() < q.size())
+        {
+            q.pop();
+        }
+    
+        brr[i] = q.size();
+    }
+    for(int i=0;i<n;i++)
+    {
+        cout<<brr[i]<<" ";
+    }
+    cout<<endl;
+   
+}
+   int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++)
+    {
+       thrill();
+    }
+    return 0;
+}
