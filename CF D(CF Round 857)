@@ -1,0 +1,646 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef vector<int> vi;
+typedef pair<int, int> pi;
+typedef vector<pi> vpi;
+#define all(x) x.begin(), x.end()
+#define _sorted(x) sort(all(x))
+#define ll long long int
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+
+
+
+void thrill()
+{
+       /*
+int n,m;
+cin>>n>>m;
+ll cnt = 0;
+vector<int> arr(n);
+vector<int> brr(n+m+1,0);
+for(int i=0;i<n;i++){
+    cin>>arr[i];
+    brr[arr[i]] = m + 1;
+}
+    for(int i=0;i<m;i++){
+        int a,b;
+        cin>>a>>b;
+        a--;
+        brr[arr[a]] = brr[arr[a]] - m + i;
+        brr[b] = brr[b] + m - i;
+        arr[a] = b;
+    }
+ cnt= (ll)n * m * (m+1);
+for(int i=0;i<n+m+1;i++){
+    cnt = cnt - ((ll)brr[i] * (brr[i]-1))/2;
+}
+   cout<<cnt<<endl;
+   
+   ll n,m;
+   cin>>n>>m;
+    int x = 1;
+    int b = n;
+    ll arr[m];
+    map<int,int>mp;
+    for(int i=0;i<m;i++){
+        cin>>arr[i];
+    }
+   
+    for(int i=1;i<=n;i++){
+    mp[i]=-1;
+    }
+    
+    for(int i=0;i<m;i++){
+       if(b==0){
+         break;
+       }
+       if(mp.end()==mp.find(arr[i])){
+           mp[arr[i]]=1;
+           mp[b]=x;
+           b--;
+       }
+       x++;
+    }
+    for(auto itr: mp){
+        if(itr.first<=n){
+        cout<<itr.second<<" ";
+        }
+    }
+    
+    cout<<endl;
+    
+     int n;
+   cin>>n;
+   vector<int>v(n);
+     vector<int>v2=v;
+     vector<vector<int>>vec;
+ 
+   for(int i=0;i<n;i++){
+    cin>>v[i];
+   }
+   
+   int n;
+   cin>>n;
+   vector<string>v;
+    vector<string>vec(2 * n - 2); 
+    for(int i=0;i<2 * n - 2;i++){ 
+        cin>>vec[i]; 
+
+        if(n == vec[i].size() + 1)
+        v.push_back(vec[i]); 
+    } 
+ 
+ 
+    if(v[0].substr(1)!=v[1].substr(0,n-2)){ 
+        swap(v[0],v[1]); 
+    } 
+ 
+    string s = v[0]+v[1][n-2]; 
+    string ss = s;
+    reverse(ss.begin(),ss.end()); 
+    if(s!=ss){ 
+        cout<<"no"<<endl; 
+    } 
+    else{
+    cout<<"yes"<<endl; 
+    }
+    
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    for(int i=0;i<n;i++){
+    if(arr[i]==1){
+        arr[i]++;
+    }
+      }
+      for(int i=0;i<n-1;i++){
+          if(arr[i+1] % arr[i]==0){
+              arr[i+1]++;
+          }
+          else{
+              continue;
+          }
+      }
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+
+   cout<<endl;
+   
+     int n;
+    cin>>n;
+    int arr[n];
+      int brr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+  vector<int>vec;
+    queue<int>q;
+    for(int i=0;i<n;i++){
+        q.push(arr[i]);
+        int m = q.size();
+        while(q.front() < q.size())
+        {
+            q.pop();
+        }
+    
+        brr[i] = q.size();
+    }
+    for(int i=0;i<n;i++)
+    {
+        cout<<brr[i]<<" ";
+    }
+    cout<<endl;
+    
+    ll n;
+    cin>>n;
+    string s;
+    cin>>s;
+    ll m=0,e=0,o=0,w=0;
+    ll cnt=0;
+    if(s[cnt]=='m' || s[cnt]=='M')
+    while((s[cnt]=='m' || s[cnt]=='M') && n > cnt){
+        m=1;
+        cnt++;
+    }
+    else{
+        cout<<"no"<<endl;
+        return;
+    }
+    if(s[cnt]=='e' || s[cnt]=='E')
+    while((s[cnt]=='e' || s[cnt]=='E') && n > cnt){
+        e=1;
+        cnt++;
+    }
+    else{
+        cout<<"no"<<endl;
+        return;
+    }
+    if(s[cnt]=='o' || s[cnt]=='O')
+    while((s[cnt]=='o' || s[cnt]=='O') && n > cnt){
+        o=1;
+        cnt++;
+    }
+     else{
+        cout<<"no"<<endl;
+        return;
+    }
+    if(s[cnt]=='w' || s[cnt]=='W')
+    while((s[cnt]=='w' || s[cnt]=='W') && n > cnt){
+        w=1;
+        cnt++;
+    }
+    else{
+        cout<<"no"<<endl;
+        return;
+    }
+    
+    if(n == cnt && m==1 && e==1 && o==1 && e==1){
+       cout<<"yes"<<endl;
+    }
+    else{
+     cout<<"no"<<endl;
+    }
+    
+     int n,k;
+        cin>>n>>k;
+        string s;
+        cin>>s;
+        map<pair<char, char>, pair<int, int>>mp;
+        for (int i=0;i<n;i++)
+        {
+            if (s[i] >= 'a' && s[i] <= 'z')
+            {
+                mp[{s[i], s[i] - 'a' + 'A'}].first++;
+            }
+            else
+            {
+                mp[{s[i] - 'A' + 'a', s[i]}].second++;
+            }
+        }
+        int ans = 0;
+        for (auto itr : mp)
+        {
+            int ch = min(itr.second.first, itr.second.second);
+            ans = ch + ans;
+            itr.second.first = itr.second.first - ch;
+            itr.second.second = itr.second.second - ch;
+            int ch2 = max(itr.second.first, itr.second.second);
+            int mini = min(k , ch2/2);
+            ans = mini + ans;
+            k = k - mini;
+        }
+        cout<<ans<<endl;
+    
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+     multiset<int>ms;
+        ll ans=0;
+        for (int i=0;i<n;i++){ 
+            if (arr[i]!=0){ 
+                ms.insert(arr[i]); 
+            } 
+            else{ 
+                int len = ms.size();
+                if (len == 0){ 
+                    continue; 
+                } 
+
+                int var = *ms.rbegin(); 
+                auto itr = ms.find(var); 
+                ms.erase(itr); 
+
+                ans = ans + var;
+            } 
+        } 
+        cout<<ans<<endl; 
+        
+         int n;
+        cin>>n;
+        string s;
+        cin>>s;
+        int m = n - 1;
+        for(int i=0;i<n-2;i++){
+            char ch = s[i+1];
+            if(s[i] == s[i + 2]){
+                m--;
+            }
+        }
+        cout<<m<<endl;
+        
+         int n,k;
+        cin>>n>>k;
+        string s,ss;
+        cin>>s>>ss;
+        map<char, int>mp1,mp2;
+         int ans = 0;
+        for (int i=0;i<n;i++){
+            mp1[s[i]]++;
+            mp2[ss[i]]++;
+        }
+        for(char i='a';i<='z';i++){
+            if (mp1[i]!= mp2[i]){
+                ans = 1;
+                break;
+            }
+        }
+        for (int i=0;i<min(n, k);i++){
+            if (n - k < i + 1){
+                if (s[i]!=ss[i]){
+                    ans = 1;
+                    break;
+                }
+            }
+        }
+        if (ans!=1){
+            cout<<"yes"<<endl;
+        }
+         else{
+            cout<<"no"<<endl;
+        }
+        
+        ll n;
+	cin>>n;
+	vector<int>v(n+1);
+	for(int i=1;i<=n;i++){
+	   cin>>v[i];
+	}
+	sort(v.begin()+1, v.end());
+	ll ans = 0;
+	ll x;
+	bool flag = false;
+	for(int i=1;i<=n;i++){
+		x = (i+1)/2;
+		flag = true;
+		for(int j=0;j<x;j++){
+			flag &= v[i-j]<=x-j;
+		}
+		if(flag){
+			ans = x;
+		}
+	}
+	cout<<ans<<endl;
+	
+	 ll n;
+	 cin>>n;
+    ll arr[n];
+    for(int i=0;i<n;i++) {
+        cin>>arr[i];
+    }
+    vector<pair<int,int>>v;
+    vector<int>vec;
+    for(int i=0;i<n-1;i++) {
+            if(arr[i] > arr[i+1]){
+            v.push_back({arr[i] - arr[i+1],i+1});
+            }
+    }
+    ll m = v.size();
+    if(m==0){
+            for(int i=0;i<n;i++){
+              cout<<1<<" ";
+            }
+            cout<<endl;
+            return;
+    }
+    sort(v.begin(), v.end());
+      for(int i=0;i<n-m;i++){
+        cout<<1<<" ";
+    }
+    for(auto &it:v) {
+        vec.push_back(it.second+1);
+    }
+   
+    for(auto &it:vec){
+    cout<<it<<" ";
+    }
+    
+   
+    cout<<endl;
+    
+     ll n,x,y;
+     cin>>n>>x>>y;
+    string s,ss;
+    cin>>s>>ss;
+    vector<ll>vec;
+    for (int i=0;i<n;i++)
+    {
+        if(s[i]!=ss[i])
+            vec.push_back(i);
+    }
+ 
+    ll len = vec.size();
+    if(len%2==1){
+        cout<<-1<<endl;
+        return;
+    }
+ 
+    if(len==2 && vec[1] - vec[0] == 1){
+        cout<<min(x,2*y)<<endl;
+    }
+    else{
+        cout<<(len/2)*y<<endl;
+    }
+        
+        ll n;
+    cin>>n;
+    vector<int>v(n);
+    for (int i=0;i<n;i++){
+        cin>>v[i];
+    }
+    if(n == 1){
+        cout<<0<<endl;
+        return;
+    }
+ 
+    cout<<n-1<<endl;
+    cout<<1<<" "<<n<<" "<<endl;
+    if (v[0]%2==0)
+    {
+        for (int i=1;i<n-1;i++)
+        {
+            if (v[i]%2==0)
+            {
+                cout<<i+1<<" "<<n<<" "<<endl;
+            }
+            else
+            {
+                cout<<1<<" "<<i+1<<" "<<endl;
+            }
+        }
+    }
+    else
+    {
+        for (int i=1;i<n-1;i++)
+        {
+            if (v[i]%2==0)
+            {
+                cout<<1<< " " << i + 1 <<" "<<endl;
+            }
+            else
+            {
+                cout<<i+1<<" "<<n<<" "<<endl;
+            }
+        }
+    }
+    
+    ll n,m;
+    cin>>n>>m;
+    ll x = 1;
+    ll cnt2 = 0,cnt5 = 0;
+    ll ans = n;
+    ll temp = n;
+ 
+    while(temp%2 == 0){
+     temp = temp / 2;
+        cnt2++;
+    }
+ 
+    while(temp%5 == 0){
+        temp = temp / 5;
+        cnt5++;
+    }
+    
+ 
+ 
+    while(cnt5 > cnt2 && m>= 2 * x){
+        x = x * 2;
+        ans = ans * 2;
+        cnt2++;
+        
+    }
+ 
+    while(cnt2 > cnt5 && m>=5 * x){
+        x = x * 5;
+        ans = ans * 5;
+        cnt5++;
+    }
+      while(m>=10 * x){
+        x = x * 10;
+        ans = ans * 10;
+    }
+ 
+  
+    ans = ans * (m/x);
+    x = x * (m/x);
+ 
+    if(x == 1){
+        cout<<n * m<<endl;
+    }
+    else{
+        cout<<ans * 1<<endl;
+    }
+    
+    ll n, x;
+	cin>>n>>x;
+	vector<int>vec(n+1, 0);
+	if(n%x!=0){
+		cout<<-1<<endl;
+		return;
+	}
+
+	for(int i=1;i<=n;i++){
+	  vec[i] = i;
+	}
+
+vec[n] = 1;
+vec[1] = x;
+
+	while(n!=x){
+		for(int i = 2*x; i<=n; i+=x){
+			if(n%i == 0){
+			    
+				vec[x] = i;
+				x = i;
+				
+				break;
+			}
+		}
+	}
+	for(int i=1;i<=n;i++){
+	  cout<<vec[i]<<" ";
+	}
+	cout<<endl;
+	
+	 ll n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    sort(arr,arr+n);
+      multiset<int>ms;
+    for(auto it:arr){
+      auto itr=ms.find(it - 1);
+      if(ms.end()==itr){
+     ms.insert(it);
+      }
+      else{
+          ms.erase(itr);
+        ms.insert(it);
+      }
+    }
+    int len = ms.size();
+    cout<<len<<endl;
+    
+      ll n; 
+        cin>>n;
+        ll cnt=0;
+        ll ans;
+        ll arr[n];
+        for(int i=0;i<n;i++){
+            cin>>arr[i];
+            if (arr[i] < 0)
+                cnt++; 
+        
+            
+        }
+       
+     for(int i=0;i<n-cnt;i++){
+         cout<<i+1<<" ";
+         ans = i + 1;
+     }
+     for(int i=0;i<cnt;i++){
+         cout<<ans-1<<" ";
+         ans--;
+     }
+     cout<<endl;
+     for(int i=0;i<cnt;i++){
+         cout<<1<<" "<<0<<" ";
+     }
+   ans = 1;
+   for(int i = 2 * cnt;i<n;i++){
+       cout<<ans<<" ";
+       ans++;
+   }
+   cout<<endl;
+   
+     int n; 
+        cin>>n;
+        int m;
+        int cnt=0;
+        int ans = 0;
+        int tot=0;
+        vector<int>vec;
+        for (int i=0;i<n;i++) { 
+            cin>>m;
+            if(m!=2) { 
+                cnt++;
+            } 
+            else { 
+                vec.push_back(cnt); 
+                cnt = 0;  
+            } 
+        } 
+        vec.push_back(cnt); 
+    int len = vec.size();
+        for (int i=0;i<len;i++) { 
+
+int val = tot <= 0 ? 0 : 1; 
+int cnt1 = tot <= 0 ? 0 : tot - 1;
+int cnt2 = ((cnt1 % 2 == 1) ? cnt1 / 2  + 1: cnt1 / 2 ) + 
+                    ((val % 2 == 1) ? val / 2 + 1 : val / 2 ); 
+        ans = max(cnt2 + vec[i],ans); 
+            tot = tot + vec[i]; 
+        } 
+        cout<<ans<<endl;
+    */
+     int n;
+    cin>>n;
+    vpi vec(n);
+     vector<int>v(n + 1, -1);
+    for(int i=0;i<n;i++){
+    cin>>vec[i].first>>vec[i].second;
+    }
+    
+    _sorted(vec);
+    set<int>s;
+int mini =INT_MAX;
+    v[n - 1] = vec[n - 1].second;
+   
+    for (int i = n - 2;i>=0;i--){
+        v[i] = max(vec[i].second,v[i+1]);
+    }
+    for (int i=0;i<n;i++){
+    int maxi = v[i + 1];
+        if((n-1)!=i){
+            mini = min(abs(vec[i].first - maxi),mini);
+        }
+        if (vec[i].first - maxi > 0 && !s.empty()){
+            auto itr = s.upper_bound(vec[i].first);
+            if (s.end() == itr){
+                itr--;
+        mini = min(abs(*itr - vec[i].first),mini);
+            }
+            else
+            {
+        mini = min(abs(*itr - vec[i].first),mini);
+                if (itr!=s.begin()){
+                    itr--;
+        mini = min(abs(*itr - vec[i].first),mini);
+                }
+            }
+        }
+        s.insert(vec[i].second);
+    }
+    cout<<mini<<endl;
+    
+   
+
+}
+   int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++)
+    {
+       thrill();
+    }
+    return 0;
+}
