@@ -1,0 +1,192 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef vector<int> vi;
+typedef pair<int, int> pi;
+typedef vector<pi> vpi;
+#define all(x) x.begin(), x.end()
+#define _sorted(x) sort(all(x))
+#define ll long long int
+typedef vector<ll> vl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const ll N = 1e6+5;
+int prime[10000005];
+
+vector<ll>prime_factorisation(ll n){
+    vector<ll> mp;
+    while(n!=1){
+        ll c=0;
+        ll y=prime[n];
+        while(n%y==0){
+            n=n/y;
+            c++;
+        }
+        mp.push_back(y);
+    }
+    return mp;
+}
+
+void thrill()
+{
+       /*
+    
+    ll n;
+    cin>>n;
+    vector<ll>arr(n),brr(n), ans;
+    for (int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    for (int i=0;i<n;i++){
+        cin>>brr[i];
+    }
+    ll k = 0;
+    for (int i=0;i<n;i++)
+    {
+        while (arr[i] > brr[k]){
+            k++;
+        }
+        cout<<brr[k] - arr[i]<<" ";
+    }
+    cout<<endl;
+    int idx = 0;
+    for (int i=0;i<n;i++) {
+        idx = max(idx, i);
+        while (brr[idx] >= arr[idx + 1] && n > idx + 1) {
+            idx++;
+        }
+ 
+        cout<<brr[idx] - arr[i]<<" ";
+    }
+ 
+    cout<<endl;
+    
+    ll x,y;
+    cin>>x>>y;
+    vector<ll>fact=prime_factorisation(y-x);
+    ll mn=1e8;
+    for(auto i:fact){
+        ll xx=((x/i)+(x%i!=0))*i;
+        ll yy=((y/i)+(y%i!=0))*i;
+        mn=min(mn,min(yy-y,xx-x));
+    }
+    if(mn==1e8)mn=-1;
+    cout<<mn<<endl;
+    return;
+    
+     int n;
+     cin>>n;
+    vector<int>vec(n);
+    for (int i=0;i<n;i++){
+        cin>>vec[i];
+    }
+    vector<int>vec2(n+1);
+    vec2[0] = vec[0];
+    if(n > 1)
+        vec2[1] = vec[0];
+    
+    for(int i=1;i<n;i++){
+        int ans = __gcd(vec[i], vec2[i]);
+        ans = vec[i] / ans;
+        vec2[i] = vec2[i] * ans;
+        vec2[i+1] = vec[i];
+    }
+ 
+    vec2[n] = vec[n-1];
+    for (int i=0;i<n;i++){
+        if(__gcd(vec2[i], vec2[i+1]) != vec[i]){
+            cout<<"NO"<<endl;
+            return;
+        }
+    }
+ 
+    cout<<"YES"<<endl;
+   
+  ll n; cin>>n;
+	ll m; cin>>m;
+    vl arr(n); 
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+ 
+	ll ans = INT_MAX;
+	vl adj[n];
+	for(int i=0;i<m;i++){
+		ll x, y; 
+		cin>>x>>y;
+		x--;
+		y--;
+		adj[x].push_back(y);
+		adj[y].push_back(x);
+	}
+	
+	if(m%2 == 1){
+		for(int i=0;i<n;i++){
+			if(adj[i].size()%2 == 1){
+				ans = min(ans, arr[i]);
+			}
+			else{
+				for(int j=0;j<adj[i].size();j++){
+					if(adj[adj[i][j]].size()%2 == 0 && adj[adj[i][j]].size() != 0){
+						ans = min(ans, arr[i]+arr[adj[i][j]]);
+					}
+				}
+			}
+		}
+		cout<<ans<<endl;
+	}
+	else{
+		cout<<0<<endl;
+	}
+	
+	
+	cin>>n>>m>>k;
+	for(int i=1;i<k+1;i++){
+		cin>>v[i];
+	}
+	sort(v+1, v+k+1);
+	reverse(v+1, v+k+1);
+	if(check(n, m) || check(m, n)){
+		cout<<"Yes"<<endl;
+	} 
+	else {
+		cout<<"No"<<endl;
+	}
+	*/
+	   ll a,b,c,d;
+    cin>>a>>b>>c>>d;
+    ll cnt=0;
+    ll ans = 0;
+    ll val =1;
+    ll x;
+    for(int i=0;i<a;i++)
+    {
+        
+        cin>>x;
+        if(cnt == 0 || x >= val)
+        {
+            ans++;
+            cnt=b-1;
+            val= c + d -2 + x  + 3;
+        }
+        else{
+        cnt--;
+        }
+        
+    }
+    cout<<ans<<endl;
+ 
+ 
+ 
+ 
+
+}
+   int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++)
+    {
+       thrill();
+    }
+    return 0;
+}
+   
