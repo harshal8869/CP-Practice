@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    int n;
+	    cin>>n;
+	    int sum = 0;
+	    int arr[n];
+	    for(int i=0;i<n;i++){
+	        cin>>arr[i];
+	    }
+	    for(int i=0;i<n;i++){
+	        sum+=arr[i];
+	    }
+	    int tot = sum;
+	    if(tot%2==1){
+        cout<<"NO"<<endl;
+    }
+    else{
+        cout<<"YES"<<endl;
+    }
+
+	}
+	return 0;
+}
