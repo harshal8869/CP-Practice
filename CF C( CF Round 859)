@@ -1,0 +1,172 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef vector<int> vi;
+typedef pair<int, int> pi;
+typedef vector<pi> vpi;
+#define all(x) x.begin(), x.end()
+#define _sorted(x) sort(all(x))
+#define ll long long int
+typedef vector<ll> vl;
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const ll N = 1e6+5;
+char s[N];
+int prime[10000005];
+vector<ll>sqs;
+vector<int>primes;
+vector<ll>prime_factorisation(ll n){
+    vector<ll> mp;
+    while(n!=1){
+        ll c=0;
+        ll y=prime[n];
+        while(n%y==0){
+            n=n/y;
+            c++;
+        }
+        mp.push_back(y);
+    }
+    return mp;
+}
+
+void thrill()
+{
+       /*
+    
+      int n;
+        cin>>n;
+        ll arr[n];
+        for(int i=0;i<n;i++){
+            cin>>arr[i];   
+           }   
+           ll mx=0;
+           for(int i=0;i<n-1;i++)
+          
+   
+	int temp;
+	
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+        if(arr[i]%2==1)
+            one+=arr[i];
+            else
+            two+=arr[i];
+        
+    }
+    if(two > one){
+        cout<<"yes"<<endl;
+    }
+    else{
+        cout<<"no"<<endl;
+    }
+    
+    ll n;
+    cin>>n;
+    ll cnt = 1;
+    ll arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    sort(arr,arr+n);
+        if(arr[0]!= 1){
+            cout<<"no"<<endl; 
+            return;
+            
+        }
+
+
+        for(int i=1;i<n;i++){
+
+            if(cnt >= arr[i])
+            {
+                cnt += arr[i]; 
+                continue;
+                
+            }
+            else{
+                cout<<"no"<<endl; 
+                return;
+                
+            }
+          }
+
+          
+
+          cout<<"yes"<<endl;
+          
+          
+      ll n,m;
+      cin>>n>>m;
+      ll arr[n];
+      for(int i=0;i<n;i++){
+          cin>>arr[i];
+      }
+      ll pref[n];
+        pref[0] = arr[0];
+ 
+        for(int i=1;i<n;i++){
+            pref[i] = pref[i-1] + arr[i];
+            
+        }
+ 
+ 
+        while(m--){
+ 
+            ll a,b,c;
+            cin>>a>>b>>c;
+            a--;
+            b--;
+ll ans = (pref[n-1] - prefix[b] + (a + 1 - b) * c *1LL);
+ 
+              if(a > 0) 
+             ans+= pref[a - 1];
+              
+ 
+              if(ans%2==0){
+                  cout<<"no"<<endl;
+                  
+              }
+              else{
+               cout<<"yes"<<endl;
+              }
+ 
+ 
+            }
+            */
+            ll n;
+            cin>>n;
+            string s;
+            cin>>s;
+            bool flag = true;
+            for(int i=0;i<n-1;i++){
+        for(int j=i+1;j<=n-1;j++){
+            if(s[i]==s[j]){
+                if((j + 1 - i)%2 == 0){
+                    flag = false;
+                    break;
+                }
+            }
+        }
+    }
+ 
+ if(flag==0){
+     cout<<"NO"<<endl;
+ }
+ else{
+     cout<<"YES"<<endl;
+ }
+ 
+}
+
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+    return 0;
+}
+
+
+
+   
