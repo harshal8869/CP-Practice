@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+#define int long long
+using namespace std;
+
+const int mod = 1e9+7;
+
+int main()
+{
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        int n,m;
+        cin>>n>>m;
+          int ans = 1;
+        int cnt = 0;
+        int arr[n];
+        for(int i=0;i<n;i++){
+            cin>>arr[i];
+        }
+   set<int>st;
+   set<int>st2;
+        vector<pair<int,int>>v;
+         int brr[n];
+        for(int i=0;i<n;i++){
+            cin>>brr[i];
+            if(brr[i]==0){
+                cnt++;
+            }
+            v.push_back({brr[i],i});
+        }
+        for(int i=0;i<n;i++){
+            v[i] = v[arr[i]-1];
+        }
+        for(int i=0;i<n;i++){
+            if(v[i].first!=0){
+                st.insert(v[i].first);
+            }
+            else{
+                st2.insert(v[i].second);
+            }
+        }
+        if(st.size() >= 2){
+            cout<<0<<endl;
+        }
+        else{
+          
+            int len = (int)st2.size();
+            int dif = cnt - len;
+         int len2 = st.size();
+            if(len2==0){
+                dif++;
+            }
+            for(int i=0;i<dif;i++){
+                ans = (ans*m) % mod;
+            }
+            cout<<ans<<endl;
+        }
+    }
+}
