@@ -1,0 +1,181 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef vector<int> vi;
+typedef pair<int, int> pi;
+typedef vector<pi> vpi;
+#define all(x) x.begin(), x.end()
+#define _sorted(x) sort(all(x))
+#define ll long long int
+typedef vector<ll> vl;
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const ll N = 1e6+5;
+char s[N];
+int prime[10000005];
+vector<ll>sqs;
+vector<int>primes;
+
+
+void unsolve()
+{
+       /*
+    
+      
+       
+
+ 
+	
+		if (d == "DL")
+		{
+			y1--;
+			x1++;
+		}
+		if (d == "UL")
+		{
+			x1--;
+			y1--;
+		}
+		if (d == "UR")
+		{
+			x1--;
+			y1++;
+		}
+		bool ok = false;
+		if (x1 == 0)
+		{
+			d[0] = 'D';
+			x1 += 2;
+			ok = true;
+		}
+		if (y1 == 0)
+		{
+			d[1] = 'R';
+			y1 += 2;
+			ok = true;
+		}
+		if (x1 == n + 1)
+		{
+			d[0] = 'U';
+			x1 -= 2;
+			ok = true;
+		}
+		if (y1 == m + 1)
+		{
+			d[1] = 'L';
+			y1 -= 2;
+			ok = true;
+		}
+		if (ok)
+		  cnt++;
+		trv++;
+		mp[ {d, {x1, y1}}]++;
+	}
+	cout<<-1<<endl;
+	
+	ll n, m;
+    cin>>n>>m;
+    ll sum = 0;
+    for(int i=1;i<m;i++){
+        sum+=i;
+    }
+    for(int i=m;i<=n*m;i+=m){
+        sum+=i;
+    }
+    cout<<sum<<endl;
+    
+ 
+ ll n;
+    cin>>n;
+    string s;
+    cin>>s;
+    string temp;
+    string ans;
+    for(int i=0;i<s.length();i++){
+        temp.push_back('1');
+        ans.push_back(char(('9'-s[i])+'0'));
+    }
+    temp.push_back('1');
+    if(ans[0]=='0'){
+        string ss = findDiff(s,temp);
+        ll i=0;
+        while(ss[i]=='0'){
+            i++;
+        }
+        for(int j=i;j<ss.size();j++){
+            cout<<ss[j];
+        }
+        cout<<endl;
+    }
+    else{
+        cout<<ans<<endl;
+    }
+    
+        ll n;
+       cin>>n;
+       ll arr[n];
+       for(int i=0;i<n;i++){
+        cin>>arr[i];
+       }
+       ll left = 0;
+       ll right = 0;
+       ll ans=0;
+       for(int i=0;i<n-1;i++){
+        int tot = arr[i+1] - arr[i];
+        
+        if(tot >  0)
+        {
+            ans+=tot;
+            right -=tot;
+            
+        }
+        if(tot < 0)
+        {
+            
+            ans+=abs(tot);
+        
+        }
+        
+       }
+      
+       cout<<ans+abs(arr[n-1]+right)<<endl;
+       */
+      
+         unordered_map<char,ll>m;
+      string s;
+       cin>>s;
+     
+       for(auto itr:s){
+           m[itr]++;
+       }
+   
+       if(m.size()==1){
+           cout<<-1<<endl;
+       }
+       else if(m.size() == 4 || m.size() == 3){
+           cout<<4<<endl;
+       }
+       else{
+           for(auto it:m){
+               if(it.second==3){
+                   cout<<6<<endl;
+                   return ;
+               }
+           }
+           cout<<4<<endl;
+       }
+      
+}
+
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        unsolve();
+    }
+    return 0;
+}
+
+
+
+   
