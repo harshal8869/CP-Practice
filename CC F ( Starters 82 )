@@ -1,0 +1,20 @@
+#include<bits/stdc++.h>
+#define int long long
+using namespace std;
+
+signed main(void)
+{
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        int a,b,c,d;
+        cin>>a>>b>>c>>d;
+        if((a+1)%b==(c+1)%d){
+            cout<<1<<endl;
+            continue;
+        }
+        int gcd = lcm(b,d);
+int ans = gcd - (a%b);
+cout<<ans<<endl;
+    }
+}
