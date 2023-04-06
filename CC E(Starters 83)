@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+       ll a,b,c;
+       cin>>a>>b>>c;
+      
+        if(b > a && c > b){
+       cout<<0<<endl;
+       }
+       else if((a>b && b<c) || (b > a && b > c)){
+       cout<<-1<<endl;
+       }
+    
+       else {
+        ll maxi = max(a,max(b,c));
+       
+       ll logr = log2(maxi);
+       ll power = pow(2,logr+1);
+       ll ans = power - 1;
+       cout<<ans<<endl;
+       }
+    }
+}
