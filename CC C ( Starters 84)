@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int j=0;j<tc;j++){
+	    int x,y;
+	    cin>>x>>y;
+	    if(x==y){
+	        cout<<0<<endl;
+	    }
+	    int i=1;
+	    int cnt=0;
+	    while(x > y){
+
+	       
+	           y=y+i;
+	           i++;
+	           cnt++;
+
+	       
+	    }
+	    cout<<cnt<<endl;
+	}
+	return 0;
+}
