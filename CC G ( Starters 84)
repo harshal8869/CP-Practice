@@ -1,0 +1,91 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+void thrill()
+{
+    ll n,m;
+    cin>>n>>m;
+   
+    vector<string>v1(n),v2(n);
+  //  vector<string>v2(n);
+    vector<ll>vec(10, 0);
+   
+   
+    for (ll i = 0; i < n; i++){
+      string s;
+        cin >> s;
+        v1[i] = s;
+        for (auto itr : s)
+        {
+            vec[itr - '0']++;
+        }
+    }
+     vector<ll>vec2(10,0);
+
+   
+    for (ll i = 0; i < n; i++)
+    {
+        string s;
+        cin >> s;
+        v2[i] = s;
+        for (auto itr : s)
+        {
+            vec2[itr - '0']++;
+        }
+    }
+
+    for (ll i=0;i<n;i++)
+    {
+        if (v1[i].size() != v2[i].size())
+        {
+            cout<<"no"<<endl;
+            return;
+        }
+    }
+ll x=0;
+    ll sum=0;
+    
+
+ 
+    for (ll i=0;i<10;i++)
+    {
+        if(vec[i] == vec2[i])
+            continue;
+        
+        else if (vec[i] < vec2[i])
+        {
+            x += (vec2[i] - vec[i]);
+        }
+        else
+        {
+            sum += abs(vec2[i] - vec[i]);
+        }
+    }
+
+    if (x!=sum)
+    {
+        cout<<"NO"<<endl;
+        return;
+    }
+
+    if (x<=m)
+    {
+        cout<<"YES"<<endl;
+    }
+    else
+    {
+        cout<<"NO"<<endl;
+    }
+}
+int32_t main()
+{
+    int tc = 1;
+    cin >> tc;
+    while (tc--)
+    {
+        thrill();
+    }
+    return 0;
+}
