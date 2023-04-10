@@ -1,0 +1,42 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	  int n; 
+	  cin>>n;
+    string s;
+    cin>>s;
+    int o = 1;
+      char odd='1';
+    int z=0;
+ char even='0';
+  for(int i=1; i<n; i++){
+        if(even==s[i-1]){
+            even='0';
+           
+        }
+        else{
+        even='1';
+        z++;
+        }
+    }
+    for(int i=1; i<n; i++){
+        if(odd==s[i-1]){
+            odd='0'; 
+          
+        }
+        else{
+        odd='1';
+        o++;
+        }
+    }
+   
+    int ans = max(o,z);
+    cout<<ans<<endl;
+	}
+	return 0;
+}
