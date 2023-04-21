@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+ll func(string &str, ll n){
+     ll mod = 0;
+    vector<int>v;
+   ll len = str.size();
+    for (int i=0;i<len;i++) {
+          int ans = mod /n;
+        int  val = str[i] - '0';
+        mod = mod * 10 + val;
+      
+        v.push_back(ans);
+        mod%=n;       
+    }
+    return mod;
+}
+
+void thrill()
+{
+    string s;
+    cin>>s;
+    cout<<func(s,20)<<endl;
+}
+int main() {
+  int tc;
+  cin>>tc;
+  for(int i=0;i<tc;i++)
+   {
+      thrill();
+   }
+   return 0;
+}
