@@ -1,0 +1,518 @@
+// Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<int> vi;
+#define pi pair<ll,ll>
+#define vpi vector<pi>
+#define all(x) x.begin(), x.end()
+#define _sorted(x) sort(all(x))
+#define ff first
+#define vll vector<ll>
+#define ss second
+#define vl vector<ll>
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const int N = 3e6+10;
+ll inf = 1e9;
+char s[N];
+int arr[40];
+int pf[N+1];
+int prime[10000005];
+vector<int> adj[200010];
+vector<int> vis(200010);
+vector<ll>sqs;
+vector<ll> V;
+vector<int>primes;
+int fact[N],infact[N];
+ll l(ll x){ 
+  ll y=0; 
+  while(x>0){ 
+    ll rem = x%10; 
+    if(y<rem)
+     y=rem;
+    x = x/10; 
+  } 
+   
+  return y; 
+} 
+ll modInverse(ll a,ll m){ 
+    ll m0=m;
+    ll y=0,x=1;
+    if(m==1) 
+        return 0;
+    while(a>1){
+        ll q=a/m;
+        ll t=m;
+        m=a%m,a=t; 
+        t=y;
+        y=x-q*y; 
+        x=t; 
+    }
+    if (x<0) 
+        x+=m0;
+    return x; 
+}
+ll fct(ll  n,ll m)
+{
+  ll ans=1l;
+  for(int i=1;i<=n;i++){
+  ans=((ans % mod) * i) % mod;
+ 
+  }
+  return ans;
+}
+
+int search(int x,int y, int n){
+  x--;
+  y--;
+  x = min(x, n-x-1);
+  y = min(y, n-y-1);
+  int ans = min(x,y);
+  return ans;
+}
+ll func(ll n){
+    vector<ll>digits;
+    ll bi=0;
+    while(n>0){
+        digits.push_back(n%9);
+        n=n/9;
+    }
+    ll len=digits.size();
+    for(ll i=len-1; i>=0; i--){
+        bi=bi*10 + digits[i];
+    }
+    return bi;
+}
+bool flagg(ll x, ll y, ll n){
+  if(n==1) 
+  return true;
+  if(min(y, V[n+1] - y + 1) > V[n+1] - V[n])  
+  return false;
+  y = min(y, V[n+1] - y + 1);
+  return flagg(y,x,n-1);
+}
+ 
+int dfs(int root){
+  int ans = 1 - vis[root];
+  vis[root] = 1;
+  for(int it : adj[root]){
+    if(vis[it] == 0){
+      ans = ans +  dfs(it);
+      break;
+    }
+  }
+  return ans;
+}
+
+ll r(ll x){ 
+  ll y=9; 
+  while(x>0){ 
+    ll rem = x%10; 
+    if(y>rem)
+    y=rem;
+    x = x/10; 
+  } 
+   
+  return y; 
+} 
+int calcu(int x,int y)
+{
+    int res=1;
+    while(y)
+    {
+        if(y&1)
+        res=res*x%mod;
+        x=x*x%mod;
+        y=y>>1;
+    }
+    return res;
+}
+
+int C(int x,int y)
+{
+    return fact[x]*infact[y]%mod*infact[x-y]%mod;
+}
+
+vector<ll>prime_factorisation(ll n){
+    vector<ll> mp;
+    while(n!=1){
+        ll c=0;
+        ll y=prime[n];
+        while(n%y==0){
+            n=n/y;
+            c++;
+        }
+        mp.push_back(y);
+    }
+    return mp;
+}
+int findres(int x){
+    int mini = 10;
+    int maxi = -1;
+    while(x){
+        mini = min(x % 10 ,mini);
+        maxi = max(x % 10 , maxi);
+        x = x / 10;
+    }
+    int dif = maxi - mini;
+    return dif;
+}
+ll gcd(ll a, ll b)
+{
+    if (b == 0)
+        return a;
+    else
+        return gcd(b, a % b);
+}
+ 
+ll LCM(ll a, ll b)
+{
+    return (a * b) / gcd(a, b) ;
+}
+struct cmp{
+	bool operator()(pair<ll,ll> a,pair<ll,ll> b){
+		if(a.first<b.first){
+			return 1;
+		}
+		else{
+			if(a.first==b.first){
+				if(a.second<b.second){
+					return 0;
+				}
+				else{
+					return 1;
+				}
+			}
+			return 0;
+		}
+	}
+};
+bool isSmaller(string str1, string str2)
+{
+    int n1 = str1.length();
+    int n2 = str2.length();
+ 
+    if (n1 < n2)
+        return true;
+    if (n2 < n1)
+        return false;
+ 
+    for (int i = 0; i < n1; i++)
+        if (str1[i] < str2[i])
+            return true;
+        else if (str1[i] > str2[i])
+            return false;
+ 
+    return false;
+}
+
+
+string findDiff(string str1, string str2)
+{
+    
+    if (isSmaller(str1, str2))
+        swap(str1, str2);
+    string str = "";
+    int n1 = str1.length();
+    int n2 = str2.length();
+    reverse(str1.begin(), str1.end());
+    reverse(str2.begin(), str2.end());
+ 
+    int carry = 0;
+    for (int i = 0; i < n2; i++){
+        
+ int sub = ((str1[i] - '0') - (str2[i] - '0') - carry);
+ 
+        if (sub < 0){
+            sub = sub + 10;
+            carry = 1;
+        }
+        else
+            carry = 0;
+ 
+        str.push_back(sub + '0');
+    }
+    for (int i = n2; i < n1; i++) {
+        int sub = ((str1[i] - '0') - carry);
+        if (sub < 0) {
+            sub = sub + 10;
+            carry = 1;
+        }
+        else
+            carry = 0;
+ 
+        str.push_back(sub + '0');
+    }
+    reverse(str.begin(), str.end());
+ 
+    return str;
+}
+
+
+void thrill(){
+  /*   
+       
+       ll n;
+    cin>>n;
+    ll arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    bool flag = 1;
+   
+    for(int i=n-1;i>=0;i--){
+         bool fflag = 0;
+        for(int j=i+2;j>=2;j--){
+            if(arr[i] % j!=0){
+                fflag = 1;
+                break;
+            }
+        }
+        if(fflag == 0){
+            flag=0;
+            break;
+        }
+    }
+    if(flag==0){
+        cout<<"NO"<<endl;
+    }
+    else{
+        cout<<"YES"<<endl;
+    }
+
+  // last tc hahahahahaaha...
+  
+  
+   ll n;
+    cin>>n;
+    if(n<4){
+        cout<<-1<<endl;
+        return;
+    }
+    if(n%4==1 || n%4==3){
+        cout<<-1<<endl;
+        return;
+    }
+    ll mini=0;
+    ll maxi=0;
+    ll m = n/6;
+  mini = mini + m;
+    m = n%6;
+    mini = mini + (m/4);
+    if(m%4==1 || m%4==3){
+        cout<<-1<<endl;
+        return;
+    }
+    if(m%4==2){
+        mini++;
+    }
+    maxi = maxi + (n/4);
+    cout<<mini<<" "<<maxi<<" "<<endl;
+ }
+    
+    
+ 
+  
+    ll n,q;
+    cin>>n>>q;
+    vector<int>v(n);
+    ll sum=0; 
+    for(int i=0;i<n;i++)
+    {
+        cin>>v[i];
+        sum+=v[i];
+    }
+    unordered_map<ll,ll>m;
+    bool flag=0;
+    ll temp=0;
+ 
+    while(q--)
+    {
+        int a;
+        cin>>a;
+        if(a==1)
+        {
+            int i,x;
+            cin>>i>>x;
+            if(!flag)
+            {
+                sum-=v[i-1];
+                sum+=x;
+                v[i-1]=x;
+            }
+            else
+            {
+                if(m[i-1]==0)
+                {
+                    sum+=x;
+                    sum-=temp;
+                    m[i-1]=x;
+                }
+ 
+                else
+                {
+                    sum+=x;
+                    sum-=m[i-1];
+                    m[i-1]=x;
+                }    
+            }
+        }
+        else
+        {
+            ll x;
+            cin>>x;
+            sum=n*x;
+            m.clear();
+            flag=1;
+            temp=x;
+        }
+        cout<<sum<<endl;
+ 
+    }
+    
+    ll n;
+		cin>>n;
+		vector<ll>vec;;
+		ll temp;
+		for(int i=0;i<n;i++){
+			cin>>temp;
+			vec.push_back(temp);
+		}
+		sort(vec.begin(),vec.end());
+	
+		ll i=0;
+		ll j=1;
+		ll a=0, cnt = 0;
+		while(i<n){
+			while(vec[i]==j){
+				a++;
+				if(a==vec[i]){
+					a=0;
+					cnt++;
+				}
+				i++;
+			}
+			j++;
+		}
+		cout<<cnt<<endl;
+		
+	ll a,b,c,d;
+	cin>>a>>b>>c>>d;
+	ll ans=0;
+	for(ll i=max(c+1,a+b);i<=b+c;i++){
+		ans+=(min(d+1,i)-c)*(min(i-b,b)-max(i-c,a)+1);
+	}
+	cout<<ans<<endl;
+	
+	 ll n;
+    cin>>n;
+    ll s;
+    cin>>s;
+    ll l=s-(n-1);
+ 
+    if(s-(2*n)<0)
+    {
+        cout<<"NO"<<endl;
+        return;
+    }
+    cout<<"YES"<<endl;
+    for(int i=0;i<n-1;i++){
+        cout<<1<<" ";
+    }
+    cout<<s-n+1<<endl;
+    cout<<s-n<<endl;
+    
+    string s;
+    cin>>s;
+ 
+    string str;
+    for (auto &it : s){
+        if (it == '_'){
+            if ( str.back() == '_' || str.empty()){
+                str.push_back('^');
+            }
+            str.push_back('_');
+        
+        }
+        else{
+            str.push_back(it);
+        }
+    }
+ 
+    if (str.back() == '_'){
+        str.push_back('^');
+    }
+    if (str.size() == 1){
+        str = str + '^';
+    }
+ 
+    int ans = str.size() - s.size();
+    cout<<ans<<endl;
+    
+    
+    */
+ string s;
+cin>>s;
+ll ans = 0;
+ll n=s.size();
+
+for(int i=0;i<n;i++){
+  if(s[i]=='1'){
+  ans++;
+  }
+}
+
+if(n==ans)
+cout<<n * ans<<endl;
+
+else {
+
+ll i=0;
+ll x=0;
+ll cnt=0;
+ll res=0;
+  while(true){
+    if(s[i%n]=='1'){
+    res++;
+    }
+    else {
+      cnt=max(res,cnt);
+      res=0;
+    }
+    cnt=max(res,cnt);
+     x++;
+    i++;
+   
+    if(x>=n && s[i%n]=='0')
+    break;
+  }
+  cnt=max(cnt,res);
+  ll answer = ((cnt+1)*(cnt+1))/4;
+  cout<<answer<<endl;
+}
+
+
+}
+    
+    
+
+    
+
+
+int main(){
+int tc;
+  cin>>tc;
+ for(int i=0;i<tc;i++){
+        thrill();
+}
+   return 0;
+}
+
+
+
+   
