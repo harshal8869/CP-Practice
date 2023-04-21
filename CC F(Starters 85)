@@ -1,0 +1,86 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define int long long
+ 
+bool chk(int p, int k, vector<vector<int>>&v, vector<vector<int>> &v2)
+{
+    int n = v.size() - 1;
+    int m = v[0].size() - 1;
+ 
+    bool sachh = false;
+    for (int i=1;i<=n;i++){
+        for (int j=1;j<=m;j++){
+        
+            if (v[i][j] == 0)
+                continue;
+ 
+            int x1 = max(1LL, i - p);
+              int x2 = min(n, i + p);
+            int y1 = max(1LL, j - p);
+          int y2 = min(m, j + p);
+ 
+    int tot = v2[x2][y2]  + v2[x1 - 1][y1 - 1] - v2[x1 - 1][y2] - v2[x2][y1 - 1] ;
+            if (tot == k || tot > k)
+                sachh = true;
+        }
+    }
+ 
+    return sachh;
+}
+ 
+signed main(){
+ int tc;
+ cin>>tc;
+ for(int i=0;i<tc;i++){
+     int a,b,c;
+     cin>>a>>b>>c;
+    
+vector<vector<int>>v(a + 1, vector<int>(b + 1));
+vector<vector<int>>v2(a + 1, vector<int>(b + 1));
+ int ans =0;
+        c++;
+        for (int i=1;i<a+1;i++){
+            for (int j=1;j<b+1;j++){
+                cin>>v[i][j];
+                ans = ans + v[i][j];
+            }
+        }
+ 
+        
+        for (int i=1;i<=a;i++){
+            for (int j=1;j<=b;j++){
+            
+                v2[i][j] = v[i][j];
+                v2[i][j] = v2[i][j] + v2[i][j - 1];
+                v2[i][j] = v2[i][j] + v2[i - 1][j];
+                v2[i][j] = v2[i][j] - v2[i - 1][j - 1];
+            }
+        }
+        
+ 
+        if(c > ans){
+            cout<<-1<<endl;
+            continue;
+        }
+ 
+        
+        int high = max(a,b);
+        int low = 0;
+        while(high > low)
+        {
+            int mid = (low + high) / 2;
+            if (chk(mid, c, v, v2)){
+                 high = mid;
+            }
+            
+            else{
+            
+               low = mid + 1;
+            }
+            
+        }
+ 
+        cout<<low<<endl;
+    }
+}
