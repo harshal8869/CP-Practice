@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    int a,b;
+	    cin>>a>>b;
+  
+    if(15 * a < 2 * b){
+    cout<<"no"<<endl;
+    }
+    else{
+    cout<<"yes"<<endl;
+    }
+
+	}
+	return 0;
+}
