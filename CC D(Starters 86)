@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+        int n;
+        cin>>n;
+        int mini = INT_MAX;
+    int arr[n];
+        for (int i=0;i<n;i++){
+            cin>>arr[i];
+        }
+        for (int i=0;i<=n-1;i++){
+            int maxi=0;
+            if (i + 1 < n){
+                maxi = max(abs(arr[i] - arr[i+1]),maxi);
+            }
+            if (i>=1){
+                maxi = max( abs(arr[i] - arr[i-1]),maxi);
+            }
+            mini = min(maxi,mini);
+        }
+        cout<<mini<<endl;
+    
+
+	}
+	return 0;
+}
