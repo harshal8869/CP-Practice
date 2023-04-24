@@ -1,0 +1,263 @@
+ // Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<int> vi;
+#define pi pair<ll,ll>
+#define vpi vector<pi>
+#define all(x) x.begin(), x.end()
+#define _sorted(x) sort(all(x))
+#define ff first
+#define vll vector<ll>
+#define ss second
+#define vl vector<ll>
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const int N = 3e6+10;
+ll inf = 1e9;
+char s[N];
+int arr[40];
+int pf[N+1];
+int prime[10000005];
+vector<int> adj[200010];
+vector<int> vis(200010);
+vector<ll>sqs;
+vector<ll> V;
+vector<int>primes;
+int fact[N],infact[N];
+
+
+
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+  /*   
+       
+
+ll n,q;
+    cin>>n>>q;
+    vector<int>v(n);
+    ll sum=0; 
+    for(int i=0;i<n;i++)
+    {
+        cin>>v[i];
+        sum+=v[i];
+    }
+    map<ll,ll>m;
+    bool flag=0;
+    ll temp=0;
+ 
+    while(q--)
+    {
+        int a;
+        cin>>a;
+        if(a==1)
+        {
+            int i,x;
+            cin>>i>>x;
+            if(!flag)
+            {
+                sum-=v[i-1];
+                sum+=x;
+                v[i-1]=x;
+            }
+            else
+            {
+                if(m[i-1]==0)
+                {
+                    sum+=x;
+                    sum-=temp;
+                    m[i-1]=x;
+                }
+ 
+                else
+                {
+                    sum+=x;
+                    sum-=m[i-1];
+                    m[i-1]=x;
+                }    
+            }
+        }
+        else
+        {
+            ll x;
+            cin>>x;
+            sum=n*x;
+            m.clear();
+            flag=1;
+            temp=x;
+        }
+        cout<<sum<<endl;
+    }
+    
+
+string s;
+cin>>s;
+int n = s.size();
+
+    int cnt = 1;
+    if (s[0] == '0'){
+        cnt = 0;
+    }
+
+    for (int i=0;i<n;i++){
+        if (s[i] == '?'){
+            if (i==0){
+                cnt = cnt *  9;
+            }
+            else{
+                cnt = cnt * 10;
+            }
+        }
+    }
+    cout<<cnt<<endl;
+    
+  
+
+        string s;
+        cin>>s;
+ 
+     int n = s.size();
+int mini=INT_MAX;
+
+        for (char i = 'a';i<='z';i++){
+            vector<int>v;
+            for (int j=0;j<n;j++){
+                if (s[j] != i){
+                    v.push_back(j);
+            }
+            }
+            int m = v.size();
+ int maxi=0;
+            
+            for (int j=0;j<m;j++){
+                int k = 0;
+                while (j + k < m && v[j + k] == v[j] + k){
+                    k++;
+                }
+                maxi = max((int)log2(k) + 1,maxi);
+                j = j + k-1;
+            }
+ 
+            mini = min(maxi,mini);
+        }
+ 
+        cout<<mini<<endl;
+    
+       int n; 
+       cin>>n;
+       int arr[n];
+        int str= -1 ;
+        int end = -1;
+      
+       for (int i = 0; i < n; i++) {
+       cin>>arr[i];
+       }
+       int brr[n];
+       for (int i = 0; i < n; i++){
+       cin>>brr[i];
+       }
+        int maxi=-1;
+        int mini=INT_MAX;
+for (int i = n-1;i>=0;i--) {
+         if (arr[i] != brr[i]) {
+           end = i;
+           break;
+         }
+         
+       }
+       for (int i=0;i<n;i++) {
+         if (arr[i] != brr[i]) {
+           str = i;
+           break;
+         }
+         
+       }
+       
+       for (int i=str;i<=end;i++) {
+        
+         mini= min(arr[i],mini);
+          maxi = max(arr[i],maxi);
+       }
+  if(n-1>end) {
+        for (int i=end + 1;i<n;i++) {
+          if (maxi <= arr[i]) {
+           
+            maxi = arr[i];
+            end++;
+          }
+          else 
+          break;
+        }
+       }
+       
+       if (str > 0) {
+        for (int i =str-1;i>=0;i--) {
+          if (mini >= arr[i]) {
+            mini= arr[i];
+            str--;
+          }
+          else 
+          break;
+        }
+       }
+
+      
+       cout<<str + 1<<" "<<end + 1<<" "<<endl;
+
+ ll n;
+ cin>>n;
+ ll ans = n *n + 2;
+ ll val = 2 * n;
+ cout<<ans+val<<endl;
+ 
+ll n;
+    cin>>n;
+    ll arr[n];
+for(int i=0;i<n;i++){
+    cin>>arr[i];
+}
+    sort(arr,arr+n);
+ll cnt = arr[0] * arr[1];
+ll res = arr[n-1] * arr[n-2];
+ll ans = max(cnt,res);
+cout<<ans<<endl;
+*/
+int n;
+cin>>n;
+vector<int>v;
+int cnt=0;
+        if (n == 1 ){
+            cout<<1<<endl;
+            continue;
+        }
+        if(n%2==1){
+            cout<<-1<<endl;
+            continue;
+        }
+        for (int i = 0; i < n / 2; i++){
+            v.push_back(i);
+            v.push_back(n - i - 1);
+        }
+        cout<<n<<" ";
+        for (int i=0;i<n-1;i++){
+            cnt = cnt + i;
+            cout<<(n +v[i + 1] -v[i])%n<<" ";
+        }
+        cout<<endl;
+
+}
+    
+    
+
+    return 0;
+}
+
+
+
+   
