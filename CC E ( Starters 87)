@@ -1,0 +1,31 @@
+//Jai Shree Ram 
+//Jai Bagrangbali
+
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main() {
+  int tc;
+  cin>>tc;
+  for(int i=0;i<tc;i++){
+      ll x;
+      cin>>x;
+     unordered_map<ll,ll>mp;
+     ll arr[x];
+     ll ans = x * x;
+     ll res = x+2 * x ;
+      if(x==1){
+          cout<<-1<<endl;
+      }
+      else if(x<=1000000){
+          cout<<1<<" "<<1<<" "<<x-1<<endl;
+      }
+      else if(x%1000000==0){
+          cout<<(x/1000000)-1<<" "<<1000000<<" "<<1000000<<endl;
+      }
+      else if(x>1000000){
+          cout<<x/1000000<<" "<<1000000<<" "<<x%1000000<<endl;
+      }
+  }
+  return 0;
+}
