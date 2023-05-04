@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	      ll n;
+	      cin>>n;
+ 
+  ll arr[n];
+  ll cnt=0;
+  for(int i=0;i<n;i++){
+      cin>>arr[i];
+      cnt+=arr[i];
+  }
+  ll sum = cnt;
+  
+  if(n%2==0){
+      int mini = *min_element(arr,arr+n);
+      if(mini==1){
+          cout<<"CHEF"<<endl;
+          continue;
+      }
+   
+     
+     if(mini % 2==0 && cnt%2==0){
+         cout<<"CHEFINA"<<endl;
+     }
+     else{
+         cout<<"CHEF"<<endl;
+     }
+     
+  }
+  else if(n%2==1){
+      if(cnt%2==0){
+          cout<<"CHEFINA"<<endl;
+      }
+      else{
+          cout<<"CHEF"<<endl;
+          
+      }
+  }
+	}
+	return 0;
+}
