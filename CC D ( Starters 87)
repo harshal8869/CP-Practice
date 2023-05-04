@@ -1,0 +1,21 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    ll n,m;
+	    cin>>n>>m;
+	    ll ans = n * n * n * n + 4 * m * m;
+	    ll ans2 = 4 * n * n * m;
+	    if(ans==ans2){
+	        cout<<"YES"<<endl;
+	    }
+	    else{
+	        cout<<"NO"<<endl;
+	    }
+	}
+	return 0;
+}
