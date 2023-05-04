@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+ll mod =  1000000007;
+
+ll fact(ll n){
+    if (n == 0 || n == 1){
+        return 1;
+    }
+    else{
+        return (n * fact(n - 1)) % mod;
+    }
+}
+ll modinv(ll a, ll b){
+    
+    ll smod = mod - 2;
+    while(smod!=0){
+        if(smod%2==1){
+            a = (a * b) % mod;
+        }
+        b = (b * b) % mod;
+        smod = smod >> 1;
+    }
+    return a;
+}
+int main() {
+	// your code goes here
+	
+	    ll n;
+        cin>>n;
+        ll cnt=1;
+        ll fct;
+        fct = fact(n);
+        unordered_map<ll,ll>mp;
+        for(int i=0;i<n;i++){
+            ll x, y;
+            cin>>x>>y;
+            mp[x]++;
+        }
+        for (auto itr : mp){
+            ll phla = itr.first;
+            ll dusra = itr.second;
+            cnt = ((cnt % mod) * (fact(dusra) % mod)) % mod;
+        }
+        cout << modinv(cnt,fct) << endl;
+	
+	     
+	return 0;
+}
