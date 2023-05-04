@@ -1,0 +1,28 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+const int inf = 1e18;
+ll expo(ll a, ll b, ll mod){
+    ll r=1;
+    while(b){
+        if(b&1)r=(r*a)%mod;
+        a=(a*a)%mod;
+        b=b>>1;
+        
+    }
+    return r;
+    
+}
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	     ll a,b,c;
+   cin>>a>>b>>c;
+   c=a^b;
+   ll ans = expo(2,__builtin_popcount(c),inf);
+   cout<<ans<<endl;
+	}
+	return 0;
+}
