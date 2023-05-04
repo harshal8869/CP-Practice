@@ -1,0 +1,72 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+ll mod=998244353;
+
+ll bp(ll n,ll m) {
+    if(m == 0){
+        return 1;
+    }
+ll ans = bp(n,m / 2);
+    if (m % 2==0){
+    return ans%mod * ans%mod;
+    }
+      
+    else{
+          return (ans%mod * ans%mod * n)%mod;
+    }
+        
+}
+
+int main(){
+int tc;
+cin>>tc;
+for(int i=0;i<tc;i++){
+
+ll n;
+cin>>n;
+ll ng = 100000000;
+ll arr[n];
+for(int i=0;i<n;i++){
+    cin>>arr[i];
+}
+ll crr[n];
+for(int i = n - 1;i>=0;i--){
+ ng = min(arr[i],ng);
+  crr[i] = ng;
+}
+ng = -1;
+ll ans=0;
+ll brr[n];
+for(int i=0;i<n;i++){
+  ng = max(arr[i],ng);
+  brr[i] = ng;
+}
+
+
+
+
+for(int i=1;i<=n-2;i++){
+  if((crr[i+1] - arr[i] > 0) && (arr[i] - brr[i-1] > 0)){
+      ans++;
+  }
+
+}
+if(arr[n-1] - brr[n-2] > 0){
+     ans++;
+}
+if(arr[0] - crr[1] < 0){
+    ans++;
+}
+
+ll cnt = bp(2,ans);
+if(n!=ans){
+  cout<<cnt<<endl;
+}
+else{
+     cout<<cnt-1<<endl;
+}
+
+}
+    return 0;
+}
