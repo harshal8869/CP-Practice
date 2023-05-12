@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    int y;
+	    cin>>y;
+	    if(y==0){
+	        cout<<1<<endl;
+	    }
+	    else{
+	    cout<<3*y<<endl;
+	    }
+	}
+	return 0;
+}
