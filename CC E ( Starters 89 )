@@ -1,0 +1,29 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){ 
+	    ll n;
+   cin>>n;
+ ll x=0;
+ ll y=0;
+   ll arr[n];
+      for(int i=0;i<n;i++){
+          cin>>arr[i];
+          
+          if(arr[i]==-1){
+             x = x + 1 + i;
+          }
+          else if(arr[i]==1){
+              y = y + 1 + i;
+          }
+      }
+      ll ans = abs(x-y);
+      
+      cout<<ans<<endl;
+	}
+	return 0;
+}
