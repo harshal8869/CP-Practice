@@ -1,0 +1,68 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define int long long int 
+int mod=1e9+7;
+int fct[100002];
+int power(int x, int y, int p){
+    int ans = 1;
+    x = x % p;
+    while (y > 0){
+     if (y%2==1){
+            ans = x * ans;
+            ans = ans % p;
+     }
+        y = y >> 1;
+        x = x * x;
+        x = x % p;
+    }
+    return ans;
+}
+
+int modInverse(int n, int p)
+{
+    return power(n, p - 2, p);
+}
+int f(int n,int r,int p)
+{
+     return (fct[n]*modInverse(fct[r],p)%p*modInverse(fct[n-r],p)%p)%p;
+}
+void thrill(){
+   fct[0]=1;
+   for(int i=1;i<=100000;i++)
+   {
+      fct[i]= i * fct[i-1];
+      fct[i] = fct[i] % mod;
+   }
+}
+signed main(){
+  int t;
+  cin>>t;
+  thrill();
+  while(t--){
+     int n;
+     cin>>n;
+     int cnt =0;
+     int arr[n];
+     for(int i=0;i<n;i++){
+         cin>>arr[i];
+     }
+     sort(arr,arr+n);
+     for(int i=0;i<n;i++){
+      int bef =i;
+      int aft =n-i-1;
+      if(arr[i] > bef + 1){
+      continue;
+      }
+       int cnt3 = power(2,aft,mod);
+      
+   int cnt2 = f(bef,arr[i]-1,mod);
+     
+      cnt2 = cnt2 * cnt3;
+      cnt2 = cnt2 % mod;
+    cnt = cnt + cnt2;
+    cnt = cnt % mod;
+     }
+     cout<<cnt<<endl;
+  }
+  return 0;
+}
