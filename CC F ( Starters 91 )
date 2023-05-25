@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--){
+	   ll n,m;
+        cin>>n>>m;
+        ll k = n - 1;
+        ll cnt = 0;
+ 
+        ll arr[n]; 
+        for(int i=0;i<n;i++){
+            cin>>arr[i];
+        }
+        ll brr[n + 1]; 
+    for(int i=0;i<n+1;i++){
+        brr[i] = 0;
+    }
+    sort(arr,arr+n);
+     vector<pair<ll,ll>>v;
+        vector<pair<ll,ll>>vp;
+        while(m--){ 
+            ll a,b;
+            cin>>a>>b; 
+              brr[b] = brr[b] - 1; 
+            brr[a - 1] = brr[a-1] + 1; 
+        
+        } 
+ 
+        for(int i=0;i<n+1;i++){ 
+            if(i!=0){
+                brr[i] = brr[i] + brr[i - 1]; 
+        
+        }
+          }
+
+        for(int i=0;i<n;i++) { 
+            v.push_back({brr[i], i}); 
+        } 
+        sort(v.rbegin(), v.rend()); 
+ 
+      
+        for (auto itr : v) { 
+           cnt = cnt + arr[k] * itr.first;
+            vp.push_back({itr.second, arr[k--]}); 
+           
+        } 
+ 
+        sort(vp.begin(), vp.end()); 
+        cout<<cnt<<endl;
+        for (auto itr : vp) { 
+            cout<<itr.second<< " "; 
+        } 
+        cout<<endl;
+	}
+	return 0;
+}
