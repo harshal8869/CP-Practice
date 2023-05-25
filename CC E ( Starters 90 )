@@ -1,0 +1,43 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	  int n;
+      cin>>n;
+      string s;
+      cin>>s;
+      int cnt=0;
+      int cnt2=0;
+      unordered_map<int,int>mp;
+      for(int i=0;i<n;i++){
+          mp[s[i]-'a']++;
+      }
+      for(int i=0;i<26;i++){
+          if(mp[i]==0){
+              continue;
+          }
+          if(mp[i]%2==1){
+              cnt2++;
+          }
+          else{
+              cnt++;
+          }
+      }
+       if(cnt==0 && cnt2==1){
+          cout<<2<<endl;
+      }
+      else if(cnt2 > 1){
+          cout<<0<<endl;
+      }
+     
+      else{
+          cout<<1<<endl;
+      }
+  
+	}
+	return 0;
+}
