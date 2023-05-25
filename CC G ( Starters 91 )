@@ -1,0 +1,35 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+	// your code goes here
+	void thrill(){
+	    ll a,b;
+	    cin>>a>>b;
+	    ll cnt=0;
+          if(a==0){
+         cout<<b + 1 - a<<endl;
+              return ;
+}
+
+for(int i=a;i<=b;i++){
+for(int j=i+1;j<=b;j++){
+    if(i&j){
+
+    }
+      else{
+           cnt++;
+       }
+                    }
+              }
+cout<<cnt<<endl;
+	}
+	int main(){
+	    int t;
+	    cin>>t;
+	    while(t--){
+	        thrill();
+	    }
+	    return 0;
+	}
+	
