@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+int main() {
+    int t;
+    cin>>t;
+    while(t--){
+         ll n,k;
+        cin>>n>>k;
+        ll m = (n + 1) / 2;
+        if(2 * k > n){
+            cout<<"NO"<<endl;
+        }
+        else if ((m -k+1)%2==1)
+        {
+            cout<<"YES"<<endl;
+        }
+        else
+        {
+            cout<<"NO"<<endl;
+        }
+    }
+
+    return 0;
+}
