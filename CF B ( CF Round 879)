@@ -1,0 +1,301 @@
+ // Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<int> vi;
+#define pi pair<ll,ll>
+#define vpi vector<pi>
+#define all(x) (x).begin(), (x).end()
+//#define _sorted(x) sort(all(x))
+#define ff first
+#define vll vector<ll>
+#define ss second
+#define vl vector<ll>
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const int MOD =1000000007;
+const int N = 2e6+10;
+ ll a[N],b[N],f[N],v[N];
+vector<int>g[N];
+
+const int N2 = 5e6 + 10;
+ll inf = 1e9;
+char s[N];
+int arr[40];
+int pf[N+1];
+int prime[10000005];
+vector<int> adj[200010];
+vector<int> vis(200010);
+vector<ll>sqs;
+vector<ll> V;
+vector<int>primes;
+int fact[N],infact[N];
+vector< vector< ll > > C;
+vector<ll> H;
+
+void dfs(ll r, ll p){
+  for(ll c : C[r]){
+    if(c != p){
+      H[c] = H[r] + 1;
+      dfs(c, r);
+    }
+  }
+}
+ll l(ll x){ 
+  ll y=0; 
+  while(x>0){ 
+    ll rem = x%10; 
+    if(y<rem)
+     y=rem;
+    x = x/10; 
+  } 
+   
+  return y; 
+} 
+ll modInverse(ll a,ll m){ 
+    ll m0=m;
+    ll y=0,x=1;
+    if(m==1) 
+        return 0;
+    while(a>1){
+        ll q=a/m;
+        ll t=m;
+        m=a%m,a=t; 
+        t=y;
+        y=x-q*y; 
+        x=t; 
+    }
+    if (x<0) 
+        x+=m0;
+    return x; 
+}
+ll fct(ll  n,ll m)
+{
+  ll ans=1l;
+  for(int i=1;i<=n;i++){
+  ans=((ans % mod) * i) % mod;
+ 
+  }
+  return ans;
+}
+
+int search(int x,int y, int n){
+  x--;
+  y--;
+  x = min(x, n-x-1);
+  y = min(y, n-y-1);
+  int ans = min(x,y);
+  return ans;
+}
+ll func(ll n){
+    vector<ll>digits;
+    ll bi=0;
+    while(n>0){
+        digits.push_back(n%9);
+        n=n/9;
+    }
+    ll len=digits.size();
+    for(ll i=len-1; i>=0; i--){
+        bi=bi*10 + digits[i];
+    }
+    return bi;
+}
+
+ 
+int dfs(int root){
+  int ans = 1 - vis[root];
+  vis[root] = 1;
+  for(int it : adj[root]){
+    if(vis[it] == 0){
+      ans = ans +  dfs(it);
+      break;
+    }
+  }
+  return ans;
+}
+
+ll r(ll x){ 
+  ll y=9; 
+  while(x>0){ 
+    ll rem = x%10; 
+    if(y>rem)
+    y=rem;
+    x = x/10; 
+  } 
+   
+  return y; 
+} 
+int calcu(int x,int y)
+{
+    int res=1;
+    while(y)
+    {
+        if(y&1)
+        res=res*x%mod;
+        x=x*x%mod;
+        y=y>>1;
+    }
+    return res;
+}
+vector<ll>prime_factorisation(ll n){
+    vector<ll> mp;
+    while(n!=1){
+        ll c=0;
+        ll y=prime[n];
+        while(n%y==0){
+            n=n/y;
+            c++;
+        }
+        mp.push_back(y);
+    }
+    return mp;
+}
+int findres(int x){
+    int mini = 10;
+    int maxi = -1;
+    while(x){
+        mini = min(x % 10 ,mini);
+        maxi = max(x % 10 , maxi);
+        x = x / 10;
+    }
+    int dif = maxi - mini;
+    return dif;
+}
+ll gcd(ll a, ll b){
+    if (b == 0)
+        return a;
+    else
+        return gcd(b, a % b);
+}
+ 
+ll LCM(ll a, ll b){
+    return (a * b) / gcd(a, b) ;
+}
+int binpow(int a,int n){
+    if(n==0)
+    return 1;
+    if(n%2==0)
+    return binpow(a*a%MOD,n/2);
+    return a*binpow(a,n-1)%MOD;
+}
+struct cmp{
+	bool operator()(pair<ll,ll> a,pair<ll,ll> b){
+		if(a.first<b.first){
+			return 1;
+		}
+		else{
+			if(a.first==b.first){
+				if(a.second<b.second){
+					return 0;
+				}
+				else{
+					return 1;
+				}
+			}
+			return 0;
+		}
+	}
+};
+
+
+ll recrsn(ll root,vector<vector<ll>>&vec,vector<pair<ll,ll>>&vp,ll &ans){
+     ll sum=0;
+    if(vec[root].size()==0){
+        ans++;
+        return vp[root].second;
+    }
+   
+    for(int i=0;i<vec[root].size();i++){
+        sum+=recrsn(vec[root][i],vec,vp,ans);
+    }
+    if(vp[root].first > sum){
+         sum=vp[root].second;
+        ans++;
+       
+    }
+    ll maxi = min(vp[root].second,sum);
+    return maxi;
+}
+
+
+void prme_fct(int n,int m){ 
+    
+   if(n%2==0){
+       if(m>=2){
+       cout<<"NO"<<endl;
+           
+       }
+       else{
+           cout<<"YES"<<endl;
+       }
+       return;
+   }
+      
+    for (int i=3;i<=sqrt(n);i=i+2){
+        
+       if(n%i==0){
+           if(m>=i){
+               cout<<"NO"<<endl;
+               
+           }
+           else{
+               cout<<"YES"<<endl;
+           }
+               return;
+       }
+    } 
+     
+    
+    cout<<"YES"<<endl;
+    return;
+} 
+bool check_prime(int n){
+    // returns 1 for a prime and 0 for non-prime.
+    bool chk = true;
+    if (n < 2){
+        return false;
+    }
+    for (int i = 2; i * i <= n; i++){
+        if (n % i == 0){
+            chk = false;
+            return chk;
+        }
+    }
+    return chk;
+}
+
+ 
+void thrill(){
+string s,ss;
+cin>>s>>ss;
+int n =s.size();
+int m = ss.size();
+if(m > n){
+    cout<<ss[0] - '0' + 9 * m - 9<<endl;
+}
+else{
+    for(int i=0;i<m;i++){
+        if(s[i]!=ss[i]){
+            cout<<ss[i]-s[i] + 9 * m - 9 - 9 * i<<endl;
+            return;
+        }
+    }
+    cout<<0<<endl;
+}
+ 
+//	return;
+}
+int main(){
+    int tc;
+    cin>>tc;
+   for(int i=0;i<tc;i++){
+        thrill();
+    }
+    return 0;
+}
+    
+    
