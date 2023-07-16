@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main() {
+   int tc;
+   cin>>tc;
+   for(int i=0;i<tc;i++){
+        int n, m;
+        cin>>n>>m;
+      //  ll cnt=0;
+        
+        vector<ll>vec(m);
+        
+        for (int i=0;i<m;i++) {
+         cin>>vec[i];
+        }
+        
+
+        
+      sort(vec.begin() , vec.end());
+        ll ans=0;
+        if(m == 1){
+            ans = vec[0];
+            
+        }
+        ll cnt = vec[0];
+        for(ll i=1;i<m;i++){
+            cnt = cnt - n + vec[i];
+            cnt = max(cnt,(ll)0);
+        }
+       // ans = cnt;
+        cout<<cnt<<endl;
+
+
+    }
+    
+    return 0;
+}
+ 
