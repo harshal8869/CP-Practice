@@ -1,0 +1,65 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+const int N = 2e5+5;
+const int MOD = 1e9+7;
+vector<int> G[N];
+int sz[N], hashes[N], pw[N];
+long long tot_dist[N];
+int r, n;
+
+void dfs(int v, int p) {
+  sz[v] = 1;
+  hashes[v] = 1;
+  for (int u: G[v]) {
+    if (u == p) continue;
+    dfs(u, v);
+    sz[v] += sz[u];
+    tot_dist[v] += tot_dist[u]+sz[u];
+    hashes[v] = (hashes[v]+1LL*hashes[u]*r) % MOD;
+  }
+}
+
+void dfs2(int v, int p) {
+  for (int u: G[v]) {
+    if (u == p) continue;
+    tot_dist[u] = tot_dist[v]+n-2*sz[u];
+    hashes[u] = (r*(hashes[v]-1LL*hashes[u]*r % MOD) % MOD +hashes[u]) % MOD;
+    dfs2(u, v);
+  }
+}
+
+int main () {
+  ios_base::sync_with_stdio(0); cin.tie(0);
+  mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
+  r = rng()%(MOD-2)+2;
+  pw[0] = 1;
+  for (int i = 1; i < N; i++) pw[i] = 1LL*pw[i-1]*r % MOD;
+  cin >> n;
+  int sumh = 0;
+  long long sum = 0;
+  for (int x, i = 0; i < n-1; i++) {
+    cin >> x;
+    sumh = (sumh+pw[x]) % MOD;
+    sum += x;
+  }
+  for (int i = 1; i < n; i++) {
+    int u, v;
+    cin >> u >> v;
+    G[u].push_back(v);
+    G[v].push_back(u);
+  }
+  dfs(1, 1);
+  dfs2(1, 1);
+
+  vector<int> ans;
+  for (int i = 1; i <= n; i++) {
+    int diffh = (hashes[i]-sumh) % MOD;
+    if (diffh < 0) diffh += MOD;
+    int d = tot_dist[i]-sum;
+    if (d >= 0 && d < N && diffh == pw[d]) ans.push_back(i);
+  }
+  cout << ans.size() << '\n';
+  for (int x: ans) cout << x << ' ';
+  cout << '\n';
+}
