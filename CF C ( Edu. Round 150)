@@ -1,0 +1,114 @@
+// Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<int> vi;
+#define pi pair<ll,ll>
+#define vpi vector<pi>
+#define all(x) (x).begin(), (x).end()
+//#define _sorted(x) sort(all(x))
+#define ff first
+#define vll vector<ll>
+#define ss second
+#define vl vector<ll>
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const int MOD =1000000007;
+const int N = 2e6+10;
+ 
+int cass(char c) { 
+    switch (c) { 
+        case 'E': 
+            return 10000;
+        case 'D': 
+            return 1000; 
+        case 'C': 
+            return 100; 
+        case 'B': 
+            return 10; 
+        case 'A': 
+            return 1;
+        default: 
+            return 0; 
+    } 
+} 
+ 
+ll addsum(string s) { 
+    ll len = s.size(); 
+     char chr = 'A'; 
+    vll vec(len, 0); 
+   
+    for(int i=len-1;i>=0;i--){ 
+        if(s[i] >= chr){
+           
+             chr = s[i]; 
+            vec[i] = cass(s[i]); 
+        }
+        else { 
+          vec[i] = 0 - cass(s[i]); 
+        } 
+    } 
+    ll sum = accumulate(vec.begin(), vec.end(), 0); 
+    return sum; 
+} 
+void thrill(){
+     string s; 
+    cin>>s;
+     vll v1(5, INT_MAX); 
+    vll v2(5, INT_MAX); 
+      ll n = s.size(); 
+    string str = "ABCDE"; 
+  
+ 
+   
+    for(ll i=0;i<n;i++) { 
+        ll x = s[i] - 'A'; 
+         v2[x] = i; 
+        v1[x] = min(v1[x], i); 
+       
+    } 
+ 
+    ll cnt = addsum(s); 
+    
+ 
+    for (auto itr : v2) { 
+        if (itr == INT_MAX) 
+        continue; 
+        string tmp = s; 
+        char ch = tmp[itr]; 
+        for (char c : str) { 
+            if (ch != c) { 
+                tmp[itr] = c; 
+                cnt = max(addsum(tmp),cnt); 
+            } 
+        } 
+    } 
+    for (auto it : v1) { 
+        if (it == INT_MAX)
+        continue; 
+        string tmp2 = s; 
+        char ch2 = tmp2[it]; 
+        for (char c : str) { 
+            if (ch2 != c) { 
+                tmp2[it] = c; 
+                cnt = max(addsum(tmp2),cnt); 
+            } 
+        } 
+    } 
+ 
+    cout<<cnt<<endl;
+}
+int main() { 
+    
+ int tc;
+ cin>>tc;
+ for(int i=0;i<tc;i++){
+     thrill();
+ }
+ 
+    return 0; 
+}
