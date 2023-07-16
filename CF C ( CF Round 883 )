@@ -1,0 +1,259 @@
+// Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+#define pi pair<ll,ll>
+#define vpi vector<pi>
+#define pll pair<ll, ll>
+#define vp vector<pll>
+#define all(x) (x).begin(), (x).end()
+//#define _sorted(x) sort(all(x))
+#define ff first
+#define vll vector<ll>
+#define ss second
+#define vl vector<ll>
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const int MOD =1000000007;
+//const int N = 2e6+10;
+const int N=1000005;
+ 
+ll a[N],b[N],sum[N];
+int tree[2 * N];
+  
+// ll a[N],b[N],f[N],v[N];
+vector<int>g[N];
+
+const int N2 = 5e6 + 10;
+ll inf = 1e9;
+char s[N];
+int arr[40];
+int pf[N+1];
+int prime[10000005];
+vector<int> adj[200010];
+vector<int> vis(200010);
+vector<ll>sqs;
+vector<ll> V;
+vector<int>primes;
+int fact[N],infact[N];
+vector< vector< ll > > C;
+vector<ll> H;
+class TrieNode {
+public:
+    int val;
+    TrieNode* a[2];
+    
+    TrieNode() {
+        val = 0;
+       
+        a[1] = nullptr;
+         a[0] = nullptr;
+    }
+};
+struct cmp{
+	bool operator()(pair<int,int> a,pair<int,int> b){
+		if((a.second-a.first)>(b.second-b.first)){
+			return 0;
+		}else if((a.second-a.first)==(b.second-b.first)){
+			if(a.first<b.first){
+				return 0;
+			}else{
+				return 1;
+			}
+		}else{
+			return 1;
+		}
+	}
+};
+
+
+TrieNode* root;
+
+void daalna(int x) {
+    TrieNode* tn = root;
+    
+    for (int i=31;i>=0;i--) {
+        int res = (x & (1 << i)) >= 1 ? 1 : 0;
+        
+        if (tn->a[res] == nullptr)
+            tn->a[res] = new TrieNode();
+        
+        tn = tn->a[res];
+    }
+    
+    tn->val = x;
+}
+int add(int x, int y){
+    x += y;
+    while(x >=mod) 
+    x -= mod;
+    while(x < 0) 
+    x += mod;
+    return x;
+}
+int search(int x,int y, int n){
+  x--;
+  y--;
+  x = min(x, n-x-1);
+  y = min(y, n-y-1);
+  int ans = min(x,y);
+  return ans;
+}
+
+int qry(int x) {
+    TrieNode* tn = root;
+    
+    for (int i=31;i>=0;i--) {
+        int res = (x & (1 << i)) >= 1 ? 1 : 0;
+        
+       
+        
+    
+              if (tn->a[1 - res] != nullptr){
+            tn = tn->a[1 - res];
+              }
+             else if (tn->a[res] != nullptr){
+            tn = tn->a[res];
+             }
+    
+    }
+    
+    return x ^ (tn->val);
+}
+int calcu(int x,int y)
+{
+    int res=1;
+    while(y)
+    {
+        if(y&1)
+        res=res*x%mod;
+        x=x*x%mod;
+        y=y>>1;
+    }
+    return res;
+}
+int binpow(int a,int n){
+    if(n==0)
+    return 1;
+    if(n%2==0)
+    return binpow(a*a%MOD,n/2);
+    return a*binpow(a,n-1)%MOD;
+}
+
+int xorr(vector<int>&v) {
+    root = new TrieNode();
+    daalna(0);
+    int len = v.size();
+      int x = 0;
+    int ans = INT_MIN;
+  
+    
+    for (int i=0;i<len;i++) {
+        x = x ^ v[i];
+        daalna(x);
+        ans = max(qry(x),ans);
+    }
+    
+    return ans;
+}
+void prme_fct(int n,int m){ 
+    
+   if(n%2==0){
+       if(m>=2){
+       cout<<"NO"<<endl;
+           
+       }
+       else{
+           cout<<"YES"<<endl;
+       }
+       return;
+   }
+      
+    for (int i=3;i<=sqrt(n);i=i+2){
+        
+       if(n%i==0){
+           if(m>=i){
+               cout<<"NO"<<endl;
+               
+           }
+           else{
+               cout<<"YES"<<endl;
+           }
+               return;
+       }
+    } 
+     
+    
+    cout<<"YES"<<endl;
+    return;
+} 
+bool check_prime(int n){
+    // returns 1 for a prime and 0 for non-prime.
+    bool chk = true;
+    if (n < 2){
+        return false;
+    }
+    for (int i = 2; i * i <= n; i++){
+        if (n % i == 0){
+            chk = false;
+            return chk;
+        }
+    }
+    return chk;
+}
+void thrill(){
+      ll n, m,h;
+      cin>>n>>m>>h;
+ 
+        vector<vector<ll>>vec(n, vector<ll>(m));
+        for (ll i=0;i<n;i++) {
+            for (ll j=0;j<m;j++) {
+                cin>>vec[i][j];
+            }
+            sort(vec[i].begin(),vec[i].end());
+        }
+ 
+        vector<vector<ll>>vec2(n, vector<ll>(3));
+        for (ll i=0;i<n;i++) {
+            ll x = 0;
+            ll y=0;
+            ll cnt=0;
+            for (ll j=0;j<m;j++) {
+                cnt = cnt + vec[i][j];
+                if (cnt > h) {
+                    break;
+                }
+                
+                y = y + cnt;
+                x++;
+            }
+           
+            vec2[i][2] = -i;
+            vec2[i][1] = -y;
+             vec2[i][0] = x;
+        }
+ 
+        sort(vec2.begin(), vec2.end(), greater<vector<ll>>());
+        for (ll i=0;i<n;i++) {
+            if (vec2[i][2] == 0){
+                cout<<i+1<<endl;
+                break;
+            }
+        }
+    }
+    int main(){
+        int tc;
+        cin>>tc;
+        for(int i=0;i<tc;i++){
+            thrill();
+        }
+        return 0;
+    }
+    
+    
