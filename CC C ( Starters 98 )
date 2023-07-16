@@ -1,0 +1,36 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    // your code goes here
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        int n; 
+        cin>>n;
+
+        vector<int> a(n);
+
+        
+
+        unordered_map<int,int>mp;
+        for(int i=0; i<n; i++) {
+            cin>>a[i];
+            mp[a[i]]++;
+        }
+        int cnt=1;
+vector<int>d(n);
+        for(int i=0; i<n; i++) {
+            cin>>d[i];
+            mp[d[i]]++;
+        }
+
+       for(auto it:mp){
+           cnt = max(it.second,cnt);
+       }
+
+        cout<<cnt<<endl;
+    }
+    return 0;
+} 
