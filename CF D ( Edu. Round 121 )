@@ -1,0 +1,128 @@
+ // Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+#define pi pair<ll,ll>
+#define vpi vector<pi>
+#define pll pair<ll, ll>
+#define vp vector<pll>
+#define all(x) (x).begin(), (x).end()
+//#define _sorted(x) sort(all(x))
+#define ff first
+#define vll vector<ll>
+#define ss second
+#define vl vector<ll>
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const int MOD =1000000007;
+//const int N = 2e6+10;
+const int N=1000005;
+ 
+ll a[N],b[N],sum[N];
+int tree[2 * N];
+  
+// ll a[N],b[N],f[N],v[N];
+vector<int>g[N];
+
+const int N2 = 5e6 + 10;
+ll inf = 1e9;
+char s[N];
+int arr[40];
+int pf[N+1];
+int prime[10000005];
+//vector<int> adj[200010];
+vector<int> vis(200010);
+vector<ll>sqs;
+vector<ll> V;
+vector<int>primes;
+int fact[N],infact[N];
+vector< vector< ll > > C;
+vector<ll> H;
+
+
+
+
+void thrill(){
+    
+}
+int main(){
+ int tc;
+ cin>>tc;
+ for(int i=0;i<tc;i++){
+      ll n;
+        cin>>n;
+        ll arr[n];
+        for(ll i=0;i<n;i++){
+            cin>>arr[i];
+        }
+        sort(arr,arr+n);
+      ll cnt=2;
+      ll pw =1;
+        while(n > pw){
+            pw =2 * pw;
+            cnt++;
+        }
+        ll cnt3 = cnt * cnt * cnt;
+        ll brr[cnt3][3];
+        ll ese=0;
+        for(ll i=0;i<cnt;i++){
+            for(ll j=0;j<cnt;j++){
+                for(ll k=0;k<cnt;k++){
+                    brr[ese][0]=pow(2,i);
+                    brr[ese][1]=pow(2,j);
+                    brr[ese][2]=pow(2,k);
+                    ese++;
+                }
+            }
+        }
+        ll ans=INT_MAX;
+        for(ll i=0;i<cnt3;i++){
+            ll first=0,second=0,third=0;
+            ll flag=-1;
+            for(ll j=0;j<n;j++){
+                ll cnt2=1;
+                while(n > j + 1 && arr[j] == arr[j+1]){
+                    j++;
+                    cnt2++;
+                }
+                if(first+cnt2  <= brr[i][0]){
+                    first+=cnt2;
+                    flag=j;
+                }
+                else{
+                    break;
+                }
+            }
+            for(ll j=n-1;j>flag;j--){
+                ll cnt2=1;
+                while(j-1 > flag && arr[j]==arr[j-1]){
+                    j--;
+                    cnt2++;
+                }
+                if(third + cnt2<=brr[i][2]){
+                    third+=cnt2;
+                }
+                else{
+                    break;
+                }
+            }
+            
+            second = n-first-third;
+            if(brr[i][0]>=first && brr[i][1]>=second && brr[i][2]>=third){
+                ans=min(brr[i][0] + brr[i][1] + brr[i][2]-first-second-third,ans);
+            }
+        }
+        cout<<ans<<endl;
+ }
+
+return 0;
+}
+
+    
+    
