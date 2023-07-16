@@ -1,0 +1,121 @@
+ // Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+#define pi pair<ll,ll>
+#define vpi vector<pi>
+#define pll pair<ll, ll>
+#define vp vector<pll>
+#define all(x) (x).begin(), (x).end()
+//#define _sorted(x) sort(all(x))
+#define ff first
+#define vll vector<ll>
+#define ss second
+#define vl vector<ll>
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const int MOD =1000000007;
+//const int N = 2e6+10;
+const int N=1000005;
+ 
+ll a[N],b[N],sum[N];
+int tree[2 * N];
+  
+// ll a[N],b[N],f[N],v[N];
+vector<int>g[N];
+
+const int N2 = 5e6 + 10;
+ll inf = 1e9;
+char s[N];
+int arr[40];
+int pf[N+1];
+int prime[10000005];
+//vector<int> adj[200010];
+vector<int> vis(200010);
+vector<ll>sqs;
+vector<ll> V;
+vector<int>primes;
+int fact[N],infact[N];
+vector< vector< ll > > C;
+vector<ll> H;
+
+
+
+
+void thrill(){
+     int n;
+	cin>>n;
+	int x1=-1;
+	int x2=-1;
+	int y1=-1;
+	int y2=-1;
+	
+	char ans[n][n];
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+			char ch;
+			cin>>ch;
+			
+			ans[i][j] = ch;
+			if(ch=='*'){
+				if(x1==-1){
+					x1=i;
+					y1=j;
+				}
+				else{
+					x2=i;
+					y2=j;
+				}
+			}
+		}
+	}
+	if(x1==x2){
+		if(x1==0){
+			ans[1][y1]='*';
+			ans[1][y2]='*';
+		}
+		else{
+			ans[0][y1]='*';
+			ans[0][y2]='*';
+		}
+	}
+	else if(y1==y2){
+		if(y1==0){
+			ans[x1][1]='*';
+			ans[x2][1]='*';
+		}
+		else{
+			ans[x1][0]='*';
+			ans[x2][0]='*';
+		}
+	}
+  
+	else{
+		ans[x1][y2]='*';
+		ans[x2][y1]='*';
+	}
+	for(int i=0;i<n;i++){
+		for(int j=0;j<n;j++){
+			cout<<ans[i][j];
+		}
+		cout<<endl;
+}
+}
+int main(){
+ int tc;
+ cin>>tc;
+ for(int i=0;i<tc;i++){
+      thrill();
+ }
+
+return 0;
+}
+
+    
+    
