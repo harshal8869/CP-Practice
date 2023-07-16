@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int a,b,x,y;
+	cin>>a>>b>>x>>y;
+	int messi = 2 * a + b;
+	int ronaldo = 2 * x + y;
+	if(messi==ronaldo){
+	    cout<<"Equal"<<endl;
+	}
+	else if(messi > ronaldo){
+	    cout<<"Messi"<<endl;
+	}
+	else{
+	    cout<<"Ronaldo"<<endl;
+	}
+	return 0;
+}
