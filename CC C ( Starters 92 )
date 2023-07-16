@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        int n,m,l;
+        cin>>n>>m>>l;
+     
+        int cnt=0;
+        vector<int>vec;
+        for(int i=0;i<n;i++){
+               int x,y;
+            cin>>x>>y;
+            if(l == y){
+            vec.push_back(x);
+            }
+        }
+        sort(vec.begin(),vec.end(),greater<int>());
+        int len = vec.size();
+        int maxi = min(m, len);
+       if(len==0){
+       cout<<-1<<endl;
+       }
+       else{
+       
+           for(int i=0;i<maxi;i++){
+           cnt = cnt + vec[i];
+           }
+           if(m == len){
+           cout<<cnt<<endl;
+           }
+           else if(len > m ){
+           cout<<cnt<<endl;
+           }
+           else{
+               cout<<-1<<endl;
+           }
+       }
+    }
+    return 0;
+}
