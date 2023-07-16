@@ -1,0 +1,109 @@
+ // Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+#define pi pair<ll,ll>
+#define vpi vector<pi>
+#define pll pair<ll, ll>
+#define vp vector<pll>
+#define all(x) (x).begin(), (x).end()
+//#define _sorted(x) sort(all(x))
+#define ff first
+#define vll vector<ll>
+#define ss second
+#define vl vector<ll>
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const int MOD =1000000007;
+//const int N = 2e6+10;
+const int N=1000005;
+ 
+ll a[N],b[N],sum[N];
+int tree[2 * N];
+  
+// ll a[N],b[N],f[N],v[N];
+vector<int>g[N];
+
+const int N2 = 5e6 + 10;
+ll inf = 1e9;
+char s[N];
+int arr[40];
+int pf[N+1];
+int prime[10000005];
+vector<int> adj[200010];
+vector<int> vis(200010);
+vector<ll>sqs;
+vector<ll> V;
+vector<int>primes;
+int fact[N],infact[N];
+vector< vector< ll > > C;
+vector<ll> H;
+
+struct cmp{
+	bool operator()(pair<int,int> a,pair<int,int> b){
+		if((a.second-a.first)>(b.second-b.first)){
+			return 0;
+		}
+		else if((a.second-a.first)==(b.second-b.first)){
+			if(a.first<b.first){
+				return 0;
+			}
+			else{
+				return 1;
+			}
+		}
+		else{
+			return 1;
+		}
+	}
+};
+
+
+
+
+
+void thrill(){
+  
+       
+  ll n;
+  cin>>n;
+  ll arr[n];
+  for(int i=0;i<n;i++){
+      cin>>arr[i];
+  }
+  ll sum=0;
+  ll sum2=0;
+  vector<ll>v;
+  for(int i=0;i<n;i++){
+     if(i%2==1){
+         sum = sum + max(arr[i],0ll);
+     }
+     else{
+         sum2 = sum2 + max(arr[i],0ll);
+     }
+  }
+   ll maxi = max(sum,sum2);
+     sort(arr,arr+n);
+   if(maxi==0){
+     
+       maxi = arr[n-1];
+   }
+   cout<<maxi<<endl;
+ 
+}
+    int main(){
+    int tc;
+     cin>>tc;
+     for(int i=0;i<tc;i++){
+            thrill();
+       }
+        return 0;
+    }
+    
+    
