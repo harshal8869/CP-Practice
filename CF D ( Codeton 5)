@@ -1,0 +1,126 @@
+ // Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+#define pi pair<ll,ll>
+#define vpi vector<pi>
+#define pll pair<ll, ll>
+#define vp vector<pll>
+#define all(x) (x).begin(), (x).end()
+//#define _sorted(x) sort(all(x))
+#define ff first
+#define vll vector<ll>
+#define ss second
+#define vl vector<ll>
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const int MOD =1000000007;
+//const int N = 2e6+10;
+const int N=1000005;
+ 
+ll a[N],b[N],sum[N];
+int tree[2 * N];
+  
+// ll a[N],b[N],f[N],v[N];
+vector<int>g[N];
+
+const int N2 = 5e6 + 10;
+ll inf = 1e9;
+char s[N];
+int arr[40];
+int pf[N+1];
+int prime[10000005];
+//vector<int> adj[200010];
+vector<int> vis(200010);
+vector<ll>sqs;
+vector<ll> V;
+vector<int>primes;
+int fact[N],infact[N];
+vector< vector< ll > > C;
+vector<ll> H;
+
+
+
+
+void thrill(){
+  ll n,m;
+  cin>>n>>m;
+ 
+    vector<vector<pair<ll,ll>>> adj(n+1);
+    for(int i=0;i<m;i++){
+        ll x,y,w;
+        cin>>x>>y>>w;
+        adj[x].push_back({y,w});
+        adj[y].push_back({x,w});
+    }
+ 
+    string s(n, '1');
+    s.back() = '0';
+ 
+    vector<pair<string, ll>> res;
+    priority_queue<pll, vp, greater<pll>> pq;
+    queue<ll> q;
+    q.push(n);
+    vector<set<ll>> par(n+1);
+ 
+    ll ans = 0;
+    while(!q.empty()){
+        ll sz = q.size();
+        while(sz--){
+            ll x = q.front(); 
+            q.pop();
+            for(auto &i : adj[x]){
+                if(par[x].find(i.first) == par[x].end()){
+                    par[i.first].insert(x);
+                    pq.push({i.second, i.first});
+                }
+            }
+        }
+        
+        if(pq.empty()){
+            cout<<"inf"<<endl;
+            return;
+        }
+ 
+        ll neg = pq.top().first;
+        ans += pq.top().first;
+        res.push_back({s, neg});
+ 
+        while(!pq.empty() && pq.top().first - neg <= 0){
+            if(pq.top().second == 1){
+                cout<<ans<<" "<<res.size()<<endl;
+                for(auto &i : res){
+                    cout<<i.first<<" "<<i.second<<endl;
+                }
+                return;
+            }
+ 
+            s[pq.top().second - 1] = '0';
+            q.push(pq.top().second);
+            pq.pop();
+        }
+ 
+        queue<pll> temp;
+        while(!pq.empty()) 
+        temp.push({pq.top().first-neg, pq.top().second}), pq.pop();
+        while(!temp.empty()) 
+        pq.push(temp.front()), temp.pop();
+    }
+ 
+    cout<<"inf"<<endl;
+ 
+}
+int main(){
+ thrill();
+
+return 0;
+}
+
+    
+    
