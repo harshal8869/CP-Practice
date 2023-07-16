@@ -1,0 +1,152 @@
+ // Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+#define pi pair<ll,ll>
+#define vpi vector<pi>
+#define pll pair<ll, ll>
+#define vp vector<pll>
+#define all(x) (x).begin(), (x).end()
+//#define _sorted(x) sort(all(x))
+#define ff first
+#define vll vector<ll>
+#define ss second
+#define vl vector<ll>
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const int MOD =1000000007;
+//const int N = 2e6+10;
+const int N=1000005;
+ 
+ll a[N],b[N],sum[N];
+int tree[2 * N];
+  
+// ll a[N],b[N],f[N],v[N];
+vector<int>g[N];
+
+const int N2 = 5e6 + 10;
+ll inf = 1e9;
+char s[N];
+int arr[40];
+int pf[N+1];
+int prime[10000005];
+vector<int> adj[200010];
+vector<int> vis(200010);
+vector<ll>sqs;
+vector<ll> V;
+vector<int>primes;
+int fact[N],infact[N];
+vector< vector< ll > > C;
+vector<ll> H;
+
+struct cmp{
+	bool operator()(pair<int,int> a,pair<int,int> b){
+		if((a.second-a.first)>(b.second-b.first)){
+			return 0;
+		}else if((a.second-a.first)==(b.second-b.first)){
+			if(a.first<b.first){
+				return 0;
+			}else{
+				return 1;
+			}
+		}else{
+			return 1;
+		}
+	}
+};
+
+
+
+
+
+
+
+void thrill(){
+       int n , m , q;
+	cin>>n>>m>>q;
+	string st;
+	cin>>st;
+	vector<pair<int,int>>vec;
+	for(int i=0;i<m;i++){
+		int l,r;
+		cin>>l>>r;
+		l--;
+		r--;
+		vec.push_back(make_pair(l,r));
+	}
+	set<int>s;
+	for(int i=0;i<n;i++)
+	s.insert(i);
+	vector<int> v;
+	int arr[n];
+	memset(arr,-1,sizeof arr);
+	for(int i=0;i<m;i++){
+		auto it = s.lower_bound(vec[i].first);
+		vector<int>vr;
+		while(it != s.end() && (*it) <= vec[i].second){
+		vr.push_back((*it));
+			v.push_back(vr.back());
+			arr[vr.back()] = v.size()-1;
+			it++;
+		}
+		while(vr.size()){
+			s.erase(vr.back());
+			vr.pop_back();
+		}
+	}
+	int cnt = 0;
+	for(int i=0;i<n;i++){
+		if(st[i] == '1')
+		cnt++;
+	}
+	int ans = 0;
+	for(int i=0;i<min(cnt , (int)v.size());i++){
+		if(st[v[i]] == '0')
+		ans++;
+	}
+	
+	while(q--){
+		int pos;
+	cin>>pos;
+		pos--;
+		if(arr[pos] != -1 && arr[pos] < cnt){
+			if(st[pos] == '0'){
+				ans--;
+			}
+			else
+			ans++;
+		}
+		if(st[pos] == '0'){
+			st[pos] = '1';
+			cnt++;
+			if(cnt <= v.size() && st[v[cnt-1]] == '0')
+			ans++;
+		}
+		else {
+			st[pos] = '0';
+			if(cnt > 0 && cnt <= v.size() && st[v[cnt-1]] == '0')
+			ans--;
+			cnt--;
+		}
+		cout<<ans<<endl;
+	}
+  
+
+
+    }
+    int main(){
+       // int tc;
+       // cin>>tc;
+       // for(int i=0;i<tc;i++){
+            thrill();
+       // }
+        return 0;
+    }
+    
+    
