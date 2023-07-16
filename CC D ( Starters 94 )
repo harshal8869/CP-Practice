@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+const int MOD = 1e9 + 7;
+bool chk(char ch) {
+    return ch == 'a' ||  ch == 'e' ||  ch == 'i' ||  ch == 'o'  || ch == 'u';
+}
+
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+         int n,k;
+         cin>>n>>k;
+         string s;
+         cin>>s;
+         int a=0;
+         int b=-1;
+         vector<int>vec;
+        
+        for (int i=0;i<n;i++) {
+            if (chk(s[i])) {
+                a++;
+                
+                if ((a+k-1)%k == 0 && b != -1) {
+                    vec.push_back(i - b);
+                    b = i;
+                }
+                
+                if(a%k!= 0) {
+                    continue;
+                }
+                
+                b = i;
+            }
+        }
+        
+       ll ans=1;
+       int len = vec.size();
+        
+        for (int i=0;i<len;i++) {
+            ans = ans *  vec[i];
+            ans = ans % MOD;
+        }
+        
+        cout<<ans<<endl;
+    }
+    return 0;
+}
