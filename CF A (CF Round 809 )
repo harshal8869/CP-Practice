@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void stringmin() {
+	// your code goes here
+	    int n,m;
+	    cin>>n>>m;
+	    string s="";
+	    for(int i=0;i<m;i++){
+	        s = s + 'B';
+	    }
+	    for(int i=0;i<n;i++){
+	        int cnt1;
+	        cin>>cnt1;
+	        int cnt2=m+1-cnt1;
+	        int mini=max(cnt1,cnt2);
+	        int maxi=min(cnt1,cnt2);
+	        if(s[maxi-1]!='A'){
+	            s[maxi-1]='A';
+	        }
+	        else if(s[maxi-1]=='A'){
+	            s[mini-1]='A';
+	        }
+	    }
+	    cout<<s<<endl;
+	}
+	int main(){
+	    int t;
+	    cin>>t;
+	    while(t--){
+	        stringmin();
+	    
+	}
+	return 0;
+}
+
