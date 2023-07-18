@@ -1,0 +1,106 @@
+#include <bits/stdc++.h>
+using namespace std;
+typedef vector<int> vi;
+typedef pair<int, int> pi;
+typedef vector<pi> vpi;
+#define all(x) x.begin(), x.end()
+#define _sorted(x) sort(all(x))
+#define ll long long int
+typedef vector<ll> vl;
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const ll N = 1e6+5;
+char s[N];
+int prime[10000005];
+vector<ll>sqs;
+vector<int>primes;
+vector<ll>prime_factorisation(ll n){
+    vector<ll> mp;
+    while(n!=1){
+        ll c=0;
+        ll y=prime[n];
+        while(n%y==0){
+            n=n/y;
+            c++;
+        }
+        mp.push_back(y);
+    }
+    return mp;
+}
+
+void thrill()
+{
+       /*
+    
+      int n;
+        cin>>n;
+        ll arr[n];
+        for(int i=0;i<n;i++){
+            cin>>arr[i];   
+           }   
+           ll mx=0;
+           for(int i=0;i<n-1;i++)
+           {
+            mx=max(mx,arr[i]*arr[i+1]);   
+           }
+           cout<<mx<<endl;
+           
+           int n ,k;
+          cin>>n>>k;
+          vector<int> arr(n+1);
+          for(int i=1; i<=n; i++){
+               int x ; cin>>x;
+               arr[i]= x;
+          }
+          ll ans = INT_MIN;
+          ll l = max(1 , n- 2*k);
+          for(ll i=l; i<=n; i++){
+               for(ll j = i+1 ; j<=n; j++){
+                    ans  = max (ans , (i*j) - (1LL*k*(arr[i]|arr[j])));
+               }
+          }    
+          cout<<ans<<endl;
+          */
+          ll n;
+   cin>>n;
+   if(n==1){
+     cout<<'a'<<endl;
+   }
+   else if(n%2==1)
+   {
+    ll m = n-2;
+    m = m / 2;
+    string s(m,'a');
+    s+="bc";
+    string p(m+1,'a');
+    s+=p;
+    cout<<s<<endl;
+ 
+   }
+   else
+   {
+      ll m = n-1;
+    m = m / 2;
+    string s(m,'a');
+    s+="b";
+    string p(m+1,'a');
+    s+=p;
+    cout<<s<<endl;
+   
+   }
+
+}
+
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+    return 0;
+}
+
+
+
+   
