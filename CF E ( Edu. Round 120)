@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+#define ll long long int
+
+void thrill(){
+    int n,m;
+    cin>>n>>m;
+    ll arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    vector<string>v(n);
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+    }
+    ll ans=-1e10;
+    vector<int>v2(m);
+    for(int k=0;k<(1<<n);k++){
+        ll xcnt=0;
+        for(int i=0;i<n;i++){
+            if((k&(1<<i))!=0){
+                xcnt = xcnt - arr[i];
+            }
+            else{
+              
+                  xcnt = xcnt + arr[i];
+            }
+        }
+        vector<ll>vc(m);
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(v[i][j]=='1'){
+                    if((k&(1<<i))!=0){
+                        vc[j]++;
+                    }
+                    else{
+                        vc[j]--;
+                    }
+                }
+            }
+        }
+        vector<pair<ll,ll>>vec;
+        for(int i=0;i<m;i++){
+        vec.push_back({vc[i],i});
+        }
+        sort(vec.begin(),vec.end());
+        vector<int>uttar(m);
+        for(int i=0;i<m;i++){
+            uttar[vec[i].second]=i+1;
+            xcnt+=(i+1LL)*vec[i].first;
+        }
+        if(xcnt > ans){
+            ans = xcnt;
+            swap(uttar,v2);
+        }
+    }
+    for(auto it:v2){
+        cout<<it<<" ";
+    }
+    cout<<endl;
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+    return 0;
+}
