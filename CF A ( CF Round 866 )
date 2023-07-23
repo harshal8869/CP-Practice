@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        int a,b,c;
+        cin>>a>>b>>c;
+        vector<int>v;
+        v.push_back(a);
+        v.push_back(b);
+        v.push_back(c);
+        sort(v.begin(),v.end());
+        int sum = v[1] + v[2];
+        if(sum >= 10){
+            cout<<"YES"<<endl;
+        }
+        else{
+            cout<<"NO"<<endl;
+        }
+    }
+    return 0;
+}
