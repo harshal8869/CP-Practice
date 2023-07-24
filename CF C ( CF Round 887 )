@@ -1,0 +1,62 @@
+ // Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+#define pi pair<ll,ll>
+#define vpi vector<pi>
+#define pll pair<ll, ll>
+#define vp vector<pll>
+#define all(x) (x).begin(), (x).end()
+//#define _sorted(x) sort(all(x))
+#define ff first
+#define vll vector<ll>
+#define ss second
+#define vl vector<ll>
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const int MOD =1000000007;
+const int N= 2000001;
+int arr[N];
+
+void initial() {
+    arr[0] = 0;
+    arr[1] = 1;
+    for(int i=2;i<N;i++) {
+        arr[i] = arr[i - 1] + arr[i - 2];
+    }
+}
+
+void thrill() {
+   ll n,k;
+   cin>>n>>k;
+		vector<ll>v(n);
+		v.resize(n+1);
+ 
+		for(int i=1;i<n+1;i++){
+			cin>>v[i];
+			v[i]= v[i] - (i-1);
+		}
+		ll pos=1;
+		for(int i=1;i<k+1;i++){
+			ll find = upper_bound(v.begin()+1,v.end(),pos) - v.begin() - 1;
+			pos = pos + find;
+		}
+		cout<<pos<<endl;
+}
+
+int main() {
+   
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+
+    return 0;
+}
