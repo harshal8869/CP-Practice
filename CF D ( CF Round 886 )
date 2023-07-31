@@ -1,0 +1,115 @@
+ // Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+#define pi pair<ll,ll>
+#define vpi vector<pi>
+#define pll pair<ll, ll>
+#define vp vector<pll>
+#define all(x) (x).begin(), (x).end()
+//#define _sorted(x) sort(all(x))
+#define ff first
+#define vll vector<ll>
+#define ss second
+#define vl vector<ll>
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const int MOD =1000000007;
+//const int N = 2e6+10;
+const int N=1000005;
+ 
+//ll a[N],b[N],sum[N];
+int tree[2 * N];
+  
+// ll a[N],b[N],f[N],v[N];
+vector<int>g[N];
+
+const int N2 = 5e6 + 10;
+ll inf = 1e9;
+char s[N];
+int arr[40];
+int pf[N+1];
+int prime[10000005];
+vector<int> adj[200010];
+//vector<int> vis(200010);
+vector<ll>sqs;
+vector<ll> V;
+vector<int>primes;
+int fact[N],infact[N];
+vector< vector< ll > > C;
+vector<ll> H;
+int a[300005];
+bitset<10000005> vis;
+struct cmp{
+	bool operator()(pair<int,int> a,pair<int,int> b){
+		if((a.second-a.first)>(b.second-b.first)){
+			return 0;
+		}
+		else if((a.second-a.first)==(b.second-b.first)){
+			if(a.first<b.first){
+				return 0;
+			}
+			else{
+				return 1;
+			}
+		}
+		else{
+			return 1;
+		}
+	}
+};
+
+int lcm(int x,int y){
+	return x/__gcd(x,y)*y;
+}
+
+ll func(ll s, ll k) {
+    ll x = (5 * k - s) / 40;
+    x = min(x, k / 4);
+    ll ans = s * k;
+    if (x > 0) {
+        ans = max(ans, (s + 20 * x) * (k - 4 * x));
+    }
+    x = min(x + 1, k / 4);
+    if (x > 0) {
+        ans = max(ans, (s + 20 * x) * (k - 4 * x));
+    }
+    return ans;
+}
+
+void thrill(){
+   
+     ll n,k;
+    cin>>n>>k;
+    ll arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    sort(arr,arr+n);
+    ll ans=1;
+    ll cnt=1;
+    for(int i=1;i<n;i++){
+        if(arr[i]-arr[i-1] > k){
+            cnt=0;
+        }
+        cnt++;
+        ans=max(cnt,ans);
+    }
+    cout<<n-ans<<endl;
+}
+    int main(){
+        int tc;
+cin>>tc;
+    for(int i=0;i<tc;i++){
+            thrill();
+      }
+        return 0;
+    }
+    
+    
