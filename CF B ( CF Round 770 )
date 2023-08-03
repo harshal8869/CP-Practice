@@ -1,0 +1,119 @@
+ // Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+typedef vector<int> vi;
+typedef vector<vi> vvi;
+#define pi pair<ll,ll>
+#define vpi vector<pi>
+#define pll pair<ll, ll>
+#define vp vector<pll>
+#define all(x) (x).begin(), (x).end()
+//#define _sorted(x) sort(all(x))
+#define ff first
+#define vll vector<ll>
+#define ss second
+#define vl vector<ll>
+typedef vector<vl>vvl;
+const int mod = 998244353;
+const int maxi = 3e5 + 10;
+const int MOD =1000000007;
+//const int N = 2e6+10;
+const int N=1000005;
+ 
+//ll a[N],b[N],sum[N];
+int tree[2 * N];
+  
+// ll a[N],b[N],f[N],v[N];
+vector<int>g[N];
+
+const int N2 = 5e6 + 10;
+ll inf = 1e9;
+char s[N];
+//int arr[40];
+int pf[N+1];
+int prime[10000005];
+vector<int> adj[200010];
+//vector<int> vis(200010);
+vector<ll>sqs;
+vector<ll> V;
+vector<int>primes;
+int fact[N],infact[N];
+vector< vector< ll > > C;
+vector<ll> H;
+int a[300005];
+bitset<10000005> vis;
+bool cmp(pair<int,int> p1, pair<int,int> p2)
+{
+    if (p1.first < p2.first)
+        return false;
+    else if (p1.first > p2.first)
+        return true;
+    return p1.second < p2.second;
+}
+
+
+
+int lcm(int x,int y){
+	return x/__gcd(x,y)*y;
+}
+
+ll func(ll s, ll k){
+    ll x = (5 * k - s) / 40;
+    x = min(x, k / 4);
+    ll ans = s * k;
+    if (x > 0) {
+        ans = max(ans, (s + 20 * x) * (k - 4 * x));
+    }
+    x = min(x + 1, k / 4);
+    if (x > 0) {
+        ans = max(ans, (s + 20 * x) * (k - 4 * x));
+    }
+    return ans;
+}
+int addigit(ll n){
+   int ans=0;
+	while (n > 0) {
+		ans = ans + n % 10;
+		n = n / 10;
+	}
+	return ans;
+}
+
+void thrill(){
+    ll n,x,y; 
+     cin>>n>>x>>y;
+    ll arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    ll odd = 0;
+    for(int i=0;i<n;i++){
+        if(arr[i]%2==1)
+        odd++;
+    }
+    int parity1 = x % 2;
+    int parity2 = y % 2;
+    if(odd%2==0 && parity1==parity2 || odd%2==1 && parity1!=parity2){
+     cout<<"Alice"<<endl;
+    }
+    
+        else if(odd%2==0 && parity1!=parity2 || odd%2==1 && parity1==parity2){
+            cout<<"Bob"<<endl;
+        }
+    
+ 
+}
+    int main(){
+   int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+            thrill();
+   }
+        return 0;
+    }
+    
+    
