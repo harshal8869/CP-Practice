@@ -101,7 +101,7 @@ void thrill(){
           ans = ans - brr[i] * n + brr[i] * idx + crr[n] - crr[idx];
           cout<<n + ans<<" ";
         }
-        cout<<endl
+        cout<<endl;
 }
     int main(){
      int tc;
