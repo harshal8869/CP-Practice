@@ -16,7 +16,7 @@
    
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long int
+#define ll long long int 
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 #define pi pair<ll,ll>
