@@ -113,7 +113,7 @@ void thrill(){
             cout<<0<<" ";
         }
     }
-  
+  cout<<endl;
 }
     int main(){
      int tc;
