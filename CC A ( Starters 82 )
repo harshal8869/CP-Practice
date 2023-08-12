@@ -4,10 +4,12 @@ using namespace std;
 void thrill(){
 	    int n;
 	    cin>>n;
-	    if(n%3==0)
+	    if(n%3==0){
 	    cout<<"yes"<<endl;
-	    else
+}
+	    else{
 	    cout<<"no"<<endl;
+}
 }
 int main() {
 	// your code goes here
