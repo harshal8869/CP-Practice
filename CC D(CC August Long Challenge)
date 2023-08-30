@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+string rakhi(string s){
+    int n = s.size();
+    string ss = "codechef";
+    int m = ss.size();
+    if(n!=m){
+        return "-1";
+    }
+    for(int i=0;i<n;i++){
+        if(s[i] == ss[i]){
+            for(int j=0;j<n;j++){
+                if(s[i]!=ss[j] && s[j]!=ss[i]){
+                    swap(s[i],s[j]);
+                    break;
+                }
+            }
+            if(s[i]==ss[i]){
+                return "-1";
+            }
+        }
+    }
+    return s;
+}
+void thrill(){
+    string s;
+    cin>>s;
+    cout<<rakhi(s)<<endl;
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+    return 0;
+}
