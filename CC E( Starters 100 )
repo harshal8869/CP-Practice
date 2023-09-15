@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+void thrill(){
+     int n;
+    cin>>n;
+    if(n<=3){
+        cout<<-1<<endl;
+        return;
+    }
+    int m=n%4;
+    int arr[n];
+    for (int i=0;i<n-m-4;i+=4){
+        arr[i]=i+3;
+        arr[i+1]=i+4;
+        arr[i+2]=i+1;
+        arr[i+3]=i+2;
+    }
+    if(m==0){
+        for (int i=n-4;i<n;i+=4){
+            arr[i]=i+3;
+            arr[i+1]=i+4;
+            arr[i+2]=i+1;
+            arr[i+3]=i+2;
+        }
+    }
+    else if(m==1){
+        arr[n-1]=n-3;
+        arr[n-2]=n-4;
+        arr[n-3]=n;
+        arr[n-4]=n-1;
+        arr[n-5]=n-2;
+    }
+    else if(m==2){
+        arr[n-1]=n-5;
+        arr[n-2]=n-4;
+        arr[n-3]=n;
+        arr[n-4]=n-1;
+        arr[n-5]=n-2;
+        arr[n-6]=n-3;
+    }
+    else if(m==3){
+        arr[n-1]=n-5;
+        arr[n-2]=n-6;
+        arr[n-3]=n;
+        arr[n-4]=n-1;
+        arr[n-5]=n-2;
+        arr[n-6]=n-3;
+        arr[n-7]=n-4;
+    }
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
+    }
+    cout<<endl;
+}
+
+
+
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+}
