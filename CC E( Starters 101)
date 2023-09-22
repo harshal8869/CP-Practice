@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+
+void thrill(){
+    ll c=30;
+    ll a,b;
+    cin>>a>>b;
+    vector<int>v(31,0);
+    vector<int>v2(31,0);
+    int i = 0;
+    ll x=0;
+    ll cnt=0;
+    while(c--){
+        v[i] = a&1;
+        a = a/ 2;
+        v2[i] = b&1;
+        b = b / 2;
+        i++;
+    }
+    for(int i=30;i>=0;i--){
+        if(v[i]!=v2[i]){
+            if(v[i]==1)
+            x=1;
+                 v[i] = 0;
+                 v2[i] = 0;
+                 break;
+            
+        }
+    }    
+    int j = 1; int k = 1;
+    if(x!=1){
+       
+          for(auto it:v2){
+            cnt = cnt + (k)*(it);
+            k = k * 2;
+        }
+        
+    }
+   
+    else{
+         for(auto it:v){
+            cnt = cnt + (j)*(it);
+         j = j * 2;
+        }
+      
+    }
+    
+    cout<<cnt<<endl;
+}
+
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+}
