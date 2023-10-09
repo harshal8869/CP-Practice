@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+     string s;
+     cin>>s;
+     stack<char>st; stack<char>st2;
+     ll n;
+     cin>>n;
+ ll len = s.size();
+ ll x=0;
+        for (int i=0;i<len;i++) {
+            if (n + i - len > 0) {
+                n -= (len - i);
+            }
+            else {
+                x = i;
+                break;
+            }
+        }
+        for (int i=0;i<len;i++) {
+            while (!st.empty() && st.top() > s[i] && x > 0) {
+                x = x - 1;
+                st.pop();
+            }
+            st.push(s[i]);
+        }
+        while (x > 0) {
+            
+         x = x - 1;
+         st.pop();
+         
+        }
+ 
+   
+        while (!st.empty()) {
+            st2.push(st.top());
+            st.pop();
+        }
+ 
+        char ans = 0;
+        for (int i=0;i<n;i++) {
+            ans = st2.top();
+            st2.pop();
+        }
+        cout<<ans;
+    
+}
+int main(){
+    int tc;
+    cin>>tc;
+    cin.ignore();
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+}
