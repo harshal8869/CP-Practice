@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+     ll n; 
+     cin>>n;
+    string s;
+    cin>>s;
+    
+    if(n==1){
+        if((s.back()-'0')%8 == 0){
+        cout<<s<<endl;
+        }
+        else{
+        cout<<8<<endl;
+        }
+    }
+    else if(n == 2){
+        ll num = (s[0]-'0')*10 + (s[1] - '0');
+        if(num%8==0){
+        cout<<s<<endl;
+        }
+        else{
+            num = (num/10)*10;
+            while(num%8!=0){
+            num++;
+            }
+            s.back() = num%10 + '0';
+            cout<<s<<endl;
+        }
+    }
+    else{
+    ll num = (s[n-3]-'0')*100 + (s[n-2] - '0')*10 + (s[n-1] - '0');
+        if(num%8==0){
+        cout<<s<<endl;
+        }
+        else{
+            num = (num/10)*10;
+            while(num%8!=0){
+            num++;
+            }
+            s.back() = num%10 + '0';
+            cout<<s<<endl;
+        }
+    }
+}
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+}
