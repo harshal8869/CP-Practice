@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    ll ans=0;
+   ll arr[3];
+   for(ll i=0;i<3;i++){
+       cin>>arr[i];
+   }
+   for(auto &it:arr){
+       ans = __gcd(ans,it);
+   }
+   ll cnt=0;
+   for(auto &it:arr){
+       cnt = cnt + it/ans - 1;
+   }
+   if(cnt<3 || cnt==3){
+       cout<<"yes"<<endl;
+   }
+   else{
+       cout<<"no"<<endl;
+   }
+}
+int main(){  
+       
+ int tc;
+cin>>tc;
+ for(int i=0;i<tc;i++){
+        thrill();
+  }
+        return 0;
+    }
+        
