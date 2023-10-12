@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+     int n; 
+     cin>>n;
+    vector<int>v(n);
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+    }
+    vector<int>dp(n+1);
+    for(int i=n-1;i>=0;i--){
+        dp[i] = dp[i+1]+1;
+        if(n > i + v[i]){
+            dp[i] = min(dp[i], dp[i+v[i]+1]);
+        } 
+    }
+    int ans = dp[0];
+    cout<<ans<<endl;
+}
+
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+    return 0;
+}
