@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+void thrill(){
+   int n;  
+   cin>>n;
+   unordered_map<int,int>mp;
+ vector<int>v(n);
+ for(int i=0;i<n;i++){
+     cin>>v[i];
+ }
+ int ans=0;
+   for(auto it:v){  
+     int itt = it;
+     for(int i=2;i<sqrt(it)+1;i++){  
+       while(itt%i==0){  
+         itt = itt/i; 
+         mp[i]++;  
+       }  
+     }  
+     if(itt!=1)
+     mp[itt]++;  
+   }  
+   stack<int>st;
+     
+     
+   for(auto it:mp){  
+    if(it.second%n!=0){  
+      cout<<"NO"<<endl;  
+      return;  
+    }  
+   }  
+     
+   cout<<"YES"<<endl;  
+     
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+}
