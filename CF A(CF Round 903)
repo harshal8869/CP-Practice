@@ -1,0 +1,35 @@
+#include<bits/stdc++.h>
+using namespace std;
+void thrill(){
+    int n,m;
+    cin>>n>>m;
+    int ans=0;
+    string s,ss;
+    cin>>s>>ss;
+    while(n<m){
+        n = n * 2;
+        ans++;
+        s = s + s;
+    }
+    if(s.find(ss)!=string::npos){
+        cout<<ans<<endl;
+        return;
+    }
+    ans++;
+     s = s + s;
+    if(s.find(ss)!=string::npos){
+        cout<<ans<<endl;
+        return;
+    }
+    cout<<-1<<endl;
+}
+int main(){  
+       
+ int tc;
+cin>>tc;
+ for(int i=0;i<tc;i++){
+        thrill();
+  }
+        return 0;
+    }
+        
