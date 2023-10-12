@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    ll n; 
+cin>>n; 
+ 
+char ch[n][n]; 
+for(ll i=0;i<n;i++){ 
+    for(ll j=0;j<n;j++) 
+        cin>>ch[i][j]; 
+} 
+ 
+ll ans=0; 
+for(ll i=0;i<n/2;i++){ 
+        for(ll j=i;j<n-i-1;j++){ 
+ char chh=max({ch[i][j] , ch[n-j-1][i], ch[n-i-1][n-j-1],ch[j][n-i-1]}); 
+            ans=ans+(abs(chh-ch[i][j])+abs(chh-ch[n - 1 - j][i])+abs(chh-ch[n - 1 - i][n - 1 - j])+abs(chh-ch[j][n - 1 - i])); 
+          
+        } 
+    } 
+ 
+cout<<ans<<endl;
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+}
