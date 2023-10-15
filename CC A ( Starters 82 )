@@ -9,7 +9,7 @@ void thrill(){
 }
 	    else{
 	    cout<<"no"<<endl;
-}
+}  
 }
 int main() {
 	// your code goes here
