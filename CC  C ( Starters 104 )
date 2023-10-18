@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+void thrill(){
+    int n,k; 
+    cin>>n>>k;
+    int sum=0;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+        sum+=arr[i];
+    }
+    if(n > sum){
+        cout<<"NO"<<endl;
+    }
+    else{ 
+        sum = sum % n;
+        if(k==0 && sum!=0){
+            cout<<"NO"<<endl;
+        }
+        else{
+            cout<<"YES"<<endl;
+        }
+    }
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+    return 0;
+}
