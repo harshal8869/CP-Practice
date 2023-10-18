@@ -1,0 +1,71 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+	// your code goes here
+	   // ll a,b,k;
+	   // cin>>a>>b>>k;
+	   // if(a > b){
+	   //     swap(a,b);
+	   // }
+	   // ll ans = a + __gcd(a,b);
+	   // if(k==1){
+	   //     cout<<ans<<endl;
+	   // }
+	   // else{
+	   //     cout<<2*__gcd(a,b)<<endl;
+	   // }
+	//     ll n,m;
+    //     cin>>n>>m;
+    //     ll arr[n];
+    //     for(int i=0;i<n;i++){
+    //         cin>>arr[i];
+    //     }
+    // ll cnt=0;
+    // set<int>st;
+    //     cout<<arr[0]<<" ";
+    //     for (int i=1;i<n;i++) {
+    //         ll s = m / arr[i] * arr[i];
+    //         while(arr[i]!=__gcd(s, arr[i - 1])) {
+    //             s = s - arr[i];
+    //         }
+
+    //         cout<<s<<" ";
+    //     }
+
+    //     cout<<endl;
+    ll n;
+        cin >> n;
+        ll ans=0;
+    
+        ll arr[n];
+        for(int i=0;i<n;i++){
+            cin>>arr[i];
+        }
+        ll x=-1; ll y=-1;
+        set<int>st;
+        unordered_map<int,int>mp;
+        vector<ll>vec(n,0);
+        vector<ll>vec2(n,0);
+        for (int i=0;i<n;i++) {
+              vec[i] = x;
+               x=max(arr[i],x);
+         
+            vec2[n-1-i] = y;
+               y = max(arr[n - 1 - i],y);
+        }
+        for(int i=0;i<n;i++){
+            ll mini =min(vec[i],vec2[i]);
+            ans = ans + max(arr[i],mini);
+            
+        }
+
+        cout<<ans<<endl;
+	}
+	int main(){
+	    int tc;
+	    cin>>tc;
+	    for(int i=0;i<tc;i++){
+	        thrill();
+	    }
+	}
