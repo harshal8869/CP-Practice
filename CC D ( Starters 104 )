@@ -1,0 +1,25 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+	// your code goes here
+	    ll a,b,k;
+	    cin>>a>>b>>k;
+	    if(a > b){
+	        swap(a,b);
+	    }
+	    ll ans = a + __gcd(a,b);
+	    if(k==1){
+	        cout<<ans<<endl;
+	    }
+	    else{
+	        cout<<2*__gcd(a,b)<<endl;
+	    }
+	}
+	int main(){
+	    int tc;
+	    cin>>tc;
+	    for(int i=0;i<tc;i++){
+	        thrill();
+	    }
+	}
