@@ -1,0 +1,64 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    ll a,b,c;
+    cin>>a>>b>>c;
+    vector<ll>v(a);
+    for(ll i=0;i<a;i++){
+        cin>>v[i];
+    }
+    sort(v.begin(),v.end()); 
+    while(v.size() > 2 && b && v.end()[-2]>0){
+        ll cnt = v.end()[-2] + v.end()[-1];
+        v.pop_back();
+        v.pop_back();
+        v.push_back(cnt);
+        b--;
+    }
+    reverse(v.begin(),v.end());
+     while(v.size() > 2 && b && v.end()[-2]<0){
+        ll cnt = v.end()[-2] + v.end()[-1];
+        v.pop_back();
+        v.pop_back();
+        v.push_back(cnt);
+        b--;
+    }
+    unordered_map<int,int>mp;
+     reverse(v.begin(),v.end());
+     while(v.size() > 2 && v.end()[-2] >0 && c){
+        // int cnt = v.end()[-2] + v.end()[-1];
+        // v.pop_back();
+        // v.pop_back();
+        // v.push_back(cnt);
+        // b--;
+        v[0]=v[0]-v.end()[-2];
+        v.erase(v.end()-2);  c--;
+    }
+    vector<ll>vec;
+    for(ll i=0;i<b;i++){
+        vec.push_back(1);
+    }
+     reverse(v.begin(),v.end());
+     while(v.size() > 2 && v.end()[-2] < 0 && c){
+        // int cnt = v.end()[-2] + v.end()[-1];
+        // v.pop_back();
+        // v.pop_back();
+        // v.push_back(cnt);
+        // b--;
+        v[0]=v[0]-v.end()[-2];
+        v.erase(v.end()-2);  c--;
+    }
+    reverse(v.begin(),v.end());
+    ll res = v.back(); ll ans = v.front();
+    ll answer = res - ans;
+    cout<<answer<<endl;
+}
+
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+}
