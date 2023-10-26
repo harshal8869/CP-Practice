@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+#define ll long long int
+using namespace std;
+const int mod = 1e9+7;
+void dfs(int i,vector<int>*g,vector<int>&visit,vector<int>&cur,vector<int>&a){
+    visit[i] = 1;
+    cur.push_back(a[i]);
+    for(auto v:g[i])
+        if(!visit[v])
+            dfs(v,g,visit,cur,a);
+}
+void thrill(){
+    int n,m;  cin>>n>>m;
+    vector<int> fac(n+1,1),ifac(n+1,1),inv(n+1,1),visit(n),g[n];
+    vector<int>a(n);
+    // for(int i=0;i<n;i++){
+    // cin>>a[i];
+    // }
+    for(int i=0;i<m;i++){
+        int u,v;   cin>>u>>v;
+        --u;--v;
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+    for(int i=0;i<n;i++){
+    cin>>a[i];
+    }
+    for(int i=2;i<n+1;i++){
+        fac[i] = (fac[i-1]*1ll*i)%mod;
+        inv[i] = mod-(((mod/i)*1ll*inv[mod%i])%mod);
+        ifac[i] = (ifac[i-1]*1ll*inv[i])%mod;
+    }
+    int ans = fac[n];
+    for(int i=0;i<n;i++){
+        if(!visit[i]){
+            vector<int>cur;
+            dfs(i,g,visit,cur,a);
+            sort(cur.begin(),cur.end());
+            int len = cur.size();
+            ans = (ans*1ll*ifac[len])%mod;
+            for(int l=0,r=0;l<len;l=r){
+                while((r<len) && (cur[l]==cur[r]))
+                r++;
+                ans = (ans*1ll*fac[r-l])%mod;
+            }
+        }
+    }
+    cout<<ans<<endl;
+}
+int main(){
+int tc;  cin>>tc;
+for(int i=0;i<tc;i++){
+    thrill();
+}
+	return 0;
+}
