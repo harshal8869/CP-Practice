@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+string candy(int T, vector<pair<int, vector<int>>>tc) {
+    vector<string>v;
+    for (int i = 0; i < T; i++) {
+        int N = tc[i].first;
+        vector<int> A = tc[i].second;
+        int ans = 0;
+        for (int j = 0; j < N; j++) {
+            ans = ans + A[j];
+        }
+        if (ans % N != 0) {
+            v.push_back("No");
+        } 
+        else {
+            int res = ans / N;
+            bool pos = true;
+            for (int j = 0; j < N; j++) {
+                if ((A[j] - res) % 2 != 0) {
+                    pos = false;
+                    break;
+                }
+            }
+            if (pos==0) {
+                v.push_back("No");
+            } 
+            else {
+                v.push_back("Yes");
+            }
+        }
+    }
+
+    string resultString;
+    for (string &vv : v) {
+        resultString += vv + "\n";
+    }
+    return resultString;
+}
+
+int main() {
+    int T;
+    cin >> T;
+    vector<pair<int, vector<int>>>tc;
+    for (int i = 0; i < T; i++) {
+        int N;
+        cin >> N;
+        vector<int> A(N);
+        for (int j = 0; j < N; j++) {
+            cin >> A[j];
+        }
+        tc.push_back(make_pair(N, A));
+    }
+
+    string ans = candy(T, tc);
+    cout<<ans;
+
+    return 0;
+}
