@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    int n;
+    cin>>n;
+    int a = n; int b = n & (n - 1);
+    assert((a | b) * (a ^ b) == n);
+    cout<<a<<" "<<b<<" "<<endl;
+    
+}
+int main(){
+    int tc; cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+}
