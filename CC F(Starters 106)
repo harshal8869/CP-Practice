@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+       ll n,m,a,b;  cin>>n>>m>>a>>b;
+       ll maxi=max(n*(a-b),m*(b-a));
+       ll maxi2=max(m*(b-a),m*(a-b));
+       vector<int>v;
+       v.push_back(n);
+       v.push_back(m);
+       v.push_back(a);
+    ll ans = max(m*(n - a), max(n*(b - 1), max((m - b) * n, m*(a - 1) ))); 
+    cout<<ans<<endl;
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+}
