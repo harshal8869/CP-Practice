@@ -1,0 +1,42 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+bool is_prime(int n) {
+    if (n == 2) 
+    return true;
+    if (n < 2 || n % 2 == 0) 
+    return false;
+    for (int i = 3; i <= sqrt(n); i = i + 2) {
+        if (n % i == 0) 
+        return false;
+    }
+    return true;
+}
+
+string uttar(int t) {
+    vector<string>ans;
+    string ss;
+    for (int i = 0;i<t;i++) {
+        int n; cin>>n;
+        if (n==1 || n%2==0) {
+            ans.push_back("Bob");
+        } 
+        else {
+            ans.push_back("Alice");
+        }
+    }
+    for (const auto &it : ans) {
+        ss += it + "\n";
+    }
+    return ss;
+}
+
+int main() {
+    int tc;  cin>>tc;
+    cout <<uttar(tc)<<endl;
+
+    return 0;
+}
+
+
+
