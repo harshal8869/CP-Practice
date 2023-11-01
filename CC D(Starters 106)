@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main() {
+ // your code goes here
+ int tc;
+ cin>>tc;
+ while(tc--){
+     
+     int n,k;
+     cin>>n>>k;
+int cnt=0;
+int cnt2=0;
+int ans=0;
+     vector<int> v(n);
+   for(int i=0;i<n;i++){
+       cin>>v[i];
+   }
+     int j=0;
+    while(k--){
+        if(v[j]%2==1){
+        cnt++;
+        }
+        else{
+            cnt2++;
+        }
+        
+        j++;
+    }
+    if(cnt>0){
+        ans++;
+    }
+    for(int i=0;j<n;i++){
+        if(v[i]%2==1){
+        cnt--;
+        }
+        else{
+        cnt2--;
+        }
+        
+        if(v[j]%2==0){
+        cnt2++;
+        }
+        else{
+        cnt++;
+        }
+        
+        j++;
+        
+        if(cnt>0){
+        ans++;
+         }
+        
+    }
+     
+     cout<<ans<<endl;
+     
+     
+ }
+ return 0;
+}
