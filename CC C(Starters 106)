@@ -1,0 +1,20 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+ll fct(ll n){
+    ll fct=1;
+	    for(int i=1;i<n+1;i++){
+	        fct = fct * i;
+	    }
+	    return fct;
+}
+int main() {
+	// your code goes here
+	int tc; cin>>tc; while(tc--){
+	    ll n; cin>>n; //ll fct=1;
+	    ll ans = fct(n)/(fct(2) * fct(n-2));
+	    
+	    cout<<2*ans<<endl;
+	}
+	return 0;
+}
