@@ -1,0 +1,34 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+      int n;  cin>>n;   string s;   cin>>s;
+      stack<char>st;
+        for(int i=0;i<n;i++){
+            if(!st.empty() && st.top()==s[i]){
+                st.pop();
+                continue;
+            }
+            st.push(s[i]);
+        }
+        int len = st.size();
+    if(len == 0){
+        cout<<"YES"<<endl;
+    }
+    else if(len == 1){
+        cout<<"YES"<<endl;
+    }
+    else if(len == 2){
+        cout<<"NO"<<endl;
+    }
+    else{
+        cout<<"NO"<<endl;
+    }
+}
+int main() {
+	// your code goes here
+	int tc;  cin>>tc; for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+}
