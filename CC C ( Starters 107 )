@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+        int n;
+        cin>>n;
+        string s1,s2; cin>>s1>>s2;
+        int cnt=0; int cnt2=0;
+        for (int i = 0; i < n; i++){
+            if (s1[i] == 'R'){
+                if (s2[i] == 'P'){
+                    cnt2++;
+                }
+                else if (s2[i] == 'S'){
+                    cnt++;
+                }
+            }
+            else if (s1[i] == 'S'){
+                if (s2[i] == 'R'){
+                    cnt2++;
+                }
+                else if (s2[i] == 'P'){
+                    cnt++;
+                }
+            }
+            else if (s1[i] == 'P'){
+                if (s2[i] == 'S'){
+                    cnt2++;
+                }
+                else if (s2[i] == 'R'){
+                    cnt++;
+                }
+            }
+        }
+        int diff = abs(cnt2 - cnt);
+        if(cnt > cnt2){
+            cout<<0<<endl;
+        }
+        else if(cnt == cnt2){
+            cout<<diff/2+1<<endl;
+        }
+        else{
+              cout<<diff/2+1<<endl;
+        }
+ 
+	}
+	return 0;
+}
