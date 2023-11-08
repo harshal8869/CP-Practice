@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    ll n,m;  cin>>n>>m;
+    unordered_map<int,int>mp;
+    ll res=-1;
+    ll ans=0;
+    
+    auto fnc = [&](ll a)->ll {
+        return (a % m ) * ((n-a)%m);
+    };
+    ll cnt;
+    cnt = (n % m)/2;
+    if(fnc(cnt) - res > 0)
+    res = fnc(cnt), ans = cnt;
+    
+    
+    cnt = min({n-1,m-1,(n%m)/2 + 1});
+      if(fnc(cnt) - res > 0)
+    res = fnc(cnt), ans = cnt;
+    
+    
+       
+    cnt = min({n-1,m-1,n % m + (m - n % m)/2});
+      if(fnc(cnt) - res > 0)
+    res = fnc(cnt), ans = cnt;
+    
+    
+     cnt = min({n-1,m-1,n % m + (m - n % m)/2 + 1});
+      if(fnc(cnt) - res > 0)
+    res = fnc(cnt), ans = cnt;
+    
+    
+    cout<<ans<<endl;
+    
+    
+}
+int main() {
+	// your code goes here
+	int tc;  cin>>tc; for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+}
