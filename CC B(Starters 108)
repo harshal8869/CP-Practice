@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int tc;  cin>>tc;  for(int i=0;i<tc;i++){
+	    int n,x;  cin>>n>>x; 
+	    if(n < x){
+	        cout<<2*abs(n-x)<<endl;
+	    }
+	    else{
+	        cout<<0<<endl;
+	    }
+	}
+	return 0;
+	
+}
