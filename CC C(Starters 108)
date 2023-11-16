@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	       int n; cin>>n;
+        if (n <= 4) {
+            cout<<0<<" "<<n<<" "<<endl;  continue;
+        }
+        cout<<1<<" "<<n-1<<" "<<endl;
+	}
+	return 0;
+}
