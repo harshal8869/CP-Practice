@@ -1,0 +1,45 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int mod = 1e9 + 7;
+#define ll long long int
+int fnc[100005][4][2];
+void jodd(int&x, int y){
+    x = x + y; 
+    if(x > mod || x == mod)
+    x = x - mod;
+}
+
+
+int dpp(int n, int a, int b){
+    if(a + 1 > n)
+    return 0;
+    if(a == n - 1)
+    return b==0;
+    int& ans = fnc[n][a][b];
+    if(ans!=-1)  return ans;
+    
+    
+    ans = 0;
+    for(int i=0;i<=3;i++){
+    jodd(ans,dpp(n - a - 1,i, b ^ ( i == 0)));
+    }
+    
+    return ans;
+    
+}
+void thrill(){
+    int n;  cin>>n;  int ans=0;
+    for(int i=0;i<=3;i++){
+        jodd(ans,dpp(n + i,3,0));
+    }
+    cout<<ans<<endl;
+}
+
+int main(){
+    memset(fnc,-1,sizeof(fnc));
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+}
