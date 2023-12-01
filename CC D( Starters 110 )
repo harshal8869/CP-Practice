@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        int a,b;  cin>>a>>b;  int c=a; int d=b; int cnt=0;
+        int cnt2=0;
+    while(a%b!=0 && a && b){
+        a++;  b--;   cnt++;
+    }
+    
+    while(c%d!=0 && c && d){
+        c--;   d++; cnt2++;
+    }
+    if(c && d && c%d==0){
+        cnt=min(cnt,cnt2);
+    }
+    cout<<cnt<<endl;
+        
+    }
+    return 0;
+}
