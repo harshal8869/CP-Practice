@@ -1,0 +1,186 @@
+// Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+ 
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define vll vector<int>
+#define pll pair<int, int>
+#define vpll vector<pll>
+#define vvll vector<vll>
+#define vvpll vector<vpll>
+#define mp make_pair
+#define pb push_back
+#define ff first
+#define ss second
+const int N=1000005;
+const int mod = 998244353;
+const int MOD =1000000007;
+#define all(x) (x).begin(), (x).end()
+#define rall(x) (x).rbegin(), (x).rend()
+struct cmp{
+ bool operator()(pair<int,int> a,pair<int,int> b){
+  if((a.second-a.first)>(b.second-b.first)){
+   return 0;
+  }
+  else if((a.second-a.first)==(b.second-b.first)){
+   if(a.first<b.first){
+    return 0;
+   }
+   else{
+    return 1;
+   }
+  }
+  else{
+   return 1;
+  }
+ }
+};
+ 
+ 
+ 
+ 
+ll lcm(ll a, ll b){
+    return (a / __gcd(a, b)) * b;
+}
+ 
+ 
+ ll mathpow(ll a,ll b){
+     ll x = 1;
+     while(b){
+         if(b & 1)
+             x = x * a;
+             x = x % mod;
+             a = a * a;
+             a = a % mod;
+             b >>=1;
+         
+     }
+     return x;
+ }
+ 
+ 
+ 
+ll mod_inv(ll x){
+ return mathpow(x, mod - 2);
+}       
+ 
+ll mod_mult(ll a, ll b){
+    a = a % mod;
+    b = b % mod;
+    return (((a * b) % mod) + mod) % mod;
+}
+ 
+ll mod_sum(ll a, ll b){
+    a = a % mod;
+    b = b % mod;
+    return (((a + b) % mod) + mod) % mod;
+}
+ 
+ll mod_div(ll a,ll b){
+ return (a % mod * mod_inv(b)) % mod;
+}
+ll fct[N];
+void factorial(){
+ fct[0] = 1;
+ for (int i=1;i<N;i++)
+ fct[i] = (fct[i-1] * i)%MOD;
+// fct[i]=fct[i]%MOD;
+ 
+}
+ 
+ll nCr(ll n, ll r){ 
+    return (n < r || r < 0) ? 0 : ((fct[n] * mathpow(fct[r],MOD-2))%MOD * mathpow(fct[n - r], MOD-2))%MOD;
+    }
+vector<ll> factors(ll n){
+    vector<ll> ans;
+    for (ll i=2;i * i <= n;i++){
+        if (n % i == 0){
+            ans.push_back(i);
+            if (i * i!=n){
+                ans.push_back(n / i);
+            }
+        }
+    }
+    return ans;
+}
+ 
+ 
+int isprime(int n){
+   if(n<=1){
+  return 0;
+ }
+ if(n==2){
+  return 1;
+ }
+ if(n%2==0){
+  return 0;
+ }
+ for(int i=3;i<=sqrt(n);i=i+2){
+  if(n%i==0){
+   return 0;
+  }
+ }
+ return 1;
+}
+ 
+ 
+ double dhundo(int x,int y,int a,int b){ 
+     double ans = sqrt((x-a)*(x-a) + (y-b)*(y-b)); 
+    return ans; 
+ } 
+ 
+ll log(ll a, ll b){
+    return log2(a)/log2(b);
+}
+void DFS(int node , vll vec[] , int&ans , int temp , string &s){
+    if(vec[node][0] == -1 && vec[node][1] == -1 ){
+        ans = min(ans,temp);   return;
+    }
+
+    
+     if(s[node] == 'R'){
+        temp = temp + 1 ; 
+        if(vec[node][0] != -1) 
+        DFS(vec[node][0] ,vec, ans , temp , s) ; 
+        temp = temp - 1; 
+        if(vec[node][1] != -1) 
+        DFS(vec[node][1] , vec , ans , temp , s) ; 
+    }
+    else if(s[node] == 'L'){
+        if(vec[node][0] != -1) 
+        DFS(vec[node][0],vec,ans,temp,s) ; 
+        temp = temp + 1; 
+        if(vec[node][1] != -1) 
+        DFS(vec[node][1],vec,ans,temp,s) ; 
+    }
+    else{
+        temp = temp + 1 ;
+        if(vec[node][0] != -1) 
+        DFS(vec[node][0] , vec , ans , temp , s) ; 
+        if(vec[node][1] != -1)
+        DFS(vec[node][1] , vec , ans , temp , s) ; 
+    }
+}
+
+void thrill(){
+    ll n; cin>>n;   string s ;cin>>s;   vll vec[n]; 
+    for(int i=0;i<n;i++){
+        ll a,b;  cin>>a>>b;  a--; b--;
+        vec[i].push_back(a);   vec[i].push_back(b);
+    }
+    int mini = INT_MAX;
+    DFS(0,vec,mini,0,s);
+   // cout<<ans<<endl;
+   cout<<mini<<endl;
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+    return 0;
+}
