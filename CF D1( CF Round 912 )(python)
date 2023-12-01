@@ -1,0 +1,124 @@
+#Jai Shree Ram
+#Jai Hanuman Ji
+#Jai Mata Di
+#Har Har Mahadev
+
+import math
+
+MOD = 998244353
+
+
+def lcm(a, b):
+    return (a // math.gcd(a, b)) * b
+
+
+def mathpow(a, b):
+    x = 1
+    while b > 0:
+        if b & 1:
+            x = x * a % MOD
+        a = a * a % MOD
+        b >>= 1
+    return x
+
+
+def mod_inv(x):
+    return mathpow(x, MOD - 2)
+
+
+def mod_mult(a, b):
+    a %= MOD
+    b %= MOD
+    return ((a * b) % MOD + MOD) % MOD
+
+
+def mod_sum(a, b):
+    a %= MOD
+    b %= MOD
+    return ((a + b) % MOD + MOD) % MOD
+
+
+def mod_div(a, b):
+    return (a % MOD * mod_inv(b)) % MOD
+
+
+def factors(n):
+    ans = []
+    for i in range(2, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            ans.append(i)
+            if i * i != n:
+                ans.append(n // i)
+    return ans
+
+
+def isprime(n):
+    if n <= 1:
+        return False
+    if n == 2:
+        return True
+    if n % 2 == 0:
+        return False
+    for i in range(3, int(math.sqrt(n)) + 1, 2):
+        if n % i == 0:
+            return False
+    return True
+
+
+def get_divisors(n):
+    divisors = []
+    for i in range(1, int(math.sqrt(n)) + 1):
+        if n % i == 0:
+            divisors.append(i)
+            if i != n // i:
+                divisors.append(n // i)
+    return divisors
+
+
+def thrill():
+    n, m = map(int, input().split())
+    v = list(map(int, input().split()))
+    vv = [0] * (n + 1)
+
+    for i in range(1, n + 1):
+        vv[i] = v[i - 1]
+
+    for _ in range(m):
+        k = int(input())
+        ans = 0
+        vec = vv[:]
+
+        for j in range(60, -1, -1):
+            u = 0
+            vec2 = vec[:]
+
+            for x in range(1, n + 1):
+                if not ((vec[x] >> j) & 1):
+                    temp = vec[x]
+                    vec[x] = vec[x] + (1 << j)
+                    vec[x] = vec[x] // (1 << j)
+                    vec[x] = vec[x] * (1 << j)
+                    u = u - temp + vec[x]
+
+                    if u > k:
+                        break
+
+            if k - u == 0:
+                k -= u
+                ans += (1 << j)
+            elif k > u:
+                k -= u
+                ans += (1 << j)
+            else:
+                vec = vec2[:]
+
+        print(ans)
+
+
+def main():
+    thrill()
+
+
+if __name__ == "__main__":
+    main()
+
