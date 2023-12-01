@@ -1,0 +1,14 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int w,h;  cin>>w>>h;
+	if(130>=h && 60<=w){
+	    cout<<"YES"<<endl;
+	}
+	else{
+	    cout<<"NO"<<endl;
+	}
+	return 0;
+}
