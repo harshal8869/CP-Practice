@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+     ll n;  cin>>n;  ll cnt=0; ll arr[n];
+    for(int i=0;i<n;i++) {
+        cin>>arr[i];
+    cnt = cnt ^ arr[i];
+    }
+    ll ans = cnt;
+    for(int i=0;i<n;i++){
+    ans = min(cnt ^ arr[i],ans);
+    }
+    cout<<ans<<endl;
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+    return 0;
+}
