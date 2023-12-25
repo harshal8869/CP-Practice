@@ -1,0 +1,15 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    int n,k;   cin>>n>>k; 
+    int avg = n/(k+1);   int rem = n - avg;  int ans = n - k * avg;
+    cout<<ans<<endl;
+}
+int main(){
+    int tc;   cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+    return 0;
+}
