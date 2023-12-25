@@ -1,0 +1,17 @@
+vector<int> goodnessOfArray(int n, int m, vector<int>& a, vector<int>& b) {
+    // Write your code here.
+      std::vector<int> goodness;
+    
+    for (int value : a) {
+        int max_remainder = INT_MIN; // Initialize max_remainder to minimum integer value
+        
+        for (int divisor : b) {
+            int remainder = value % divisor;
+            max_remainder = std::max(max_remainder, remainder); // Update max_remainder with the maximum remainder
+        }
+        
+        goodness.push_back(max_remainder); // Store the maximum remainder for the current 'value' in 'goodness' vector
+    }
+    
+    return goodness;
+}
