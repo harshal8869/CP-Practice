@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    int n;   cin>>n;   string s;   cin>>s;   int cnt=0;
+        for(int i=0;i<n;i++){
+            if(s[i] == '0'){
+                cnt++;
+            }
+
+            if(cnt == 0){
+                cout<<((i < n - 1) ? "IDK" : "YES")<<endl;
+            }
+            else{
+                cout<<"NO"<<endl;
+            }
+        }
+
+
+}
+int main(){
+    int tc;   cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+    return 0;
+}
