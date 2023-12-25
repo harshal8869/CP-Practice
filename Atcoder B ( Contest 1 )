@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+pair<int, int> pourWater(int K, int G, int M) {
+    int glass = 0, mug = 0;
+
+    for (int i = 0; i < K; ++i) {
+        if (glass == G) {
+            glass = 0;
+        } else if (mug == 0) {
+            mug = M;
+        } else {
+            int spaceInGlass = G - glass;
+            if (mug <= spaceInGlass) {
+                glass += mug;
+                mug = 0;
+            } else {
+                glass = G;
+                mug -= spaceInGlass;
+            }
+        }
+    }
+
+    return make_pair(glass, mug);
+}
+
+int main() {
+    int K, G, M;
+    cin >> K >> G >> M;
+
+    pair<int, int> result = pourWater(K, G, M);
+
+    cout << result.first << " " << result.second << endl;
+
+    return 0;
+}
