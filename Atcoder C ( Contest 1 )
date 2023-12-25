@@ -1,0 +1,39 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int maxConsecutiveOnes(int n, int m, const string& s) {
+    int mm = 0, x = 0, ans = 0;
+    int i = 0;
+
+    while (i < n) {
+        if (s[i] == '1') {
+            if (mm >= m) {
+                x++;
+            } else {
+                mm++;
+            }
+        } else if (s[i] == '2') {
+            x++;
+        } else {
+            mm = 0;
+            x = 0;
+        }
+
+        ans = max(ans, x);
+        i++;
+    }
+
+    return ans;
+}
+
+int main() {
+    int n, m;
+    string s;
+    cin >> n >> m >> s;  
+
+    int result = maxConsecutiveOnes(n, m, s);
+
+    cout << result;
+
+    return 0;
+}
