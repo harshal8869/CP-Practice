@@ -1,0 +1,22 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int N, S, K;
+    cin >> N >> S >> K;
+
+    int total_price = 0;
+    for (int i = 0; i < N; ++i) {
+        int Pi, Qi;
+        cin >> Pi >> Qi;
+
+        total_price += Pi * Qi;
+    }
+
+    int shipping_fee = (total_price >= S) ? 0 : K;
+    int amount_to_pay = total_price + shipping_fee;
+
+    cout << amount_to_pay << endl;
+
+    return 0;
+}
