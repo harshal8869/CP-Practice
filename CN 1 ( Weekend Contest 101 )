@@ -1,0 +1,23 @@
+string uppercaseORLowercase(int n, string& s) {
+    int uc = 0;
+    int lc = 0;
+
+    for (char c : s) {
+        if (isupper(c)) {
+            uc++;
+        } else if (islower(c)) {
+            lc++;
+        }
+    }
+
+    if (uc > lc) {
+        for (char& c : const_cast<string&>(s)) {
+            c = toupper(c);
+        }
+    } else {
+        for (char& c : const_cast<string&>(s)) {
+            c = tolower(c);
+        }
+    }
+    return s;
+}
