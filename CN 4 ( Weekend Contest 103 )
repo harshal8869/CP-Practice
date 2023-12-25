@@ -1,0 +1,18 @@
+vector < vector < int >> maximumInMatrices(int n, int m, int r, int s,
+    vector < vector < int >> & a) {
+    // Write your code here.
+      vector<vector<int>>vec(n, std::vector<int>(m, 0));
+     for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            int maxi = INT_MIN;
+            for (int x = i; x < min(i + r, n); ++x) {
+                for (int y = j; y < min(j + s, m); ++y) {
+                    maxi = max(a[x][y],maxi);
+                }
+            }
+            vec[i][j] = maxi;
+        }
+    }
+    
+    return vec;
+}
