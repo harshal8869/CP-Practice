@@ -1,0 +1,18 @@
+int goodSpell(int n, string &s) {
+   // Write Your Code Here
+   int len = s.size();
+   int p1=1; int p2=1;
+   for(int i=0;i<len/2;i++){
+      p1=p1*(s[i]-'0');
+   }
+   for(int i=len/2;i<len;i++){
+      p2=p2*(s[i]-'0');
+   }
+   if(p1==p2){
+      return 1;
+   }
+   else{
+      return 0;
+   }
+   
+}
