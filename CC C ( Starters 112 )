@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+      ll n;
+      cin >> n;
+      vector<ll> a,b;
+      for(ll i = 0 ; i < n ; i++){
+        ll x;
+        cin >> x;
+        a.push_back(x);
+      }
+      unordered_map<ll,ll>mp;
+      for(ll i = 0 ; i < n ; i++){
+        ll x;
+        cin >> x;
+        mp[a[i]] = max(mp[a[i]] , x);
+      }
+      
+      ll ans = 0;
+      for(auto p : mp){
+        if(p.second > 0) ans += p.second;
+      }
+      
+      cout<< ans <<endl;
+}
+int main(){
+    int tc;   cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+    return 0;
+}
