@@ -1,0 +1,16 @@
+#include <bits/stdc++.h>
+using namespace std;
+int friendGroup(int n, vector <int> &a) {
+   // Write Your Code Here.
+   
+   int e=0;
+   for(int i=0;i<n;i++){
+      if(a[i]%2==0){
+         e++;
+      }
+   }
+   int o = n - e;
+   return max(e,o);
+}
+
+
