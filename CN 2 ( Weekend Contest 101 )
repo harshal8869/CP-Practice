@@ -1,0 +1,20 @@
+from typing import List
+
+def countSequences(n: int, a: List[int]) -> int:
+    # Write your code here.
+    result = 0
+    
+    while a:
+        min_element = min(a)
+        current_set = set()
+
+        for num in a:
+            if num % min_element == 0:
+                current_set.add(num)
+
+        result += 1
+        a = [num for num in a if num not in current_set]
+
+    return result
+
+    pass
