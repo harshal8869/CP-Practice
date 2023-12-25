@@ -1,0 +1,63 @@
+
+// Jai Shree Ram
+//Jai Hanuman Ji
+//Jai Mata Di
+//Har Har Mahadev
+ 
+#include <bits/stdc++.h>
+using namespace std;
+
+#define int long long
+
+
+void thrill(){
+ int n,m;  cin>>n>>m;  vector<int>v(n);
+    for(int i=0;i<n;i++){
+        cin>>v[i];
+    }
+    if(m > 2){
+        cout<<0<<endl;   return;
+    }
+
+auto srchsb = [](vector<int>vec){
+sort(vec.begin(),vec.end());  int sub = vec[1]-vec[0];
+for(int i=1;i<vec.size();i++){
+sub = min(vec[i]-vec[i - 1],sub);
+}
+return sub;
+};
+
+sort(v.begin(),v.end());
+if(m==1){
+    int res = min(srchsb(v),v[0]);
+    cout<<res<<endl;
+}
+else{
+    sort(v.begin(),v.end());
+     int ans = srchsb (v);
+    for(int i=0;i<n;i++){
+        for(int j=i+1;j<n;j++){
+            int sub = abs(v[j]-v[i]);
+        int low= lower_bound(v.begin(),v.end(),sub)-v.begin();
+if(n > low && low >= 0)
+
+ans = min(abs(sub - v[low]),ans);   low--;
+
+if (n > low && low >= 0)
+
+ans = min(abs(sub-v[low]),ans);
+
+}
+
+}
+
+cout<<ans<<endl;
+
+}
+}
+signed main(){
+    int tc;  cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+}
