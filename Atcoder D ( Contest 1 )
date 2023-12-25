@@ -1,0 +1,38 @@
+from collections import deque
+
+def solve():
+    H, W = map(int, input().split())
+    A = [list(map(int, input().split())) for _ in range(H)]
+    B = [list(map(int, input().split())) for _ in range(H)]
+
+    # Initialize the queue with the start state
+    queue = deque([(A, 0)])
+    visited = set([str(A)])
+
+    while queue:
+        grid, steps = queue.popleft()
+
+        # If the current grid is equal to B, return the number of steps
+        if grid == B:
+            return steps
+
+        # Generate all possible next states
+        for i in range(H-1):
+            new_grid = grid[:]
+            new_grid[i], new_grid[i+1] = new_grid[i+1], new_grid[i]
+            if str(new_grid) not in visited:
+                queue.append((new_grid, steps+1))
+                visited.add(str(new_grid))
+
+        for j in range(W-1):
+            new_grid = [row[:] for row in grid]
+            for i in range(H):
+                new_grid[i][j], new_grid[i][j+1] = new_grid[i][j+1], new_grid[i][j]
+            if str(new_grid) not in visited:
+                queue.append((new_grid, steps+1))
+                visited.add(str(new_grid))
+
+    # If no solution is found, return -1
+    return -1
+
+print(solve())
