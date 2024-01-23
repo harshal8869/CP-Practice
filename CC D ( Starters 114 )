@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+      ll n;
+      cin>>n;
+      ll cnt=0;
+      string s;
+      cin>>s;
+      ll len = s.size();
+      for(ll i=0;i<n;i++){
+          if(s[i]=='R'){
+              cnt++;
+          }
+      }
+        if(cnt > n / 2) {
+            cout<<string(n, 'P')<<endl;
+        } 
+        else{
+            string ss="";
+            for(ll j=n-1;j>=0;j--){
+                if(n/2 > cnt || n/2 == cnt){
+                     if(s[j] == 'P'){
+                        ss += 'S';
+                        cnt++;
+                    } 
+                   else if(s[j] == 'S'){
+                        ss += 'R';
+                        cnt++;
+                    }
+                    else{
+                        ss += 'P';
+                    }
+                }
+                else{
+                    ss += 'P';
+                }
+            }
+            ll sz = ss.size();
+
+            for(int i=sz-1;i>=0;i--){
+                cout<<ss[i];
+            }
+            cout<<endl;
+        }
+}
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+}
