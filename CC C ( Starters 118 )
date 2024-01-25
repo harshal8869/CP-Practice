@@ -1,0 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    ll n,m;
+    cin>>n>>m;
+         ll rem = n/m;
+         ll rem2 = rem;
+         while(m--){
+            cout<<rem2<<" ";
+            rem2 += rem;
+         }
+         cout<<endl;
+}
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+
+}
