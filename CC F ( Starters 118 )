@@ -1,0 +1,70 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+string daalo(ll n){
+    string ans="";
+    while(n!=0){
+        if(n%2==0){
+            ans.push_back('0');
+        }
+        else{
+            ans.push_back('1');
+        }
+        n>>=1;
+    }
+    reverse(ans.begin(),ans.end());
+    return ans;
+}
+ll mathpow(ll a,ll b){
+    ll res =1;
+    while(b){
+        if(b%2==1){
+            res=res*a;
+        }
+        a=a*a;
+        b=b/2;
+    }
+    return res;
+}
+
+
+
+void thrill(){
+    ll x;
+    cin>>x;
+     string ss="11";
+    ll cnt=0;
+    ll ans=0;
+    ll cnt2=0;
+    string slv=daalo(x);
+   ll len = slv.size();
+    for(int i=0;i<len;i++){
+        if(ss[cnt]==slv[i]){
+            cnt++;
+            if(cnt==2){
+                ans=i+1;
+                break;
+            }
+        }
+    }
+    
+    if(cnt==1 || cnt<1){
+        cout<<1<<endl;
+        return;
+    }
+    for(int i=ans;i<len;i++) {
+        if(slv[i]=='0'){
+            cnt2++;
+        }
+    }
+    ll final_ans=mathpow(2,cnt2);
+    cout<<final_ans<<endl;
+   
+}
+int main(){
+    int tc;
+    cin>>tc;
+    for(int i=0;i<tc;i++){
+        thrill();
+    }
+}
