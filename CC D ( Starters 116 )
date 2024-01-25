@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    ll n,m;
+    cin>>n>>m;
+    vector<ll>v;
+    ll cnt=0;
+    ll arr[n];
+    for(ll i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    ll brr[m];
+    for(ll i=0;i<m;i++){
+        cin>>brr[i];
+    }
+    for(ll i=0;i<m;i++){
+        cnt=max(cnt,brr[i]);
+    }
+for(ll i=0;i<n;i++){
+  if(n > cnt + i){
+  cout<<arr[i]<<" ";
+  }
+  else if(n==cnt+i){
+      v.push_back(arr[i]);
+      ///v.push_back(brr[i]);
+  }
+  else{
+  v.push_back(arr[i]);
+  }
+}
+ll len =v.size();
+sort(v.begin(),v.end());
+for(ll i=0;i<len;i++){
+    cout<<v[i]<<" ";
+}
+cout<<endl;
+}
+signed main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+
+}
