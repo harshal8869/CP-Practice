@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    //int a,b,c,d,e,f;
+    //cin>>a>>b>>c>>d>>e>>f;
+     vector<char>v(6);
+     ll cnt=0;
+     bool hat=false;
+    for(ll i=0;i<6;i++){
+            cin>>v[i];
+        }
+        for(ll i=0;i<6;i++){
+            if(v[i]=='W' || v[i]=='w'){
+            cnt++;
+            }
+            else{
+                if(cnt>2){
+                hat=true;
+                }
+                cnt=0;
+                
+            }
+        }
+        if(cnt>2){
+        hat=true;
+        }
+        if(hat==0){
+        cout<<"NO"<<endl;
+        }
+        else{
+        cout<<"YES"<<endl;
+        }
+}
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+
+}
