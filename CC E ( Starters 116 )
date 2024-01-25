@@ -1,0 +1,31 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define lld  long double
+void thrill(){
+    ll n;
+    cin>>n;
+    if(n%2==1){
+        lld db = n + 1;
+        db=sqrtl(db);
+        db=db+1;
+        db=db/2;
+        ll  ans = db;
+        cout<<ans<<endl;
+    }
+    else{
+        lld db=n;
+        db = db / 4;
+        ll ans=sqrtl(db);
+        cout<<ans<<endl;
+    }
+}
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+return 0;
+}
