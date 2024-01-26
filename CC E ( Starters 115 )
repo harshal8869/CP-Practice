@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+      ll n,m;
+      cin>>n>>m;
+      ll cnt=1;
+        if(m == 0){
+            for(ll i=1;i<n+1;i++) {
+                cout<<i<<" ";
+            }
+            cout<<endl;
+            return;
+        }
+        
+        if(n - m == 0 || n - m == 1){
+            cout<<-1<<endl;
+            return;
+        }
+        
+        for(ll i = 1;i<n-m-1;i++) {
+            cnt++;
+            cout<<i<<" ";
+        }
+        cout<<n<<" ";
+        for(ll i = cnt;i<n;i++) {
+            cout<<i<<" ";
+        }
+        cout<<endl;
+}
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+}
