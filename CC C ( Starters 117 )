@@ -1,0 +1,30 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+        int n;
+	    cin>>n;
+	    string s;
+	    cin>>s;
+	    bool flag=true;
+	    for(int i=0;i<n-1;i++){
+	        if(s[i]>s[i+1]){
+	            flag=0;
+	            s.erase(i,1);
+	            break;
+	        }
+	    }
+	    if(flag==1){
+	        s.erase(n-1,1);
+	    }
+	    cout<<s<<endl;
+}
+int main(){
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+}
