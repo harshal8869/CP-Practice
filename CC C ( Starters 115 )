@@ -1,0 +1,36 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    ll n,m,k;
+    cin>>n>>m>>k;
+    ll cnt=0;
+    k=k/3;
+    if(m > k){
+            m = m - k;
+            cnt = cnt + k + m / 2;
+        }
+        else{
+            cnt=m;
+        }
+
+        if(n == cnt){
+            cout << "YES" << endl;
+        } 
+        else if(n > cnt){
+            cout<<"NO"<<endl;
+        }
+        else{
+            cout<<"YES"<<endl;
+        }
+}
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+
+}
