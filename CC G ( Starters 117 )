@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    ll n;
+    cin>>n;
+    ll ans=0;
+    vector<ll>v(n);
+    for(ll i=0;i<n;i++){
+        cin>>v[i];
+    }
+    while(!v.empty()){
+        vector<ll>vec;
+        ll i=0;
+        n=v.size();
+        ans++;
+        while(i < n){
+            vec.push_back(i);
+            ll j = i + 1;
+            while(j < n && v[i]==v[j]){
+                j++;
+            }
+            i=j;
+        }
+        ll idx=0;
+        vector<ll>final;
+        for(int ii = 0; ii < n;ii++){
+            while(idx <vec.size() && vec[idx] < ii) {
+                idx++;
+            }
+            if(idx == vec.size() || ii != vec[idx]) {
+                final.push_back(v[ii]);
+            }
+        }
+        v.swap(final);
+    }
+    if(ans%2==1){
+        cout<<"Alice"<<endl;
+    }
+    else{
+        cout<<"Bob"<<endl;
+    }
+}
+int main(){
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+}
