@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    vector<pair<int,int>>vec;
+    if(n<=2){
+        cout<<-1<<endl;
+    }
+     else{
+	        for(int i=0;i<n;i++){
+	            vec.push_back({arr[i],i});
+	        }
+	        sort(vec.begin(),vec.end());
+	        if(n%2==1){
+	            vector<int>v(n);
+	            for(auto it:vec){
+	                v[it.second]=n;
+	                n--;
+	            }
+	            for(int i=0;i<v.size();i++){
+	            cout<<v[i]<<" ";
+	            }
+	            cout<<endl;
+	        }
+	        else{
+	            vector<int>v(n);
+	            n=n-1;
+	            int len = vec.size();
+	            for(int i=0;i<len-1;i++){
+	                v[vec[i].second]=n;
+	                n--;
+	            }
+	            v[vec[len-1].second]=len;
+	            for(int i=0;i<v.size();i++){
+	            cout<<v[i]<<" ";
+	            }
+	            cout<<endl;
+	        }
+	    }
+	    
+	}
+int main(){
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+}
