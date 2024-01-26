@@ -1,0 +1,17 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+   ll n;
+   cin>>n;
+   cout<<(n+1)/2<<" "<<n<<" "<<endl;
+}
+int main() {
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+}
