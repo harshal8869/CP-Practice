@@ -1,0 +1,49 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void thrill(){
+    ll a,b;
+    cin>>a>>b;
+    ll low=0;
+	ll sub=abs(a-b);
+	ll high = 2 * sqrt(sub);
+	while(high!=low){
+	   ll mid = (low + high)/2;
+	   ll sum = (mid * (mid + 1))/2;
+	   if(sum==sub){
+	       high = mid;
+	   }
+	   else if(sum > sub){
+	       high = mid;
+	   }
+	   else{
+	       low=mid+1;
+	   }
+	}
+	if(sub%2==1){
+       if(low%4==3){
+       low=low+2;
+       }
+       else if(low%4==0){
+       low++;
+    }
+}
+    if(sub%2==0){
+       if(low%4==1){
+        low=low+2;
+    }
+       else if(low%4==2){
+        low++;
+    }
+}
+    cout<<low<<endl;
+}
+int main(){
+	// your code goes here
+	int tc;
+	cin>>tc;
+	for(int i=0;i<tc;i++){
+	    thrill();
+	}
+	return 0;
+}
