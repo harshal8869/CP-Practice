@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        ll n;
+        cin>>n;
+        ll cnt=0;
+        unordered_map<char,ll>mp;
+        string s="";
+        vector<ll>v(n);
+        for(ll i=0;i<n;i++){
+            cin>>v[i];
+        }
+        for(ll i=0;i<n;i++){ 
+            if(v[i]!=0){ 
+               
+                 ll val =v[i]; 
+                for(auto it:mp){ 
+                    if(val==it.second){ 
+                        s+=it.first; 
+                        mp[it.first]+=1;
+                        break; 
+                    } 
+                } 
+                
+            } 
+            else{ 
+                 s+=('a'+cnt); 
+                 mp['a'+cnt]+=1;
+                cnt++;
+ 
+            } 
+        } 
+        cout<<s<<endl; 
+      
+    }
+    return 0;
+}
