@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void coderr(){
+    ll n;
+    cin>>n;
+    string ans;
+    unordered_map<ll,char>mp;
+    for(int i=1;i<27;i++){
+        mp[i]='a'+i-1;
+    }
+    for(int i=1;i<27;i++){
+        for(int j=1;j<27;j++){
+            for(int k=1;k<27;k++){
+                if(i+j+k==n){
+                    ans = ans + mp[i];
+                    ans = ans + mp[j];
+                    ans = ans + mp[k];
+                    cout<<ans<<endl;
+                    return;
+                }
+            }
+        }
+    }
+}
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        coderr();
+    }
+    return 0;
+}
