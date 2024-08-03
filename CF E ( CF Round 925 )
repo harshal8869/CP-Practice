@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        ll n,m;
+        cin>>n>>m;
+        ll sum=0;
+        vector<ll>v(n);
+        for(ll i=0;i<n;i++){
+            cin>>v[i];
+        }
+
+    
+  
+    auto slv = [&](ll x) {
+      ll cnt=0;
+      ll cnt2=1;
+      while(x % (cnt2 = cnt2 * 10) == 0){
+        cnt++;
+      }
+      return cnt;
+    };
+      auto len = [&](ll x) {
+      return int(log10(x) + 1);
+    };
+    sort(v.begin(),v.end(), [&] (int i, int j) {
+      return slv(i) < slv(j);
+    });
+    for(int i = n - 1; i >= 0; i--) {
+      sum = sum + len(v[i]);
+      ll p1 = i%2;
+      ll p2=(n-1)%2;
+      if(p1 == p2) {
+        sum = sum - slv(v[i]);
+      }
+    }
+    if(m == sum){
+        cout<<"Anna"<<endl;
+    }
+    else if(sum > m ){
+        cout<<"Sasha"<<endl;
+    }
+    else{
+        cout<<"Anna"<<endl;
+    }
+   
+
+    }
+    return 0;
+}
