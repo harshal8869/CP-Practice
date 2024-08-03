@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+void coderr(){
+    ll n,a,b;
+    cin>>n>>a>>b;
+    ll sum=0;
+    ll arr[n];
+    map<ll,map<ll,ll>>mp;
+    for(ll i=0;i<n;i++){
+      cin>>arr[i];
+      mp[arr[i]%a][arr[i]%b]++;
+    }
+    auto slv = [&] (ll x) {
+      return (a - (x%a))%a;
+    };
+  for(ll i=0;i<n;i++){
+      sum=sum+mp[slv(arr[i])][arr[i]%b]-(arr[i]%a==slv(arr[i]));
+  }
+ 
+    ll ans = sum>>1;
+    cout<<ans<<endl;
+    
+}
+int main(){
+    ll t;
+    cin>>t;
+    while(t--){
+        coderr();
+    }
+    return 0;
+}
