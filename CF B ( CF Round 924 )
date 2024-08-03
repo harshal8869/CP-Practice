@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+     ll n;
+     cin>>n;
+     ll m = n;
+     ll cnt=0;
+     ll arr[n];
+     vector<int>v;
+     set<int>st;
+    for(int i=0;i<n;i++){
+            cin>>arr[i];
+    }
+    for(int i=0;i<n;i++){
+            st.insert(arr[i]);
+        }
+        ll len = st.size();
+         for (auto it:st){
+            v.push_back(it);
+        }
+        ll sz = v.size();
+        for(ll i=0;i<sz;i++){
+            ll val = v[i]-1;
+            val+=m;
+            ll up=upper_bound(v.begin(),v.end(),val)-v.begin();
+            up=up-i;
+            cnt=max(up,cnt);
+        }
+        cout<<cnt<<endl;
+    }
+    return 0;
+}
