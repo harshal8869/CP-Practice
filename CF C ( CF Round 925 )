@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        ll n;
+        cin>>n;
+        ll s =0;
+        ll e = n - 1;
+        vector<ll>arr(n);
+        for(int i=0;i<n;i++){
+            cin>>arr[i];
+        }
+          if(n==1){
+        cout<<0<<endl;
+        continue;
+    }
+    while(arr[0]==arr[s]){
+      s++;
+    }
+    while(arr[n-1]==arr[e]){
+      e--;
+    }
+  
+    if(arr.front()!=arr.back()){
+        ll x = n - s;
+        ll y = e + 1;
+        cout<<min(x,y)<<endl;
+        continue;
+    }
+    ll res = e + 1 - s;
+    ll ans = max(res,0ll);
+    cout<<ans<<endl;
+   
+    
+}
+return 0;
+}
