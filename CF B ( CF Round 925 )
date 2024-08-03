@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        ll n;
+        cin>>n;
+        ll cnt=0;
+        bool chk = false;
+        vector<ll>v(n);
+        ll sum=0;
+        for(ll i=0;i<n;i++){
+           cin>>v[i];
+           sum+=v[i];
+        }
+        sum = sum / n;
+        for(ll i=0;i<n;i++){
+            ll val = v[i]+cnt;
+            if(sum > val){
+                chk=true;
+                break;
+            }
+            cnt = val - sum;
+        }
+        if(cnt!=0){
+            chk=true;
+        }
+        
+        if(chk==0){
+            cout<<"yes"<<endl;
+        }
+        else{
+            cout<<"no"<<endl;
+        }
+
+    }
+    return 0;
+}
