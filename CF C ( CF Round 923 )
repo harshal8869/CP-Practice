@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+           int n,m,k; 
+        cin >> n>>m >> k; 
+        set<int>s,ss; 
+        int a[n],b[m]; 
+        int x=0,y=0,z=0; 
+        for(int i=0; i<n; i++){ 
+            cin >> a[i]; 
+            if(a[i]<=k){ 
+                s.insert(a[i]); 
+            } 
+        } 
+        x=s.size(); 
+        for(int i=0; i<m; i++){ 
+            cin >> b[i]; 
+            if(b[i]<=k){ 
+                ss.insert(b[i]); 
+            } 
+        } 
+        y=ss.size(); 
+        while(!ss.empty()){ 
+            if(s.find(*ss.begin())!=s.end()){ 
+                z++; 
+            } 
+            else{ 
+                s.insert(*ss.begin()); 
+            } 
+            ss.erase(ss.begin()); 
+        } 
+        if(s.size()!=k){ 
+            cout<<"NO"<<endl; 
+        } 
+        else{ 
+            if(x<k/2 || y<k/2){ 
+                cout<<"NO"<<endl; 
+            } 
+            else{ 
+                cout<<"YES"<<endl; 
+            } 
+        } 
+    }
+    return 0;
+}
