@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+      int a,b;
+        cin>>a>>b;
+        if(a%2==0 && b%2==0){
+            cout<<"yes"<<endl;
+        }
+        else if(a%2==1 && b%2==1){
+            cout<<"no"<<endl;
+        }
+        else{
+            int p = a%2==0 ? a:b;
+            int p2 = a%2==0 ? b:a;
+            if(p/2!=p2){
+                cout<<"yes"<<endl;
+            }
+            else{
+                cout<<"no"<<endl;
+            }
+        }
+    }
+    return 0;
+}
